@@ -1,19 +1,16 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, Folder, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_users():
-    demo = User(
-        username='Demo', email='demo@aa.io', password='password')
-    marnie = User(
-        username='james', email='james@aa.io', password='password')
-    bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+def seed_folders():
+    demo = Folder(
+        name='Folder1', description='this is a folders description jflksadjfkldsj jdlsfjaksldj kljfdsaljflsdkj ', userId=2)
+    marnie = Folder(
+        name='Folder2', description='this is a folders description jflksadjfkldsj jdlsfjaksldj kljfdsaljflsdkj ', userId=2)
 
     db.session.add(demo)
     db.session.add(marnie)
-    db.session.add(bobbie)
     db.session.commit()
 
 
@@ -23,10 +20,10 @@ def seed_users():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_users():
+def undo_folders():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.folders RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM users"))
+        db.session.execute(text("DELETE FROM folders"))
 
     db.session.commit()

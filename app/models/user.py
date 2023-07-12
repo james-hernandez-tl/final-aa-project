@@ -7,7 +7,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ = {'schea': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
@@ -15,8 +15,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     image = db.Column(db.string(225))
 
-    set = db.relationship("Set",backreferneces = "user")
-    folder = db.relationship("Folder",backreferneces = "user")
+    set = db.relationship("Set",back_populates = "user",cascade="all, delete")
+    folder = db.relationship("Folder",back_populates= "user",cascade="all, delete")
+    usersRatings = db.relationship("Rating", back_populates = "users",cascade = "all, delete")
 
     @property
     def password(self):
