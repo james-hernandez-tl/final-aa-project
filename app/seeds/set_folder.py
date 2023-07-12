@@ -12,8 +12,8 @@ def seed_set_folder():
 
     allSets = [set1,set2,set3,set4]
     [folder.foldersOfSets.append(aset) for aset in allSets]
-
-    db.session.commit(folder)
+    db.session.add(folder)
+    db.session.commit()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't

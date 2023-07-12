@@ -1,4 +1,4 @@
-from db import db, SCHEMA, add_prefix_for_prod, environment
+from .db import db, SCHEMA, add_prefix_for_prod, environment
 
 
 class Card(db.Model):

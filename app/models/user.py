@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    image = db.Column(db.string(225))
+    image = db.Column(db.String(225), nullable = True)
 
     set = db.relationship("Set",back_populates = "user",cascade="all, delete")
     folder = db.relationship("Folder",back_populates= "user",cascade="all, delete")

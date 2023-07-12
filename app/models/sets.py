@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy import UniqueConstraint
 from .set_folder import set_folders
 
-class Set(db.model):
+class Set(db.Model):
     __tablename__ = "sets"
 
     if environment == "production":

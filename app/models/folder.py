@@ -3,7 +3,7 @@ from sqlalchemy import UniqueConstraint
 from .set_folder import set_folders
 
 
-class Folder(db.model):
+class Folder(db.Model):
     __tablename__ = "folders"
 
     if environment == "production":
