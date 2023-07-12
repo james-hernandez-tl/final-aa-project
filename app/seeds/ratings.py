@@ -19,8 +19,8 @@ def seed_ratings():
 # it will reset the primary keys for you as well.
 def undo_ratings():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.rating RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.ratings RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM rating"))
+        db.session.execute(text("DELETE FROM ratings"))
 
     db.session.commit()
