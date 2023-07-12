@@ -73,7 +73,7 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE cards SET SCHEMA {SCHEMA};")
 
-    op.create_table('rating',
+    op.create_table('ratings',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
     sa.Column('setId', sa.Integer(), nullable=False),
@@ -84,7 +84,7 @@ def upgrade():
     )
 
     if environment == "production":
-        op.execute(f"ALTER TABLE rating SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE ratings SET SCHEMA {SCHEMA};")
 
     op.create_table('set_folders',
     sa.Column('setId', sa.Integer(), nullable=False),
