@@ -13,3 +13,11 @@ class Rating(db.Model):
 
     users = db.relationship("User", foreign_keys = [userId], back_populates = "usersRatings")
     set = db.relationship("Set", foreign_keys = [setId], back_populates = "setRating")
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "userId":self.userId,
+            "setId":self.setId,
+            "rating":self.rating
+        }

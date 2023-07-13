@@ -28,3 +28,12 @@ class Set(db.Model):
     )
 
     UniqueConstraint("name","userId", name="idx_name_userId")
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "description":self.description,
+            "userId":self.userId,
+            "Cards":[card.to_dict() for card in self.setOfCards]
+        }

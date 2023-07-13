@@ -13,3 +13,11 @@ class Card(db.Model):
     setId = db.Column(db.Integer,db.ForeignKey(add_prefix_for_prod("sets.id")), nullable = False)
 
     cardsInSet = db.relationship("Set", back_populates = "setOfCards")
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "question":self.question,
+            "answer":self.answer,
+            "setId":self.setId
+        }

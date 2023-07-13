@@ -17,3 +17,11 @@ class Folder(db.Model):
     user = db.relationship("User",back_populates = "folder", cascade="all, delete")
 
     UniqueConstraint("name","userId", name="idx_Folder_name_userId")
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "description":self.description,
+            "userId":self.userId
+        }
