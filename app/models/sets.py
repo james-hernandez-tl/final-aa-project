@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy import UniqueConstraint
 from .set_folder import set_folders
+from functools import reduce
 
 class Set(db.Model):
     __tablename__ = "sets"
@@ -35,5 +36,6 @@ class Set(db.Model):
             "name":self.name,
             "description":self.description,
             "userId":self.userId,
-            "Cards":[card.to_dict() for card in self.setOfCards]
+            "Cards":[card.to_dict() for card in self.setOfCards],
+            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0)
         }

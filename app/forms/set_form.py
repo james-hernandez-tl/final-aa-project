@@ -13,9 +13,13 @@ def lengthCheck(form,field):
     if (len(field.data) > 225):
         raise ValidationError("Your description is too long")
 
+def sameUser(form,field):
+    if (current_user.id != field.data):
+        raise ValidationError("Unauthorized")
+
 
 class setForm(FlaskForm):
     name = StringField("name", validators = [DataRequired(),setExist])
     description = StringField("description", validators = [lengthCheck])
     draft = BooleanField("draft")
-    userId = IntegerField("userId",validators = [DataRequired()])
+    userId = IntegerField("userId",validators = [DataRequired(),sameUser])

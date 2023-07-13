@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, Flask, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Set,db
 from app.forms import setForm
+
 
 set_routes = Blueprint('sets', __name__)
 
@@ -12,8 +13,12 @@ def getAllSets():
     if search:
         allSets = Set.query.filter(Set.name.like(f"{search}%")).all()
     else:
-        allSets = Set.query.all()
-    return [aset.to_dict() for aset in allSets], 200
+        allSets = Set.query.order_by(Set.rating)
+
+    dictSets = [aset.to_dict() for aset in allSets]
+    recommend = sorted(dictSets,key = lambda x: x["Rating"], reverse=True)[:10]
+    obj = {"allSets":dictSets,"recommended":recommend}
+    return obj , 200
 
 
 @set_routes.route("/",methods=["POST"])
@@ -59,7 +64,6 @@ def editSet(setId):
 
     if form.validate_on_submit():
         data = form.data
-
 
         set.name=data["name"],
         set.description=data["description"],
