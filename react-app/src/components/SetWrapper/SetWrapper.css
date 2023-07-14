@@ -1,0 +1,6 @@
+.SetWrapper {
+  background-color: #898989;
+  display: flex;
+  padding: 10px;
+  border-radius: 15px;
+}

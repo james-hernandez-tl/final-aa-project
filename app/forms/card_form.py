@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import Stringfield, IntegerField
-from wtf.validators import DataRequired, ValidationError
+from wtforms import StringField, IntegerField
+from wtforms.validators import DataRequired, ValidationError
 from app.models import Set
 from flask_login import current_user
 
@@ -15,6 +15,6 @@ def checkLength(form,field):
 
 
 class cardForm(FlaskForm):
-    question = Stringfield("question",validators = [DataRequired()])
-    answer = Stringfield("answer",validators = [DataRequired()])
+    question = StringField("question",validators = [DataRequired()])
+    answer = StringField("answer",validators = [DataRequired()])
     setId = IntegerField("setId", validators = [DataRequired()])

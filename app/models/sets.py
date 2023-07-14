@@ -37,5 +37,8 @@ class Set(db.Model):
             "description":self.description,
             "userId":self.userId,
             "Cards":[card.to_dict() for card in self.setOfCards],
-            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0)
+            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0),
+            "NumRatings":len(self.setRating),
+            "User":self.user.to_dict()
+
         }

@@ -13,7 +13,7 @@ def getAllSets():
     if search:
         allSets = Set.query.filter(Set.name.like(f"{search}%")).all()
     else:
-        allSets = Set.query.order_by(Set.rating)
+        allSets = Set.query.all()
 
     dictSets = [aset.to_dict() for aset in allSets]
     recommend = sorted(dictSets,key = lambda x: x["Rating"], reverse=True)[:10]

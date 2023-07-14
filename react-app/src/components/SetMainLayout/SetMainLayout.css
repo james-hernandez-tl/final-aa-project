@@ -1,0 +1,29 @@
+.SetMainLayout {
+  padding: 10px 15px;
+  background-color: rgb(185, 185, 185);
+  border-radius: 30px;
+  width: 15%;
+  margin: 0 10px;
+}
+
+.SetMainLayout-name {
+  display: flex;
+  font-size: 20px;
+}
+
+.SetMainLayout-addons {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.SetMainLayout-footer {
+  display: flex;
+  margin-top: 30px;
+  gap: 5px;
+  align-items: end;
+}
+
+.SetMainLayout-footer-username {
+  margin-bottom: 10px;
+}

@@ -7,7 +7,7 @@ card_routes = Blueprint('cards', __name__)
 
 @card_routes.route("/",methods = ["POST"])
 @login_required
-def createCard(setId):
+def createCard():
 
     for card in request.json:
         form = cardForm(question = card["question"], answer = card["answer"],setId= card["setId"])
@@ -29,7 +29,7 @@ def createCard(setId):
     return {"message","succesful"}, 200
 
 
-@card_routes.routes("/<int:cardId>",methods = ["DELETE"])
+@card_routes.route("/<int:cardId>",methods = ["DELETE"])
 @login_required
 def deleteCard(cardId):
     card = Card.query.get(cardId)
@@ -42,7 +42,7 @@ def deleteCard(cardId):
     return {"message":"succesful"}, 200
 
 
-@card_routes.routes("/",methods = ["Delete"])
+@card_routes.route("/",methods = ["Delete"])
 @login_required
 def editCards():
     for card in request.json:

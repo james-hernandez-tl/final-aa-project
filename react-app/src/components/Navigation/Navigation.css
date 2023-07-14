@@ -5,3 +5,68 @@
 .hidden {
   display: none;
 }
+.search {
+  color: white;
+  padding: 5px 10px;
+}
+
+a {
+  color: white;
+}
+
+a:active {
+  color: red;
+}
+
+.nav-plus {
+  color: #898989;
+  margin: 0 10px;
+  font-size: 35px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  border: darkgray solid 2px;
+  position: relative;
+}
+
+.Nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.Nav-links > a {
+  padding: 10px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.Nav-search-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.Nav-search {
+  display: flex;
+  align-items: center;
+  background-color: #898989;
+  border-radius: 5px;
+}
+
+.Nav-search > input {
+  height: 15px;
+  width: 200px;
+  background-color: #898989;
+  border: none;
+}
+
+.Nav-search > input::placeholder {
+  color: white;
+}
+
+.Nav-search > input::selection {
+  border: none;
+}

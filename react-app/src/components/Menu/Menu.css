@@ -1,0 +1,14 @@
+.menu {
+  border-radius: 20px;
+  border: lightgray solid 1px;
+  position: absolute;
+  z-index: 1;
+  padding: 10px;
+  background-color: blue;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
