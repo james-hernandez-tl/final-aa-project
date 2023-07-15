@@ -5,7 +5,9 @@ from app.models import Set
 from flask_login import current_user
 
 def setExist(form,field):
-    set = Set.query.filter(Set.name == field.data, Set.userId == current_user.id)
+    print("[currentUser]",current_user.id)
+    set = Set.query.filter(Set.name == field.data, Set.userId == current_user.id).first()
+    print("[the set]",set)
     if set:
         raise ValidationError(f"You already have a set named {field.data}")
 

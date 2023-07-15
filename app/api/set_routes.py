@@ -27,19 +27,22 @@ def create_a_set():
     form = setForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print("[inside create a set route]")
+
     if form.validate_on_submit():
         data = form.data
 
         newSet = Set(
             name=data["name"],
             description=data["description"],
-            draft=data["draft"],
+            draft=data.get("draft",False),
             userId=data["userId"],
         )
 
         db.session.add(newSet)
         db.session.commit()
         return newSet.to_dict(), 200
+    print("[form.errors]",form.errors)
     return {"errors":form.errors}, 404
 
 

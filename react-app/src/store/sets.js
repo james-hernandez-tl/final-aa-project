@@ -53,12 +53,39 @@ export const allSetThunk = () => async (dispatch) => {
   }
 };
 
+export const createSetThunk = (set, cards) => async (dispatch) => {
+  const response = await qFetch("/api/sets/", {
+    method: "POST",
+    body: JSON.stringify(set),
+  });
+
+  if (response.ok) {
+    let set = await response.json();
+    console.log("set created", set);
+    let updatedSet = await qFetch("/api/cards/", {
+      method: "POST",
+      body: JSON.stringify({
+        cards: cards.map((card) => ({ ...card, setId: set.id })),
+      }),
+    });
+
+    if (updatedSet.ok) {
+      updatedSet = await updatedSet.json();
+      console.log("updatedSet", updatedSet);
+      dispatch(createSetAction(updatedSet));
+    }
+  }
+};
+
 //reducer
 const initialState = { allSets: null, recommened: null };
 
 let normalizer = (arr) => {
   let obj = {};
   for (let i = 0; i < arr.length; i++) {
+    if (arr[i].Cards) {
+      arr[i].Cards = normalizer(arr[i].Cards);
+    }
     obj[arr[i].id] = arr[i];
   }
   return obj;
@@ -70,6 +97,17 @@ export default function reducer(state = initialState, action) {
       return {
         allSets: normalizer(action.payload.allSets),
         recommened: normalizer(action.payload.recommended),
+      };
+    case CREATE_SET:
+      return {
+        ...state,
+        allSets: {
+          ...state.allSets,
+          [action.payload.id]: {
+            ...action.payload,
+            Cards: normalizer(action.payload.Cards),
+          },
+        },
       };
     default:
       return state;

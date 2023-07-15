@@ -21,6 +21,7 @@ login.login_view = 'auth.unauthorized'
 
 @login.user_loader
 def load_user(id):
+    print("[id]",id)
     return User.query.get(int(id))
 
 

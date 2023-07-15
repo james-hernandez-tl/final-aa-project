@@ -47,6 +47,7 @@ a:active {
 .Nav-search-wrapper {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .Nav-search {
@@ -61,6 +62,10 @@ a:active {
   width: 200px;
   background-color: #898989;
   border: none;
+}
+
+.Nav-search > input:focus {
+  outline: none;
 }
 
 .Nav-search > input::placeholder {
