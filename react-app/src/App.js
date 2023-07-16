@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
 import SetForm from "./components/SetForm";
+import SetSingleView from "./components/SetSingleView";
+import SetFormDecider from "./components/SetFormDecider";
 
 function App() {
   const dispatch = useDispatch();
@@ -14,6 +16,8 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const set = useSelector((state) => state.sets.singleSet);
+
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -21,7 +25,13 @@ function App() {
       <Routes>
         <Route path="/" exact={"True"} element={<Home />} />
         <Route path="/logIn" element={<LoginPage />} />
-        <Route path="/sets/new" exact={"True"} element={<SetForm />} />
+        <Route path="/sets/new" exact={"True"} element={<SetFormDecider />} />
+        <Route
+          path="/sets/:setId/edit"
+          exact={"True"}
+          element={<SetFormDecider />}
+        />
+        <Route path="/sets/:setId" exact={"True"} element={<SetSingleView />} />
       </Routes>
     </>
   );

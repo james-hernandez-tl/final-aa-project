@@ -20,5 +20,4 @@ class Card(db.Model):
             "question":self.question,
             "answer":self.answer,
             "setId":self.setId,
-            "edited":False
         }

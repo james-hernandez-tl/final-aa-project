@@ -48,6 +48,7 @@ def create_a_set():
 
 @set_routes.route("/<int:setId>")
 def getOneSet(setId):
+    print("[setId]",setId)
     set = Set.query.get(setId)
     if set:
         return set.to_dict(), 200
@@ -58,23 +59,26 @@ def getOneSet(setId):
 @login_required
 def editSet(setId):
     set = Set.query.get(setId)
+    print("[inside edit set]")
 
     if not set:
         return {"errors":"set does not exist"}
+    print("[passed set exist]")
 
     form = setForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         data = form.data
-
-        set.name=data["name"],
-        set.description=data["description"],
-        set.draft=data["draft"],
-        set.userId=data["userId"],
+        print("[form]",form.data["draft"])
+        set.name=data["name"]
+        set.description=data["description"]
+        set.draft=data.get("draft",False)
+        set.userId=data["userId"]
 
         db.session.commit()
         return set.to_dict(), 200
+    print("[form errors]",form.errors)
     return {"errors":form.errors}, 404
 
 

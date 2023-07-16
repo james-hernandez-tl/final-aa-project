@@ -5,10 +5,8 @@ from app.models import Set
 from flask_login import current_user
 
 def setExist(form,field):
-    print("[currentUser]",current_user.id)
     set = Set.query.filter(Set.name == field.data, Set.userId == current_user.id).first()
-    print("[the set]",set)
-    if set:
+    if set and not form.data["edited"]:
         raise ValidationError(f"You already have a set named {field.data}")
 
 def lengthCheck(form,field):
@@ -23,5 +21,6 @@ def sameUser(form,field):
 class setForm(FlaskForm):
     name = StringField("name", validators = [DataRequired(),setExist])
     description = StringField("description", validators = [lengthCheck])
-    draft = BooleanField("draft")
+    draft = BooleanField("draft", default = False)
+    edited = BooleanField("edit", default = False)
     userId = IntegerField("userId",validators = [DataRequired(),sameUser])

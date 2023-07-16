@@ -2,7 +2,12 @@ import CardForm from "../CardForm";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
-import { createSetThunk } from "../../store/sets";
+import {
+  createSetThunk,
+  editSetThunk,
+  editCardsThunk,
+  addCardsThunk,
+} from "../../store/sets";
 import useSession from "../../hooks/useSession";
 
 export default function SetForm({ set }) {
@@ -32,18 +37,35 @@ export default function SetForm({ set }) {
   }
   console.log("cards", cards);
 
-  const createClicker = (isDraft) => {
-    dispatch(
-      createSetThunk(
-        {
+  const createClicker = async (isDraft) => {
+    if (!set) {
+      dispatch(
+        createSetThunk(
+          {
+            name,
+            description,
+            draft: isDraft,
+            userId: currentUser.id,
+          },
+          cards
+        )
+      );
+    } else {
+      let editedCards = cards.filter((card) => card.edited);
+      let addedCards = cards.filter((card) => !card.id);
+      if (editedCards.length) await dispatch(editCardsThunk(editedCards));
+      if (addedCards.length) await dispatch(addCardsThunk(set.id, addedCards));
+      dispatch(
+        editSetThunk({
           name,
           description,
           draft: isDraft,
           userId: currentUser.id,
-        },
-        cards
-      )
-    );
+          id: set.id,
+          edited: true,
+        })
+      );
+    }
   };
 
   return (

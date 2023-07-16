@@ -1,9 +1,14 @@
 import "./SetMainLayout.css";
 import Avatar from "../Avatar";
+import { useNavigate } from "react-router-dom";
 
 export default function SetMainLayout({ set, inSearch }) {
+  const navigate = useNavigate();
+  const setClicker = () => {
+    navigate(`/sets/${set.id}`);
+  };
   return (
-    <div className="SetMainLayout">
+    <div className="SetMainLayout" onClick={setClicker}>
       <div className="SetMainLayout-name">{set.name}</div>
       <div className="SetMainLayout-addons">
         <div>{set.Cards.length} Terms</div>

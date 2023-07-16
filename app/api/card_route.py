@@ -50,20 +50,23 @@ def deleteCard(cardId):
     return {"message":"succesful"}, 200
 
 
-@card_routes.route("/",methods = ["Delete"])
+@card_routes.route("/",methods = ["Put"])
 @login_required
 def editCards():
-    for card in request.json:
+    for card in request.json["cards"]:
         form = cardForm(question = card["question"], answer = card["answer"],setId= card["setId"])
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
             data = form.data
+            oldCard = Card.query.get(card["id"])
+            setId = card["setId"]
 
-            card.question = data["question"]
-            card.answer = data["answer"]
+            oldCard.question = data["question"]
+            oldCard.answer = data["answer"]
 
         else:
             return {"errors":form.errors,"card":form.data}, 404
     db.session.commit()
-    return {"message","succesful"}, 200
+    set = Set.query.get(setId)
+    return set.to_dict(), 200

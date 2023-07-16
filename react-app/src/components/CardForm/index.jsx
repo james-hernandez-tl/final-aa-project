@@ -11,6 +11,7 @@ export default function CardForm({ card, index, setCards }) {
         if (card.psudeoId === psudeoId) {
           card.answer = answer;
           card.question = question;
+          if (card.id) card.edited = true;
         }
         return card;
       })

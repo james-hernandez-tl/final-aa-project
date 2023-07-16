@@ -77,8 +77,65 @@ export const createSetThunk = (set, cards) => async (dispatch) => {
   }
 };
 
+export const deleteSetThunk = (setId) => async (dispatch) => {
+  const response = await qFetch(`/api/sets/${setId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    dispatch(deleteSetAction(setId));
+  }
+};
+
+export const editSetThunk = (set) => async (dispatch) => {
+  const response = await qFetch(`/api/sets/${set.id}`, {
+    method: "PUT",
+    body: JSON.stringify(set),
+  });
+
+  if (response.ok) {
+    let data = await response.json();
+    dispatch(editSetAction(data));
+  }
+};
+
+export const editCardsThunk = (cards) => async (dispatch) => {
+  const response = await qFetch("/api/cards/", {
+    method: "PUT",
+    body: JSON.stringify({ cards }),
+  });
+
+  if (response.ok) {
+    let data = await response.json();
+    dispatch(editSetAction(data));
+  }
+};
+
+export const addCardsThunk = (setId, cards) => async (dispatch) => {
+  let updatedSet = await qFetch("/api/cards/", {
+    method: "POST",
+    body: JSON.stringify({
+      cards: cards.map((card) => ({ ...card, setId })),
+    }),
+  });
+
+  if (updatedSet.ok) {
+    let data = await updatedSet.json();
+    dispatch(editSetAction(data));
+  }
+};
+
+export const getOneSetThunk = (setId) => async (dispatch) => {
+  let set = await qFetch(`/api/sets/${setId}`);
+
+  if (set.ok) {
+    let data = await set.json();
+    dispatch(oneSetAction(data));
+  }
+};
+
 //reducer
-const initialState = { allSets: null, recommened: null };
+const initialState = { allSets: null, recommened: null, singleSet: null };
 
 let normalizer = (arr) => {
   let obj = {};
@@ -108,6 +165,23 @@ export default function reducer(state = initialState, action) {
             Cards: normalizer(action.payload.Cards),
           },
         },
+      };
+    case DELETE_SET:
+      delete state.allSets[action.payload.setId];
+      return { ...state, allSets: { ...state.allSets } };
+    case EDIT_SET:
+      return {
+        ...state,
+        allSets: {
+          ...state.allSets,
+          [action.payload.id]: { ...state.allSets[action.payload.id] },
+        },
+      };
+    case ONE_SET:
+      return {
+        ...state,
+        singleSet: action.payload,
+        allSets: { ...state.allSets, [action.payload.id]: action.payload },
       };
     default:
       return state;
