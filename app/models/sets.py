@@ -40,5 +40,14 @@ class Set(db.Model):
             "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0),
             "NumRatings":len(self.setRating),
             "User":self.user.to_dict()
+        }
 
+
+    def to_dict_less(self):
+        return  {
+            "id":self.id,
+            "name":self.name,
+            "description":self.description,
+            "userId":self.userId,
+            "NumCards":len(self.setOfCards)
         }

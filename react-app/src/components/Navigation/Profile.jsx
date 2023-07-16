@@ -33,10 +33,35 @@ export default function Profile({ sessionUser }) {
         )}
       </Menu>
 
-      <NavLink to={"/"}>KnowVerse</NavLink>
-      <NavLink to={"/sets"}>Sets</NavLink>
-      <NavLink to={"/folders"}>Folders</NavLink>
-      <NavLink to={"/groups"}>Groups</NavLink>
+      <NavLink
+        exact
+        to={"/"}
+        className="Navlink-unactive"
+        activeClassName="active"
+      >
+        KnowVerse
+      </NavLink>
+      <NavLink
+        to={"/sets"}
+        className="Navlink-unactive"
+        activeClassName="active"
+      >
+        Sets
+      </NavLink>
+      <NavLink
+        to={"/folders"}
+        className="Navlink-unactive"
+        activeClassName="active"
+      >
+        Folders
+      </NavLink>
+      <NavLink
+        to={"/groups"}
+        className="Navlink-unactive"
+        activeClassName="active"
+      >
+        Groups
+      </NavLink>
     </>
   );
 }

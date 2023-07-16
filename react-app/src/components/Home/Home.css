@@ -4,4 +4,19 @@
 
 .Home-achievements {
   font-size: 25px;
+  margin: 15px 0;
+}
+
+.home-studySet-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.home-studySet-createNewSet {
+  margin: 15px 0;
+}
+
+.home-studySet-createNewSet:hover {
+  cursor: pointer;
 }

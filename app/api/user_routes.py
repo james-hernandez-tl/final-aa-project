@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+from flask_login import login_required,current_user
+from app.models import User, Set
 
 user_routes = Blueprint('users', __name__)
 
@@ -23,3 +23,11 @@ def user(id):
     """
     user = User.query.get(id)
     return user.to_dict()
+
+
+# @user_routes.route("/<int:id>/sets")
+# @login_required
+# def getUsersSets(id):
+
+#     if (current_user.id != id):
+#         return {"errors":"unAuthorized"}

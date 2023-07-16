@@ -1,6 +1,14 @@
 .SetWrapper {
-  background-color: #898989;
-  display: flex;
   padding: 10px;
   border-radius: 15px;
+  display: flex;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  overflow: hidden;
 }

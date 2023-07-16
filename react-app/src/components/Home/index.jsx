@@ -4,21 +4,43 @@ import { useDispatch } from "react-redux";
 import useAllSets from "../../hooks/useAllSets";
 import { useEffect } from "react";
 import SetWrapper from "../SetWrapper";
+import Achievements from "../Achievements";
+import useSession from "../../hooks/useSession";
+import useRecommened from "../../hooks/useRecommened";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
   let allSets = useAllSets();
+  let recommened = useRecommened();
+  const user = useSession();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(allSetThunk());
   }, [dispatch]);
 
-  if (!allSets) return null;
+  if (!allSets || !recommened) return null;
   allSets = Object.values(allSets);
+  recommened = Object.values(recommened);
   return (
     <div className="Home">
       <div className="Home-achievements">Achievements</div>
+      <Achievements />
+      <div className="home-studySet-wrapper">
+        <div className="Home-achievements">Study Sets</div>
+        {user && (
+          <div
+            className="home-studySet-createNewSet"
+            onClick={() => navigate("/sets/new")}
+          >
+            Create new set
+          </div>
+        )}
+      </div>
       <SetWrapper allSets={allSets.slice(0, 5)} />
+      <div className="Home-achievements">Recommended</div>
+      <SetWrapper allSets={recommened.slice(0, 5)} color="#25284A" />
     </div>
   );
 }

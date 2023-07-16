@@ -10,7 +10,7 @@ export function Menu({ children, isOpen, menuRef, right }) {
       className="menu"
       style={{
         right: right ? 0 : undefined,
-        bottom: `${children.length * -15 - 15}px`,
+        top: `${children.length * 15 + 15}px`,
       }}
     >
       {children}

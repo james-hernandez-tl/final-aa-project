@@ -8,6 +8,7 @@ import LoginPage from "./components/LoginPage";
 import SetForm from "./components/SetForm";
 import SetSingleView from "./components/SetSingleView";
 import SetFormDecider from "./components/SetFormDecider";
+import YourSets from "./components/YourSets";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           element={<SetFormDecider />}
         />
         <Route path="/sets/:setId" exact={"True"} element={<SetSingleView />} />
+        <Route path="/sets" exact={"True"} element={<YourSets />} />
       </Routes>
     </>
   );

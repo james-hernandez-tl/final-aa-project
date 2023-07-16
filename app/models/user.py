@@ -35,5 +35,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'image':self.image
+            'image':self.image,
+            'Sets':[aset.to_dict_less() for aset in self.set],
+            'Folders':[afolder.to_dict() for afolder in self.folder]
         }

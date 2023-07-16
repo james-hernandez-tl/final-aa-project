@@ -1,6 +1,6 @@
-.profile-dropdown {
+/* .profile-dropdown {
   position: absolute;
-}
+} */
 
 .hidden {
   display: none;
@@ -14,13 +14,9 @@ a {
   color: white;
 }
 
-a:active {
-  color: red;
-}
-
 .nav-plus {
-  color: #898989;
-  margin: 0 10px;
+  color: #586380;
+  margin: 5px 10px;
   font-size: 35px;
   background-color: white;
   border-radius: 50%;
@@ -29,7 +25,7 @@ a:active {
 .Nav {
   display: flex;
   justify-content: space-between;
-  border: darkgray solid 2px;
+  border-bottom: darkgray solid 2px;
   position: relative;
 }
 
@@ -38,29 +34,29 @@ a:active {
   align-items: center;
 }
 
-.Nav-links > a {
+.Navlink-unactive {
   padding: 10px;
-  font-size: 15px;
+  font-size: 18px;
   text-decoration: none;
 }
 
 .Nav-search-wrapper {
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .Nav-search {
   display: flex;
   align-items: center;
-  background-color: #898989;
+  background-color: #586380;
   border-radius: 5px;
 }
 
 .Nav-search > input {
   height: 15px;
   width: 200px;
-  background-color: #898989;
+  background-color: #586380;
+  color: white;
   border: none;
 }
 
@@ -74,4 +70,8 @@ a:active {
 
 .Nav-search > input::selection {
   border: none;
+}
+
+.active {
+  text-decoration: underline;
 }

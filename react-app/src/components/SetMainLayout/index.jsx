@@ -13,12 +13,12 @@ export default function SetMainLayout({ set, inSearch }) {
       <div className="SetMainLayout-addons">
         <div>{set.Cards.length} Terms</div>
         <div>
-          <i className="fa-solid fa-star"></i>
-          {set.Rating}({set.NumRatings})
+          <i className="fa-regular fa-star"></i>
+          {`${set.Rating} (${set.NumRatings})`}
         </div>
       </div>
       <div className="SetMainLayout-footer">
-        <div>
+        <div className="SetMainLayout-footer-pfp">
           <Avatar src={set.User.image} />
         </div>
         <div className="SetMainLayout-footer-username">{set.User.username}</div>
