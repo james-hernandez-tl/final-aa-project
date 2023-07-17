@@ -17,7 +17,7 @@ export const getFolder = (id) => async (dispatch) => {
   const response = await qFetch(`/api/folders/${id}`);
 
   if (response.ok) {
-    let data = response.json();
+    let data = await response.json();
     dispatch(setFolder(data));
   }
 };

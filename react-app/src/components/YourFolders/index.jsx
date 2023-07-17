@@ -1,10 +1,16 @@
 import { useDispatch } from "react-redux";
 import useSession from "../../hooks/useSession";
 import Scrollable from "../Scrollable";
+import { authenticate } from "../../store/session";
+import { useEffect } from "react";
 
 export default function YourFolders() {
   const dispatch = useDispatch();
   const user = useSession();
+
+  useEffect(() => {
+    dispatch(authenticate());
+  }, [dispatch]);
 
   if (!user) return;
 

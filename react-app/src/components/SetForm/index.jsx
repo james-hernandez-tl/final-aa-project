@@ -9,8 +9,10 @@ import {
   addCardsThunk,
 } from "../../store/sets";
 import useSession from "../../hooks/useSession";
+import { useNavigate } from "react-router-dom";
 
 export default function SetForm({ set }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentUser = useSession();
   const [name, setName] = useState(set ? set.name : "");
@@ -66,6 +68,8 @@ export default function SetForm({ set }) {
         })
       );
     }
+
+    navigate("/sets");
   };
 
   return (
