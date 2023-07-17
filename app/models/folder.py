@@ -10,7 +10,7 @@ class Folder(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(15), nullable = False)
+    name = db.Column(db.String(20), nullable = False)
     description = db.Column(db.String(100),nullable = False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
 
@@ -19,6 +19,15 @@ class Folder(db.Model):
     UniqueConstraint("name","userId", name="idx_Folder_name_userId")
 
     def to_dict(self):
+        return {
+            "id":self.id,
+            "name":self.name,
+            "description":self.description,
+            "userId":self.userId,
+            "Sets":[aset.to_dict_less() for aset in self.foldersOfSets]
+        }
+
+    def to_dict_less(self):
         return {
             "id":self.id,
             "name":self.name,

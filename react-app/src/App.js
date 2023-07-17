@@ -9,6 +9,7 @@ import SetForm from "./components/SetForm";
 import SetSingleView from "./components/SetSingleView";
 import SetFormDecider from "./components/SetFormDecider";
 import YourSets from "./components/YourSets";
+import YourFolders from "./components/YourFolders";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
         />
         <Route path="/sets/:setId" exact={"True"} element={<SetSingleView />} />
         <Route path="/sets" exact={"True"} element={<YourSets />} />
+        <Route path="/folders" exact={"True"} element={<YourFolders />} />
       </Routes>
     </>
   );

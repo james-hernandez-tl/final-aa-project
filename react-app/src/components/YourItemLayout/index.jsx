@@ -5,6 +5,8 @@ export default function YourItemLayout({ item, isSet }) {
   let itemClicker = () => {
     if (isSet) {
       navigate(`/sets/${item.id}`);
+    } else {
+      navigate(`/folders/${item.id}`);
     }
   };
 

@@ -48,7 +48,6 @@ def create_a_set():
 
 @set_routes.route("/<int:setId>")
 def getOneSet(setId):
-    print("[setId]",setId)
     set = Set.query.get(setId)
     if set:
         return set.to_dict(), 200

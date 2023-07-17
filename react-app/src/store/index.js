@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import session from "./session";
 import sets from "./sets";
+import folders from "./folder";
 
 const rootReducer = combineReducers({
   session,
   sets,
+  folders,
 });
 
 let enhancer;
