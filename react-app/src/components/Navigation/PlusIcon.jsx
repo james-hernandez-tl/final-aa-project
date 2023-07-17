@@ -6,10 +6,14 @@ import { useMenu } from "../Menu";
 import { Menu, MenuItem } from "../Menu";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/session";
+import { useModal } from "../../context/Modal";
+import CreateFolder from "../CreateFolder.jsx";
+
 export default function PlusIcon() {
   const navigation = useNavigate();
   const dispatch = useDispatch();
   const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
+  const { setModalContent } = useModal();
   return (
     <>
       <i
@@ -25,7 +29,13 @@ export default function PlusIcon() {
             hideMenu();
           }}
         />
-        <MenuItem text="New Folder" />
+        <MenuItem
+          text="New Folder"
+          onClick={() => {
+            hideMenu();
+            setModalContent(<CreateFolder />);
+          }}
+        />
       </Menu>
     </>
   );

@@ -14,7 +14,7 @@ def getOneFolder(id):
     return {"errors":"folder does not exist"} , 404
 
 
-@folder_routes.route("<int:id>", methods=["DELETE"])
+@folder_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def deleteFolder(id):
     folder = Folder.query.get(id)
@@ -47,5 +47,31 @@ def createFolder():
         db.session.add(newFolder)
         db.session.commit()
 
-        return newFolder.to_dict_less(), 200
+        return newFolder.to_dict(), 200
+    return {"errors":form.errors}, 404
+
+
+@folder_routes.route("/<int:id>", methods = ["PUT"])
+@login_required
+def editFolder(id):
+    folder = Folder.query.get(id)
+    if not folder:
+        return {"errors":"Folder doesnt exist"}, 404
+
+    if folder.userId != current_user.id :
+        return {"errors":"Unauthorized"}, 404
+
+    form = folderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+
+        folder.name=data["name"]
+        folder.description=data["description"]
+        folder.userId=data["userId"]
+
+        db.session.commit()
+
+        return folder.to_dict(), 200
     return {"errors":form.errors}, 404
