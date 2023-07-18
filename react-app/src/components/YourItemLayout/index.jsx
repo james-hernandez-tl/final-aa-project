@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./YourItemLayout.css";
 
 export default function YourItemLayout({ item, isSet }) {
   const navigate = useNavigate();
@@ -10,5 +11,13 @@ export default function YourItemLayout({ item, isSet }) {
     }
   };
 
-  return <div onClick={itemClicker}>{item.name}</div>;
+  return (
+    <div className="YourItemLayout" onClick={itemClicker}>
+      <div className="YourItemLayout-name">{item.name}</div>
+      <div>
+        <div>{isSet ? item.NumCards + " terms" : item.NumSets + " sets"}</div>
+        <div></div>
+      </div>
+    </div>
+  );
 }

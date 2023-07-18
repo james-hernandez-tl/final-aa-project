@@ -1,0 +1,16 @@
+.YourItemLayout {
+  background-color: #586380;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.YourItemLayout:hover {
+  border-bottom: 3px solid darkgray;
+}
+
+.YourItemLayout-name {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}

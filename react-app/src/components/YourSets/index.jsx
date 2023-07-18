@@ -3,6 +3,7 @@ import useSession from "../../hooks/useSession";
 import { authenticate } from "../../store/session";
 import { useEffect } from "react";
 import Scrollable from "../Scrollable";
+import "./YourSets.css";
 
 export default function YourSets() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function YourSets() {
   return (
     <div className="YourSets">
       <div className="YourSets-header">
-        <div>Your Sets</div>
+        <div className="YourSets-header-title">Your Sets</div>
         <div>
           <input type="text" />
         </div>

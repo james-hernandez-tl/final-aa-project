@@ -1,0 +1,13 @@
+.YourSets {
+  padding: 10px 60px;
+}
+
+.YourSets-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.YourSets-header-title {
+  font-size: 20px;
+}

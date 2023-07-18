@@ -1,0 +1,14 @@
+.FolderSingleView {
+  padding: 10px 60px;
+}
+
+.FolderSingleView-header {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.FolderSingleView-header-title {
+  font-size: 20px;
+  font-weight: 600;
+}

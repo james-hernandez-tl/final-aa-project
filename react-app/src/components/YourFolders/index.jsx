@@ -3,6 +3,7 @@ import useSession from "../../hooks/useSession";
 import Scrollable from "../Scrollable";
 import { authenticate } from "../../store/session";
 import { useEffect } from "react";
+import "./YourFolder.css";
 
 export default function YourFolders() {
   const dispatch = useDispatch();
@@ -17,12 +18,12 @@ export default function YourFolders() {
   return (
     <div className="YourFolders">
       <div className="YourFolders-header">
-        <div>Your Folders</div>
+        <div className="YourFolders-header-title">Your Folders</div>
         <div>
           <input type="text" />
         </div>
       </div>
-      <Scrollable arr={user.Folders.slice(0, 4)} isSet={false} />
+      <Scrollable arr={user.Folders} isSet={false} />
     </div>
   );
 }

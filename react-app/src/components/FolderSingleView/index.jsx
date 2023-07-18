@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import YourItemLayout from "../YourItemLayout";
 import CreateFolder from "../CreateFolder.jsx";
 import { useModal } from "../../context/Modal";
+import "./FolderSingleView.css";
 
 export default function FolderSingleView() {
   let folder = useSelector((state) => state.folders.singleFolder);
@@ -19,9 +20,9 @@ export default function FolderSingleView() {
   if (!folder) return null;
   console.log(folder);
   return (
-    <div>
-      <div>
-        <div>{folder.name}</div>
+    <div className="FolderSingleView">
+      <div className="FolderSingleView-header">
+        <div className="FolderSingleView-header-title">{folder.name}</div>
         <div
           onClick={() => {
             setModalContent(<CreateFolder folder={folder} />);
@@ -33,7 +34,7 @@ export default function FolderSingleView() {
       <div>
         {folder.Sets.length
           ? folder.Sets.map((item) => (
-              <YourItemLayout set={true} item={item} key={item.id} />
+              <YourItemLayout isSet={true} item={item} key={item.id} />
             ))
           : "you dont have any Sets in this folder"}
       </div>

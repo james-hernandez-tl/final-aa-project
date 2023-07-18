@@ -1,0 +1,13 @@
+.YourFolders {
+  padding: 10px 60px;
+}
+
+.YourFolders-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.YourFolders-header-title {
+  font-size: 20px;
+}

@@ -32,5 +32,6 @@ class Folder(db.Model):
             "id":self.id,
             "name":self.name,
             "description":self.description,
-            "userId":self.userId
+            "userId":self.userId,
+            "NumSets":len(self.foldersOfSets)
         }
