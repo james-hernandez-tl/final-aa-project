@@ -1,4 +1,5 @@
 import { qFetch } from "./utils";
+import { removeUserFolder } from "./session";
 
 //TYPES
 
@@ -54,6 +55,7 @@ export const deleteFolder = (folderId) => async (dispatch) => {
   });
   if (response.ok) {
     dispatch(removeFolder(folderId));
+    dispatch(removeUserFolder(folderId));
   }
 };
 

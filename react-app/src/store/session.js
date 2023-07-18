@@ -1,6 +1,8 @@
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
+const ADD_USER_SET = "session/ADD_USER_SET";
+const REMOVE_USER_FOLDER = "session/ADD_USER_FOLDER";
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -9,6 +11,16 @@ const setUser = (user) => ({
 
 const removeUser = () => ({
   type: REMOVE_USER,
+});
+
+export const addUserSet = (set) => ({
+  type: ADD_USER_SET,
+  payload: set,
+});
+
+export const removeUserFolder = (folderId) => ({
+  type: REMOVE_USER_FOLDER,
+  payload: folderId,
 });
 
 const initialState = { user: null };
@@ -100,6 +112,22 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload };
     case REMOVE_USER:
       return { user: null };
+    case ADD_USER_SET:
+      return {
+        user: {
+          ...state.user,
+          Sets: [...state.user.Sets, action.payload],
+        },
+      };
+    case REMOVE_USER_FOLDER:
+      return {
+        user: {
+          ...state.user,
+          Folders: state.user.Folders.filter(
+            (folder) => folder.id !== action.payload
+          ),
+        },
+      };
     default:
       return state;
   }

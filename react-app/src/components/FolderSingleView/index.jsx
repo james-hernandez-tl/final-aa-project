@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import YourItemLayout from "../YourItemLayout";
 import CreateFolder from "../CreateFolder.jsx";
 import { useModal } from "../../context/Modal";
+import { deleteFolder } from "../../store/folder";
 import "./FolderSingleView.css";
 
 export default function FolderSingleView() {
@@ -18,7 +19,6 @@ export default function FolderSingleView() {
   }, [dispatch, folderId]);
 
   if (!folder) return null;
-  console.log(folder);
   return (
     <div className="FolderSingleView">
       <div className="FolderSingleView-header">
@@ -30,6 +30,7 @@ export default function FolderSingleView() {
         >
           Edit
         </div>
+        <div onClick={() => dispatch(deleteFolder(folder.id))}>delete</div>
       </div>
       <div>
         {folder.Sets.length

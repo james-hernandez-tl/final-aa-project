@@ -22,10 +22,11 @@ def deleteFolder(id):
     if not folder:
         return {"errors":"folder does not exist"} , 404
 
-    if (current_user.id != Folder.userId):
+    if (current_user.id != folder.userId):
         return {"errors":"unauthorized"} , 404
 
     db.session.delete(folder)
+    db.session.commit()
     return {"message":"succesfully deleted"} , 200
 
 

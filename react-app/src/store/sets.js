@@ -1,4 +1,5 @@
 import { qFetch } from "./utils";
+import { addUserSet } from "./session";
 //TYPES
 const ALL_SETS = "sets/allSets";
 const ONE_SET = "sets/oneSet";
@@ -73,6 +74,9 @@ export const createSetThunk = (set, cards) => async (dispatch) => {
       updatedSet = await updatedSet.json();
       console.log("updatedSet", updatedSet);
       dispatch(createSetAction(updatedSet));
+      dispatch(
+        addUserSet({ ...updatedSet, NumCards: updatedSet.Cards.length })
+      );
     }
   }
 };

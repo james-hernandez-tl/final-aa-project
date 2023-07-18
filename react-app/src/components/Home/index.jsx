@@ -38,9 +38,9 @@ export default function Home() {
           </div>
         )}
       </div>
-      <SetWrapper allSets={allSets.slice(0, 5)} />
+      <SetWrapper allSets={allSets} />
       <div className="Home-achievements">Recommended</div>
-      <SetWrapper allSets={recommened.slice(0, 5)} color="#25284A" />
+      <SetWrapper allSets={recommened} color="#25284A" />
     </div>
   );
 }
