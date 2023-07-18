@@ -83,7 +83,12 @@ def editSet(setId):
 
 @set_routes.route("/<int:setId>",methods = ["DELETE"])
 def deleteSet(setId):
-    Set.query.filter(Set.id == setId).delete()
+    set = Set.query.get(setId)
+
+    if (not set):
+        return {"errors":"set does not exist"}, 404
+
+    db.session.delete(set)
     db.session.commit()
 
-    return {"message":"succesfully deleted"}
+    return {"message":"succesfully deleted"}, 200

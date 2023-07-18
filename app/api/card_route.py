@@ -37,17 +37,22 @@ def createCard():
     return set.to_dict(), 200
 
 
-@card_routes.route("/<int:cardId>",methods = ["DELETE"])
+@card_routes.route("/",methods = ["DELETE"])
 @login_required
-def deleteCard(cardId):
-    card = Card.query.get(cardId)
+def deleteCard():
+    print("[insdie dlete card route]")
+    for cardId in request.json["cards"]:
+        deletedCard = Card.query.get(cardId)
 
-    if not card:
-        return {"errors":"Card does not exist"}
+        if not deletedCard:
+            return {"errors":{"error":"card does not exist","card":cardId}}, 404
+        setId = deletedCard.setId
 
-    db.session.delete(card)
+        db.session.delete(deletedCard)
     db.session.commit()
-    return {"message":"succesful"}, 200
+
+    set = Set.query.get(setId)
+    return set.to_dict(), 200
 
 
 @card_routes.route("/",methods = ["Put"])

@@ -30,7 +30,7 @@ export default function FolderSingleView() {
         >
           Edit
         </div>
-        <div onClick={() => dispatch(deleteFolder(folder.id))}>delete</div>
+        {/* <div onClick={() => dispatch(deleteFolder(folder.id))}>delete</div> */}
       </div>
       <div>
         {folder.Sets.length

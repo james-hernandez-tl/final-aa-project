@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./CardForm.css";
 
-export default function CardForm({ card, index, setCards }) {
+export default function CardForm({ card, index, setCards, setDeletedCards }) {
   const [answer, setAnswer] = useState(card.answer);
   const [question, setQuestion] = useState(card.question);
 
@@ -35,6 +35,9 @@ export default function CardForm({ card, index, setCards }) {
       }
       return state;
     });
+    if (card.id) {
+      setDeletedCards((state) => [...state, card.id]);
+    }
   };
 
   return (

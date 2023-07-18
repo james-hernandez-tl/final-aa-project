@@ -7,6 +7,7 @@ import {
   editSetThunk,
   editCardsThunk,
   addCardsThunk,
+  deleteCardsThunk,
 } from "../../store/sets";
 import useSession from "../../hooks/useSession";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,7 @@ export default function SetForm({ set }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentUser = useSession();
+  const [deletedCards, setDeletedCards] = useState([]);
   const [name, setName] = useState(set ? set.name : "");
   const [description, setDescription] = useState(set ? set.description : "");
   const [cards, setCards] = useState(
@@ -40,6 +42,7 @@ export default function SetForm({ set }) {
   console.log("cards", cards);
 
   const createClicker = async (isDraft) => {
+    console.log("list of delted cards", deletedCards);
     if (!set) {
       dispatch(
         createSetThunk(
@@ -57,6 +60,7 @@ export default function SetForm({ set }) {
       let addedCards = cards.filter((card) => !card.id);
       if (editedCards.length) await dispatch(editCardsThunk(editedCards));
       if (addedCards.length) await dispatch(addCardsThunk(set.id, addedCards));
+      if (deletedCards.length) await dispatch(deleteCardsThunk(deletedCards));
       dispatch(
         editSetThunk({
           name,
@@ -71,7 +75,7 @@ export default function SetForm({ set }) {
 
     navigate("/sets");
   };
-
+  console.log("cards", cards);
   return (
     <div>
       <div>Create New Set</div>
@@ -99,6 +103,7 @@ export default function SetForm({ set }) {
           index={index}
           setCards={setCards}
           card={card}
+          setDeletedCards={setDeletedCards}
         />
       ))}
       <div onClick={addCardClicker}>Add Card</div>

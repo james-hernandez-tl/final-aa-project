@@ -1,7 +1,7 @@
 .YourItemLayout {
   background-color: #586380;
   border-radius: 20px;
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 10px;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .YourItemLayout-name {
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: bold;
 }

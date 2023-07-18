@@ -1,5 +1,7 @@
 import { qFetch } from "./utils";
 import { addUserSet } from "./session";
+import { removeUserSet } from "./session";
+import { editUserSet } from "./session";
 //TYPES
 const ALL_SETS = "sets/allSets";
 const ONE_SET = "sets/oneSet";
@@ -88,6 +90,7 @@ export const deleteSetThunk = (setId) => async (dispatch) => {
 
   if (response.ok) {
     dispatch(deleteSetAction(setId));
+    dispatch(removeUserSet(setId));
   }
 };
 
@@ -99,7 +102,9 @@ export const editSetThunk = (set) => async (dispatch) => {
 
   if (response.ok) {
     let data = await response.json();
+    console.log("edited set", data);
     dispatch(editSetAction(data));
+    dispatch(editUserSet({ ...data, NumCards: data.Cards.length }));
   }
 };
 
@@ -138,6 +143,19 @@ export const getOneSetThunk = (setId) => async (dispatch) => {
   }
 };
 
+export const deleteCardsThunk = (cards) => async (dispatch) => {
+  let deleted = await qFetch("/api/cards/", {
+    method: "DELETE",
+    body: JSON.stringify({ cards }),
+  });
+
+  if (deleted.ok) {
+    let data = await deleted.json();
+    dispatch(editSetAction(data));
+    dispatch(editUserSet({ ...data, NumCards: data.Cards.length }));
+  }
+};
+
 //reducer
 const initialState = { allSets: null, recommened: null, singleSet: null };
 
@@ -169,6 +187,7 @@ export default function reducer(state = initialState, action) {
             Cards: normalizer(action.payload.Cards),
           },
         },
+        singleSet: action.payload,
       };
     case DELETE_SET:
       delete state.allSets[action.payload.setId];
@@ -180,6 +199,7 @@ export default function reducer(state = initialState, action) {
           ...state.allSets,
           [action.payload.id]: { ...state.allSets[action.payload.id] },
         },
+        singleSet: action.payload,
       };
     case ONE_SET:
       return {
