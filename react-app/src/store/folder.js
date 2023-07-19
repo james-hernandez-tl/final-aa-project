@@ -1,5 +1,6 @@
 import { qFetch } from "./utils";
 import { removeUserFolder } from "./session";
+import { editUserFolder } from "./session";
 
 //TYPES
 
@@ -12,11 +13,6 @@ const CREATE_FOLDER = "folders/createFolder";
 const setFolder = (folder) => {
   return { type: SET_FOLDER, payload: folder };
 };
-
-const addFolder = (folder) => ({
-  type: CREATE_FOLDER,
-  payload: folder,
-});
 
 const removeFolder = (folderId) => {
   return {
@@ -68,6 +64,28 @@ export const editFolder = (folder) => async (dispatch) => {
   if (response.ok) {
     let data = await response.json();
     dispatch(setFolder(data));
+  }
+};
+
+export const addSetToFolder = (folderId, setId) => async (dispatch) => {
+  const response = await qFetch(`/api/folders/${folderId}/sets/${setId}`, {
+    method: "POST",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setFolder(data));
+    dispatch(editUserFolder({ ...data, NumSets: data.Sets.length }));
+  }
+};
+
+export const removeSetFromFolder = (folderId, setId) => async (dispatch) => {
+  const response = await qFetch(`/api/folders/${folderId}/sets/${setId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setFolder(data));
+    dispatch(editUserFolder({ ...data, NumSets: data.Sets.length }));
   }
 };
 

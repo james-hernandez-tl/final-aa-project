@@ -8,9 +8,12 @@ import { deleteSetThunk } from "../../store/sets";
 import { useRef } from "react";
 import { useMenu } from "../Menu";
 import { Menu, MenuItem } from "../Menu";
+import AddSetToFolder from "../AddSetToFolder";
+import { useModal } from "../../context/Modal";
 import "./SetSingleView.css";
 
 export default function SetSingleView() {
+  const { setModalContent } = useModal();
   const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
   const sliderRef = useRef(null);
   const navigate = useNavigate();
@@ -81,21 +84,34 @@ export default function SetSingleView() {
             className="fa-solid fa-ellipsis"
           ></i>
         </div>
-        <Menu menuRef={menuRef} isOpen={show} right>
+        <Menu menuRef={menuRef} isOpen={show} right top="25px">
           <MenuItem
-            text="New Set"
+            text="Add set to folder"
             onClick={() => {
               hideMenu();
+              setModalContent(<AddSetToFolder setId={set.id} />);
             }}
           />
-          {user?.id === set.userId && <MenuItem text="Edit Set" />}
-          {user?.id === set.userId && <MenuItem text="Delete Set" />}
+          {user?.id === set.userId && (
+            <MenuItem
+              text="Edit Set"
+              onClick={() => {
+                hideMenu();
+                editSetClicker();
+              }}
+            />
+          )}
+          {user?.id === set.userId && (
+            <MenuItem
+              text="Delete Set"
+              onClick={() => {
+                hideMenu();
+                deleteSetClicker();
+              }}
+            />
+          )}
         </Menu>
       </div>
-      {set.userId === user?.id && <div onClick={editSetClicker}>EDIT SET</div>}
-      {set.userId === user?.id && (
-        <div onClick={deleteSetClicker}>DELETE SET</div>
-      )}
     </div>
   );
 }

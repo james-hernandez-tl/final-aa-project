@@ -61,3 +61,10 @@
   font-size: 20px;
   margin-right: 10px;
 }
+
+.SetSingleView-footer {
+  display: flex;
+  justify-content: end;
+  position: relative;
+  margin-top: 20px;
+}

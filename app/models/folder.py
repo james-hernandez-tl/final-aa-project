@@ -24,7 +24,8 @@ class Folder(db.Model):
             "name":self.name,
             "description":self.description,
             "userId":self.userId,
-            "Sets":[aset.to_dict_less() for aset in self.foldersOfSets]
+            "Sets":[aset.to_dict_less() for aset in self.foldersOfSets],
+            "NumSets":len(self.foldersOfSets)
         }
 
     def to_dict_less(self):

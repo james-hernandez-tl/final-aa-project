@@ -79,6 +79,7 @@ def editFolder(id):
 
 
 @folder_routes.route("/<int:id>/sets/<int:setId>",methods=["POST"])
+@login_required
 def addSetToFolder(id,setId):
     set = Set.query.get(setId)
 
@@ -90,12 +91,19 @@ def addSetToFolder(id,setId):
     if not folder:
         return {"errors":"folder does not exist"}, 404
 
+    if folder.userId != current_user.id:
+        return {"errors":"Unathurized"}, 404
+
+    if set in folder.foldersOfSets:
+        return {"errors":"set is already in folder"}, 404
+
     folder.foldersOfSets.append(set)
     db.session.commit()
 
     return folder.to_dict(), 200
 
 @folder_routes.route("/<int:id>/sets/<int:setId>",methods=["DELETE"])
+@login_required
 def removeSetFromFolder(id,setId):
     set = Set.query.get(setId)
 
@@ -106,6 +114,10 @@ def removeSetFromFolder(id,setId):
 
     if not folder:
         return {"errors":"folder does not exist"}, 404
+
+    if folder.userId != current_user.id:
+        return {"errors":"Unathurized"}, 404
+
 
     folder.foldersOfSets.remove(set)
     db.session.commit()

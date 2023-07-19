@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import "./Menu.css";
 
-export function Menu({ children, isOpen, menuRef, right }) {
+export function Menu({ children, isOpen, menuRef, right, top = "45px" }) {
   if (!isOpen) return null;
 
   return (
@@ -10,7 +10,7 @@ export function Menu({ children, isOpen, menuRef, right }) {
       className="menu"
       style={{
         right: right ? 0 : undefined,
-        top: `${children.length * 15 + 15}px`,
+        top: top,
       }}
     >
       {children}

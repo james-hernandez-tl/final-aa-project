@@ -10,5 +10,5 @@
 .menu-item {
   display: flex;
   align-items: center;
-  padding-right: 30px;
+  padding: 5px 30px 5px 0;
 }
