@@ -9,8 +9,6 @@ export default function SetFormDecider() {
   const { setId } = useParams();
   const dispatch = useDispatch();
 
-  console.log(setId);
-
   useEffect(() => {
     if (setId) {
       dispatch(getOneSetThunk(setId));

@@ -1,5 +1,62 @@
 .CardForm {
   border-radius: 25px;
-  background-color: darkgray;
+  background-color: #25284a;
   margin: 10px auto;
+}
+
+.CardForm-inputs {
+  background-color: #25284a;
+  border: none;
+  color: white;
+  border-bottom: 4px #747c92 solid;
+  width: 90%;
+  margin-bottom: 7px;
+  padding-bottom: 3px;
+}
+
+.CardForm-inputs:focus {
+  outline: none;
+}
+
+.CardForm-header {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  padding-top: 5px;
+  justify-content: space-between;
+  font-size: 17px;
+}
+
+.CardForm-divider {
+  height: 3px;
+  width: 100%;
+  background-color: #0a092d;
+  margin: 4px 0 10px 0;
+}
+
+.CardForm-Input-wrappers {
+  display: flex;
+  gap: 7px;
+  width: 95%;
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+.CardForm-Input-wrappers > div {
+  width: 100%;
+}
+
+.CardForm-inputs-labels {
+  font-size: 13px;
+  color: #747c92;
+}
+
+.fa-trash-can {
+  color: white;
+  background-color: #25284a;
+}
+
+.fa-trash-can:hover {
+  color: red;
+  cursor: pointer;
 }

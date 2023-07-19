@@ -18,30 +18,20 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
-  const set = useSelector((state) => state.sets.singleSet);
-
   return (
     <>
       <Navigation isLoaded={isLoaded} />
 
       <Routes>
-        <Route path="/" exact={"True"} element={<Home />} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/logIn" element={<LoginPage />} />
-        <Route path="/sets/new" exact={"True"} element={<SetFormDecider />} />
-        <Route
-          path="/sets/:setId/edit"
-          exact={"True"}
-          element={<SetFormDecider />}
-        />
-        <Route path="/sets/:setId" exact={"True"} element={<SetSingleView />} />
-        <Route path="/sets" exact={"True"} element={<YourSets />} />
-        <Route path="/folders" exact={"True"} element={<YourFolders />} />
-        <Route
-          path="/folders/:folderId"
-          exact={"True"}
-          element={<FolderSingleView />}
-        />
+        <Route path="/sets/new" exact element={<SetFormDecider />} />
+        <Route path="/sets/:setId/edit" exact element={<SetFormDecider />} />
+        <Route path="/sets/:setId" exact element={<SetSingleView />} />
+        <Route path="/sets" exact element={<YourSets />} />
+        <Route path="/folders" exact element={<YourFolders />} />
+        <Route path="/folders/:folderId" exact element={<FolderSingleView />} />
+        <Route path="/groups" element={<div>Groups comming soon</div>} />
       </Routes>
     </>
   );

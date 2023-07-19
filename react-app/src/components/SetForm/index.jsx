@@ -80,17 +80,17 @@ export default function SetForm({ set }) {
   return (
     <div className="SetForm">
       <div className="SetForm-header">Create New Set</div>
-      <div>
+      <div className="SetForm-input-wrapper">
         <input
           type="text"
-          placeholder="Example :history"
+          placeholder="Example: 'History Section 10 '"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="SetForm-inputs"
         />
-        <div>title</div>
+        <div className="SetForm-input-lables">TITLE</div>
       </div>
-      <div>
+      <div className="SetForm-input-wrapper">
         <input
           type="text"
           placeholder="Description"
@@ -98,7 +98,7 @@ export default function SetForm({ set }) {
           onChange={(e) => setDescription(e.target.value)}
           className="SetForm-inputs"
         />
-        <div>Description</div>
+        <div className="SetForm-input-lables">DESCRIPTION</div>
       </div>
       {cards.map((card, index) => (
         <CardForm
@@ -109,9 +109,23 @@ export default function SetForm({ set }) {
           setDeletedCards={setDeletedCards}
         />
       ))}
-      <div onClick={addCardClicker}>Add Card</div>
-      <div onClick={() => createClicker(false)}>Create</div>
-      <div onClick={() => createClicker(true)}>Draft</div>
+      <div className="SetForm-addCard" onClick={addCardClicker}>
+        <div>+</div> ADD CARD
+      </div>
+      <div className="SetForm-button-wrapper">
+        <button
+          className="SetForm-CreateCard"
+          onClick={() => createClicker(false)}
+        >
+          Create
+        </button>
+        <button
+          className="SetForm-EditCard"
+          onClick={() => createClicker(true)}
+        >
+          Draft
+        </button>
+      </div>
     </div>
   );
 }

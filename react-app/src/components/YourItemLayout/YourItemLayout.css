@@ -1,12 +1,13 @@
 .YourItemLayout {
   background-color: #586380;
-  border-radius: 25px;
-  padding: 15px;
+  border-radius: 30px;
+  padding: 10px 20px;
   margin-bottom: 10px;
 }
 
 .YourItemLayout:hover {
-  border-bottom: 3px solid darkgray;
+  /* border-bottom: 3px solid darkgray; */
+  box-shadow: #a1a5b5 0px 3px 2px;
 }
 
 .YourItemLayout-name {

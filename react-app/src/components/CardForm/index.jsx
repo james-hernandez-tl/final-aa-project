@@ -42,20 +42,23 @@ export default function CardForm({ card, index, setCards, setDeletedCards }) {
 
   return (
     <div className="CardForm">
-      <div>
+      <div className="CardForm-header">
         <div>{index + 1}</div>
-        <div onClick={() => deleteCard(card.psudeoId)}>Delete</div>
+        <div onClick={() => deleteCard(card.psudeoId)}>
+          <i className="fa-regular fa-trash-can"></i>
+        </div>
       </div>
-      <hr />
-      <div>
+      <div className="CardForm-divider"></div>
+      <div className="CardForm-Input-wrappers">
         <div>
           <input
             type="text"
             placeholder="Enter Term"
             value={question}
             onChange={questionChanger}
+            className="CardForm-inputs"
           />
-          <div>Term</div>
+          <div className="CardForm-inputs-labels">TERM</div>
         </div>
         <div>
           <input
@@ -63,8 +66,9 @@ export default function CardForm({ card, index, setCards, setDeletedCards }) {
             placeholder="Enter Definition"
             value={answer}
             onChange={answerChanger}
+            className="CardForm-inputs"
           />
-          <div>Definition</div>
+          <div className="CardForm-inputs-labels">DEFINITION</div>
         </div>
       </div>
     </div>
