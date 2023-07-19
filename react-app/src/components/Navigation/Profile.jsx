@@ -26,10 +26,15 @@ export default function Profile({ sessionUser }) {
               navigation("/logIn", { state: window.location.pathname });
               hideMenu();
             }}
+            icon={<i className="fa-solid fa-power-off"></i>}
           />
         )}
         {sessionUser && (
-          <MenuItem text="Logout" onClick={() => dispatch(logout())} />
+          <MenuItem
+            text="Logout"
+            onClick={() => dispatch(logout())}
+            icon={<i className="fa-solid fa-power-off"></i>}
+          />
         )}
       </Menu>
 

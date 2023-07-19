@@ -24,6 +24,7 @@ export default function PlusIcon() {
             navigation("/sets/new");
             hideMenu();
           }}
+          icon={<i className="fa-regular fa-note-sticky"></i>}
         />
         <MenuItem
           text="New Folder"
@@ -31,6 +32,7 @@ export default function PlusIcon() {
             hideMenu();
             setModalContent(<CreateFolder />);
           }}
+          icon={<i className="fa-regular fa-folder"></i>}
         />
       </Menu>
     </>

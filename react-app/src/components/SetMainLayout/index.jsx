@@ -11,7 +11,7 @@ export default function SetMainLayout({ set, inSearch }) {
     <div className="SetMainLayout" onClick={setClicker}>
       <div className="SetMainLayout-name">{set.name}</div>
       <div className="SetMainLayout-addons">
-        <div>{set.Cards.length} Terms</div>
+        <div>{Object.values(set.Cards).length} cards</div>
         <div>
           <i className="fa-regular fa-star"></i>
           {`${set.Rating} (${set.NumRatings})`}

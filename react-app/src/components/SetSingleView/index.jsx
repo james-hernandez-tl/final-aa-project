@@ -1,6 +1,6 @@
 import { getOneSetThunk } from "../../store/sets";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useSession from "../../hooks/useSession";
@@ -14,6 +14,8 @@ import "./SetSingleView.css";
 
 export default function SetSingleView() {
   const { setModalContent } = useModal();
+  const [showQuestion, setShowQuestion] = useState(true);
+  const [numQuestion, setNumQuestion] = useState(1);
   const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
   const sliderRef = useRef(null);
   const navigate = useNavigate();
@@ -41,6 +43,10 @@ export default function SetSingleView() {
     sliderRef.current.scrollBy({
       left: scrollDistance,
     });
+    if (numQuestion < set.Cards.length) setNumQuestion((state) => state + 1);
+    setTimeout(() => {
+      setShowQuestion(true);
+    }, 300);
   };
 
   const prevClicker = () => {
@@ -48,6 +54,10 @@ export default function SetSingleView() {
     sliderRef.current.scrollBy({
       left: -scrollDistance,
     });
+    if (numQuestion > 1) setNumQuestion((state) => state - 1);
+    setTimeout(() => {
+      setShowQuestion(true);
+    }, 300);
   };
 
   if (!set) return <div>There is no set with this id</div>;
@@ -66,15 +76,36 @@ export default function SetSingleView() {
         {set.Cards.slice(0, 3).map((card) => (
           <div key={card.id} className="SetSingleView-card">
             <div className="SetSingleView-card-header">
-              <div className="SetSingleView-card-hint">Get a hint</div>
+              <div className="SetSingleView-card-hint">
+                {showQuestion ? (
+                  <div>
+                    {" "}
+                    Get a hint <i className="fa-regular fa-lightbulb"></i>{" "}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-            <div className="SetSingleView-card-content">{card.question}</div>
+            <div
+              className="SetSingleView-card-content"
+              onClick={() => setShowQuestion((state) => !state)}
+            >
+              {showQuestion ? card.question : card.answer}
+            </div>
           </div>
         ))}
       </div>
       <div className="setSingleView-slider-controls">
-        <div onClick={nextClicker}>Next</div>
-        <div onClick={prevClicker}>Previous</div>
+        <div onClick={prevClicker}>
+          <i class="fa-solid fa-arrow-left"></i>
+        </div>
+        <div className="setSingleView-slider-controls-NumSets">
+          {numQuestion}/{set.Cards.length}
+        </div>
+        <div onClick={nextClicker}>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
       </div>
       <div className="SetSingleView-footer">
         <div className="SetSingleView-card-dropdown">
@@ -84,7 +115,12 @@ export default function SetSingleView() {
             className="fa-solid fa-ellipsis"
           ></i>
         </div>
-        <Menu menuRef={menuRef} isOpen={show} right top="25px">
+        <Menu
+          menuRef={menuRef}
+          isOpen={show}
+          right
+          top={user?.id === set.userId ? "-110px" : "-50px"}
+        >
           <MenuItem
             text="Add set to folder"
             onClick={() => {

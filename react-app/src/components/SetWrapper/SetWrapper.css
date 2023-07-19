@@ -7,11 +7,26 @@
 
 .slider {
   display: flex;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
 
 .slider::-webkit-scrollbar {
   display: none;
+}
+
+.slider-controls-next {
+  height: 100%;
+  margin: auto 0px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.slider-controls-prev {
+  height: 100%;
+  margin: auto 0px;
+  font-size: 20px;
+  cursor: pointer;
 }

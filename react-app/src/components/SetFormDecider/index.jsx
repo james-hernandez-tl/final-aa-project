@@ -9,6 +9,8 @@ export default function SetFormDecider() {
   const { setId } = useParams();
   const dispatch = useDispatch();
 
+  console.log(setId);
+
   useEffect(() => {
     if (setId) {
       dispatch(getOneSetThunk(setId));
@@ -18,7 +20,7 @@ export default function SetFormDecider() {
   return (
     <>
       {set && setId && <SetForm set={set} />}
-      {!set && !setId && <SetForm />}
+      {!setId && <SetForm />}
     </>
   );
 }

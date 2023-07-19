@@ -11,6 +11,7 @@ import {
 } from "../../store/sets";
 import useSession from "../../hooks/useSession";
 import { useNavigate } from "react-router-dom";
+import "./SetForm.css";
 
 export default function SetForm({ set }) {
   const navigate = useNavigate();
@@ -77,14 +78,15 @@ export default function SetForm({ set }) {
   };
   console.log("cards", cards);
   return (
-    <div>
-      <div>Create New Set</div>
+    <div className="SetForm">
+      <div className="SetForm-header">Create New Set</div>
       <div>
         <input
           type="text"
           placeholder="Example :history"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="SetForm-inputs"
         />
         <div>title</div>
       </div>
@@ -94,6 +96,7 @@ export default function SetForm({ set }) {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          className="SetForm-inputs"
         />
         <div>Description</div>
       </div>

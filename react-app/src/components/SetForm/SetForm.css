@@ -1,0 +1,13 @@
+.SetForm {
+  padding: 10px 200px;
+}
+
+.SetForm-header {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.SetForm-inputs {
+  background-color: #0a092d;
+  border: none;
+}

@@ -23,14 +23,16 @@ export default function SetWrapper({ allSets, color = "#586380" }) {
   };
   return (
     <div className="SetWrapper" style={{ background: color }}>
+      <div className="slider-controls-prev">
+        <i class="fa-solid fa-arrow-left" onClick={handlePreviousClick}></i>
+      </div>
       <div className="slider" ref={containerRef}>
         {allSets.map((set) => (
           <SetMainLayout set={set} key={set.id} />
         ))}
       </div>
-      <div className="slider-controls">
-        <button onClick={handlePreviousClick}>Previous</button>
-        <button onClick={handleNextClick}>Next</button>
+      <div className="slider-controls-next">
+        <i onClick={handleNextClick} className="fa-solid fa-arrow-right"></i>
       </div>
     </div>
   );

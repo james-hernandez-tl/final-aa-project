@@ -1,7 +1,14 @@
 import { useRef, useState, useEffect } from "react";
 import "./Menu.css";
 
-export function Menu({ children, isOpen, menuRef, right, top = "45px" }) {
+export function Menu({
+  children,
+  isOpen,
+  menuRef,
+  right,
+  top = "45px",
+  bottom,
+}) {
   if (!isOpen) return null;
 
   return (

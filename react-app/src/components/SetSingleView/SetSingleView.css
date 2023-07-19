@@ -4,12 +4,13 @@
 
 .SetSingleView-title {
   font-size: 30px;
-  margin: 20px 0;
+  margin: 20px 0 15px 0;
 }
 
 .SetSingleView-rating {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .SetSingleView-rating-star {
@@ -25,6 +26,7 @@
   background-color: #25284a;
   height: 400px;
   border-radius: 25px;
+  position: relative;
 }
 
 .SetSingleView-card-content {
@@ -32,6 +34,7 @@
   justify-content: center;
   align-items: center;
   height: 80%;
+  font-size: 20px;
 }
 
 .SetSingleView-card-header {
@@ -67,4 +70,28 @@
   justify-content: end;
   position: relative;
   margin-top: 20px;
+}
+
+.setSingleView-slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 30px;
+  padding: 20px 0;
+  border-bottom: lightgray solid 2px;
+}
+
+.setSingleView-slider-controls-NumSets {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.SetSingleView-card-hint {
+  position: absolute;
+  top: 15px;
+}
+
+.fa-lightbulb {
+  margin-left: 5px;
 }
