@@ -1,17 +1,13 @@
-import { NavLink, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./Navigation.css";
-import Avatar from "../Avatar";
 import { useMenu } from "../Menu";
 import { Menu, MenuItem } from "../Menu";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../store/session";
 import { useModal } from "../../context/Modal";
 import CreateFolder from "../CreateFolder.jsx";
 
 export default function PlusIcon() {
   const navigation = useNavigate();
-  const dispatch = useDispatch();
   const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
   const { setModalContent } = useModal();
   return (

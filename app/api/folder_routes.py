@@ -1,6 +1,6 @@
 from flask import Blueprint, Flask, request
 from flask_login import login_required, current_user
-from app.models import Set,db, Folder
+from app.models import Set,db, Folder, Set
 from app.forms import folderForm
 
 folder_routes = Blueprint("folders",__name__)
@@ -76,3 +76,38 @@ def editFolder(id):
 
         return folder.to_dict(), 200
     return {"errors":form.errors}, 404
+
+
+@folder_routes.route("/<int:id>/sets/<int:setId>",methods=["POST"])
+def addSetToFolder(id,setId):
+    set = Set.query.get(setId)
+
+    if not set:
+        return {"errors":"set does not exist"}, 404
+
+    folder = Folder.query.get(id)
+
+    if not folder:
+        return {"errors":"folder does not exist"}, 404
+
+    folder.foldersOfSets.append(set)
+    db.session.commit()
+
+    return folder.to_dict(), 200
+
+@folder_routes.route("/<int:id>/sets/<int:setId>",methods=["DELETE"])
+def removeSetFromFolder(id,setId):
+    set = Set.query.get(setId)
+
+    if not set:
+        return {"errors":"set does not exist"} , 404
+
+    folder = Folder.query.get(id)
+
+    if not folder:
+        return {"errors":"folder does not exist"}, 404
+
+    folder.foldersOfSets.remove(set)
+    db.session.commit()
+
+    return folder.to_dict(), 200
