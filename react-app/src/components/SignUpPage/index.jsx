@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login } from "../../store/session";
+import { signUp } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./SignUpPage.css";
@@ -7,82 +7,124 @@ import "./SignUpPage.css";
 export default function SignUpPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState(null);
   const [usernameError, setUsernameError] = useState(null);
+  const [emailError, setEmailError] = useState(null);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(null);
+
   const [required, setRequired] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { state } = useLocation();
-  const LogInClicker = async () => {
-    if (!username || !password) {
+  const SignUpClicker = async () => {
+    if (!username || !password || !email || !confirmPassword) {
       setRequired("Required");
       return null;
     }
-    const errors = await dispatch(login(username, password));
-    if (errors?.password) {
-      setPasswordError("passwordError");
+    if (password !== confirmPassword) {
+      setConfirmPasswordError("formError");
+      return null;
     }
-    if (errors?.username) {
-      setUsernameError("usernameError");
+    const errors = await dispatch(signUp(username, email, password));
+    console.log(errors);
+    if (errors) {
+      setUsernameError(errors?.username);
+      setPasswordError(errors?.password);
+      setEmailError(errors?.email);
     }
     if (!errors) navigate(state);
+  };
+
+  const usernameClicker = () => {
+    if (usernameError) {
+      setUsernameError(null);
+    }
+  };
+
+  const emailClicker = () => {
+    if (emailError) {
+      setEmailError(null);
+    }
+  };
+
+  const passwordClicker = () => {
+    if (passwordError) {
+      setPasswordError(null);
+    }
   };
 
   return (
     <div className="SignUpPage">
       <div className="SignUp-div">
         <div className="SignUpPage-header">Sign Up Page</div>
-        <div className={`SignUpPage-input-wrapper ${usernameError}`}>
+        <div
+          className={`SignUpPage-input-wrapper ${
+            usernameError ? "formError" : ""
+          }`}
+          onClick={usernameClicker}
+        >
           <input
             type="text"
-            value={username}
+            value={usernameError ?? username}
             onChange={(e) => {
               setUsername(e.target.value);
               setUsernameError(null);
             }}
             className={`SignUpPage-inputs ${required}`}
-            placeholder={required ?? "Username"}
+            placeholder={required ?? "username"}
           />
         </div>
-        <div className={`SignUpPage-input-wrapper ${usernameError}`}>
+        <div
+          className={`SignUpPage-input-wrapper ${
+            emailError ? "formError" : ""
+          }`}
+          onClick={emailClicker}
+        >
           <input
             type="text"
-            value={username}
+            value={emailError ?? email}
             onChange={(e) => {
-              setUsername(e.target.value);
-              setUsernameError(null);
+              setEmail(e.target.value);
+              setEmailError(null);
             }}
             className={`SignUpPage-inputs ${required}`}
-            placeholder={required ?? "Email"}
+            placeholder={required ?? "example@email.com"}
           />
         </div>
-        <div className={`SignUpPage-input-wrapper ${usernameError}`}>
+        <div
+          className={`SignUpPage-input-wrapper ${
+            passwordError ? "formError" : ""
+          }`}
+          onClick={passwordClicker}
+        >
           <input
             type="text"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-              setUsernameError(null);
-            }}
-            className={`SignUpPage-inputs ${required}`}
-            placeholder={required ?? "Password"}
-          />
-        </div>
-        <div className={`SignUpPage-input-wrapper ${passwordError}`}>
-          <input
-            type="text"
-            value={password}
+            value={passwordError ?? password}
             onChange={(e) => {
               setPassword(e.target.value);
               setPasswordError(null);
             }}
             className={`SignUpPage-inputs ${required}`}
-            placeholder={required ?? "Confirm Password"}
+            placeholder={required ?? "password123"}
+          />
+        </div>
+        <div className={`SignUpPage-input-wrapper ${confirmPasswordError}`}>
+          <input
+            type="text"
+            value={confirmPassword}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+              setConfirmPasswordError(null);
+            }}
+            className={`SignUpPage-inputs ${required}`}
+            placeholder={required ?? "confirm password"}
           />
         </div>
         <div>
-          <button className="SignUpPage-button" onClick={LogInClicker}>
-            Sign Up
+          <button className="SignUpPage-button" onClick={SignUpClicker}>
+            sign up
           </button>
         </div>
       </div>

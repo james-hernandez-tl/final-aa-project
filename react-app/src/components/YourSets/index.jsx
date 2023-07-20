@@ -3,15 +3,23 @@ import useSession from "../../hooks/useSession";
 import { authenticate } from "../../store/session";
 import { useEffect } from "react";
 import Scrollable from "../Scrollable";
+import { useNavigate } from "react-router-dom";
 import "./YourSets.css";
 
 export default function YourSets() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSession();
 
   useEffect(() => {
     dispatch(authenticate());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/logIn", { state: window.location.pathname });
+    }
+  }, []);
 
   if (!user) return;
 
@@ -23,7 +31,11 @@ export default function YourSets() {
           <input type="text" />
         </div>
       </div>
-      <Scrollable arr={user.Sets} isSet={true} />
+      {user.Sets.length ? (
+        <Scrollable arr={user.Sets} isSet={true} />
+      ) : (
+        <div> You currently have no sets </div>
+      )}
     </div>
   );
 }

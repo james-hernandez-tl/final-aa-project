@@ -35,6 +35,8 @@
   background-color: #a1a5b5;
   text-align: center;
   color: white;
+  font-size: 16px;
+  width: 100%;
 }
 
 .SignUpPage-inputs:focus {
@@ -56,20 +58,11 @@
   margin: 20px 5px;
 }
 
-.passwordError {
-  border: 1px red solid;
-  color: red;
-}
-
-.passwordError > input {
-  color: red;
-}
-
-.usernameError {
+.formError {
   border: 1px red solid;
 }
 
-.usernameError > input {
+.formError > input {
   color: red;
 }
 

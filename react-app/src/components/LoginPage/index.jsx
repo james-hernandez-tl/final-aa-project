@@ -28,6 +28,10 @@ export default function LoginPage() {
     if (!errors) navigate(state);
   };
 
+  const signupClicker = () => {
+    navigate("/signup", { state: state });
+  };
+
   return (
     <div className="LoginPage">
       <div className="Login-div">
@@ -41,7 +45,7 @@ export default function LoginPage() {
               setUsernameError(null);
             }}
             className={`LoginPage-inputs ${required}`}
-            placeholder={required ?? "Username or Email"}
+            placeholder={required ?? "username or email"}
           />
         </div>
         <div className={`LoginPage-input-wrapper ${passwordError}`}>
@@ -53,13 +57,16 @@ export default function LoginPage() {
               setPasswordError(null);
             }}
             className={`LoginPage-inputs ${required}`}
-            placeholder={required ?? "Password"}
+            placeholder={required ?? "password"}
           />
         </div>
         <div>
           <button className="LoginPage-button" onClick={LogInClicker}>
             Log In
           </button>
+        </div>
+        <div className="LoginPage-signupbtn" onClick={signupClicker}>
+          dont have an account? sign up instead
         </div>
       </div>
     </div>

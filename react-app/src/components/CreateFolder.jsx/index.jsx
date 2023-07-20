@@ -1,7 +1,7 @@
 import { useModal } from "../../context/Modal";
 import { useDispatch } from "react-redux";
 import { createFolder } from "../../store/folder";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSession from "../../hooks/useSession";
 import { useNavigate } from "react-router-dom";
 import { editFolder } from "../../store/folder";
@@ -43,6 +43,17 @@ export default function CreateFolder({ folder }) {
       );
     }
   };
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/logIn", { state: window.location.pathname });
+    }
+  }, []);
+
+  if (!user) {
+    closeModal();
+    return null;
+  }
 
   return (
     <div className="CreateFolder">

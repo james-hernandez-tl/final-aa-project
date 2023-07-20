@@ -32,7 +32,10 @@ export default function Profile({ sessionUser }) {
         {sessionUser && (
           <MenuItem
             text="Logout"
-            onClick={() => dispatch(logout())}
+            onClick={() => {
+              dispatch(logout());
+              navigation("/");
+            }}
             icon={<i className="fa-solid fa-power-off"></i>}
           />
         )}

@@ -3,6 +3,7 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from sqlalchemy import or_
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -42,7 +43,7 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.username == form.data['username']).first()
+        user = User.query.filter(or_(User.username == form.data['username'], User.email == form.data['username'])).first()
         login_user(user)
         print("[Logged in]",current_user)
         return user.to_dict()
@@ -75,7 +76,7 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': form.errors}, 401
 
 
 @auth_routes.route('/unauthorized')

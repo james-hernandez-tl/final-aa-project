@@ -1,9 +1,13 @@
 import useSession from "../../hooks/useSession";
 import { addSetToFolder, removeSetFromFolder } from "../../store/folder";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useModal } from "../../context/Modal";
 import "./AddSetToFolder.css";
 
 export default function AddSetToFolder({ setId }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSession();
   const folderClicker = (folder) => {
@@ -13,6 +17,19 @@ export default function AddSetToFolder({ setId }) {
       dispatch(addSetToFolder(folder.id, setId));
     }
   };
+
+  const { closeModal } = useModal();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/logIn", { state: window.location.pathname });
+    }
+  }, []);
+
+  if (!user) {
+    closeModal();
+    return null;
+  }
 
   return (
     <div className="AddSetToFolder">

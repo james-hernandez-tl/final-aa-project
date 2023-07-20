@@ -23,7 +23,7 @@
 
 .LoginPage-input-wrapper {
   border-radius: 15px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   width: 80%;
   margin: 0 auto 10px;
   background-color: #a1a5b5;
@@ -35,6 +35,7 @@
   background-color: #a1a5b5;
   text-align: center;
   color: white;
+  font-size: 16px;
 }
 
 .LoginPage-inputs:focus {
@@ -75,4 +76,11 @@
 
 .Required::placeholder {
   color: red;
+}
+
+.LoginPage-signupbtn {
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+  text-decoration: underline;
 }

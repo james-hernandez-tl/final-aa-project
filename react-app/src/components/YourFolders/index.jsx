@@ -3,17 +3,25 @@ import useSession from "../../hooks/useSession";
 import Scrollable from "../Scrollable";
 import { authenticate } from "../../store/session";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./YourFolder.css";
 
 export default function YourFolders() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSession();
 
   useEffect(() => {
     dispatch(authenticate());
   }, [dispatch]);
 
-  if (!user) return;
+  useEffect(() => {
+    if (!user) {
+      navigate("/logIn", { state: window.location.pathname });
+    }
+  }, []);
+
+  if (!user) return null;
 
   return (
     <div className="YourFolders">
@@ -23,7 +31,11 @@ export default function YourFolders() {
           <input type="text" />
         </div>
       </div>
-      <Scrollable arr={user.Folders} isSet={false} />
+      {user.Folders.length ? (
+        <Scrollable arr={user.Folders} isSet={false} />
+      ) : (
+        <div> You currently have no folders </div>
+      )}
     </div>
   );
 }
