@@ -55,6 +55,10 @@ export default function SignUpPage() {
     }
   };
 
+  const loginClicker = () => {
+    navigate("/login", { state: state });
+  };
+
   return (
     <div className="SignUpPage">
       <div className="SignUp-div">
@@ -126,6 +130,9 @@ export default function SignUpPage() {
           <button className="SignUpPage-button" onClick={SignUpClicker}>
             sign up
           </button>
+        </div>
+        <div className="SignUpPage-login-btn" onClick={loginClicker}>
+          already have an account? log in
         </div>
       </div>
     </div>

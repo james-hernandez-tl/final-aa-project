@@ -69,3 +69,9 @@
 .Required::placeholder {
   color: red;
 }
+
+.SignUpPage-login-btn {
+  position: absolute;
+  bottom: -20px;
+  right: 10px;
+}

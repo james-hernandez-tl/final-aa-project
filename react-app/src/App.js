@@ -23,18 +23,24 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
 
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/logIn" element={<LoginPage />} />
-        <Route path="/sets/new" exact element={<SetFormDecider />} />
-        <Route path="/sets/:setId/edit" exact element={<SetFormDecider />} />
-        <Route path="/sets/:setId" exact element={<SetSingleView />} />
-        <Route path="/sets" exact element={<YourSets />} />
-        <Route path="/folders" exact element={<YourFolders />} />
-        <Route path="/folders/:folderId" exact element={<FolderSingleView />} />
-        <Route path="/groups" element={<div>Groups comming soon</div>} />
-        <Route path="/SignUp" exact element={<SignUpPage />} />
-      </Routes>
+      {isLoaded && (
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/logIn" element={<LoginPage />} />
+          <Route path="/sets/new" exact element={<SetFormDecider />} />
+          <Route path="/sets/:setId/edit" exact element={<SetFormDecider />} />
+          <Route path="/sets/:setId" exact element={<SetSingleView />} />
+          <Route path="/sets" exact element={<YourSets />} />
+          <Route path="/folders" exact element={<YourFolders />} />
+          <Route
+            path="/folders/:folderId"
+            exact
+            element={<FolderSingleView />}
+          />
+          <Route path="/groups" element={<div>Groups comming soon</div>} />
+          <Route path="/SignUp" exact element={<SignUpPage />} />
+        </Routes>
+      )}
     </>
   );
 }

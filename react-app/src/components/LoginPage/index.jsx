@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import useSession from "../../hooks/useSession";
 import "./LoginPage.css";
 
 export default function LoginPage() {
+  const user = useSession();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(null);
@@ -31,6 +33,13 @@ export default function LoginPage() {
   const signupClicker = () => {
     navigate("/signup", { state: state });
   };
+
+  useEffect(() => {
+    console.log("user", user);
+    if (user) {
+      navigate(state);
+    }
+  }, []);
 
   return (
     <div className="LoginPage">
