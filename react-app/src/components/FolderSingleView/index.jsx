@@ -1,5 +1,6 @@
 import { getFolder } from "../../store/folder";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import YourItemLayout from "../YourItemLayout";
@@ -11,6 +12,7 @@ import "./FolderSingleView.css";
 export default function FolderSingleView() {
   let folder = useSelector((state) => state.folders.singleFolder);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { setModalContent } = useModal();
   const { folderId } = useParams();
 
@@ -18,7 +20,7 @@ export default function FolderSingleView() {
     dispatch(getFolder(folderId));
   }, [dispatch, folderId]);
 
-  if (!folder) return null;
+  if (!folder) return <div>Folder does not exist</div>;
   return (
     <div className="FolderSingleView">
       <div className="FolderSingleView-header">
@@ -30,7 +32,14 @@ export default function FolderSingleView() {
         >
           Edit
         </div>
-        {/* <div onClick={() => dispatch(deleteFolder(folder.id))}>delete</div> */}
+        <div
+          onClick={() => {
+            dispatch(deleteFolder(folder.id));
+            navigate("/folders");
+          }}
+        >
+          delete
+        </div>
       </div>
       <div>
         {folder.Sets.length

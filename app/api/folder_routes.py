@@ -25,6 +25,7 @@ def deleteFolder(id):
     if (current_user.id != folder.userId):
         return {"errors":"unauthorized"} , 404
 
+    folder.foldersOfSets = []
     db.session.delete(folder)
     db.session.commit()
     return {"message":"succesfully deleted"} , 200

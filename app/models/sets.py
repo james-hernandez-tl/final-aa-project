@@ -25,7 +25,7 @@ class Set(db.Model):
     setsInFolder = db.relationship(
         "Folder",
         secondary=set_folders,
-        backref="foldersOfSets",
+        back_populates="foldersOfSets",
     )
 
     UniqueConstraint("name","userId", name="idx_name_userId")

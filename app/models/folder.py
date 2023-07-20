@@ -14,7 +14,13 @@ class Folder(db.Model):
     description = db.Column(db.String(100),nullable = False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable = False)
 
-    user = db.relationship("User",back_populates = "folder", cascade="all, delete")
+    user = db.relationship("User",back_populates = "folder")
+
+    foldersOfSets = db.relationship(
+        "Set",
+        secondary=set_folders,
+        back_populates="setsInFolder"
+    )
 
     UniqueConstraint("name","userId", name="idx_Folder_name_userId")
 
