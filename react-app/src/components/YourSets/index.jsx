@@ -4,6 +4,7 @@ import { authenticate } from "../../store/session";
 import { useEffect } from "react";
 import Scrollable from "../Scrollable";
 import { useNavigate } from "react-router-dom";
+import NavSearch from "../Navigation/NavSearch";
 import "./YourSets.css";
 
 export default function YourSets() {
@@ -27,9 +28,7 @@ export default function YourSets() {
     <div className="YourSets">
       <div className="YourSets-header">
         <div className="YourSets-header-title">Your Sets</div>
-        <div>
-          <input type="text" />
-        </div>
+        <NavSearch placeholder="Search your sets" />
       </div>
       {user.Sets.length ? (
         <Scrollable arr={user.Sets} isSet={true} />

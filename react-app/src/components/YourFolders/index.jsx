@@ -4,6 +4,7 @@ import Scrollable from "../Scrollable";
 import { authenticate } from "../../store/session";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NavSearch from "../Navigation/NavSearch";
 import "./YourFolder.css";
 
 export default function YourFolders() {
@@ -27,9 +28,7 @@ export default function YourFolders() {
     <div className="YourFolders">
       <div className="YourFolders-header">
         <div className="YourFolders-header-title">Your Folders</div>
-        <div>
-          <input type="text" />
-        </div>
+        <NavSearch placeholder="Search your folders" />
       </div>
       {user.Folders.length ? (
         <Scrollable arr={user.Folders} isSet={false} />

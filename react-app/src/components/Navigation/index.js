@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../store/session";
 import Profile from "./Profile";
 import PlusIcon from "./PlusIcon";
+import NavSearch from "./NavSearch";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -19,10 +20,7 @@ function Navigation({ isLoaded }) {
       </div>
 
       <div className="Nav-search-wrapper">
-        <div className="Nav-search">
-          <i className="fa-solid fa-magnifying-glass search"></i>
-          <input type="text" placeholder="Search sets" />
-        </div>
+        <NavSearch placeholder="Search sets, solutions ..." />
         <PlusIcon />
       </div>
     </div>
