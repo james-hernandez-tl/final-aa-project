@@ -77,7 +77,7 @@ export default function SetForm({ set }) {
             draft: isDraft,
             userId: currentUser.id,
           },
-          cards
+          cards.filter((card) => !card.id && card.answer && card.question)
         )
       );
     } else {
