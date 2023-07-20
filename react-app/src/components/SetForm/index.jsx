@@ -17,6 +17,7 @@ export default function SetForm({ set }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentUser = useSession();
+  const [error, setError] = useState(null);
   const [deletedCards, setDeletedCards] = useState([]);
   const [name, setName] = useState(set ? set.name : "");
   const [description, setDescription] = useState(set ? set.description : "");
@@ -43,7 +44,30 @@ export default function SetForm({ set }) {
   console.log("cards", cards);
 
   const createClicker = async (isDraft) => {
-    console.log("list of delted cards", deletedCards);
+    console.log(deletedCards);
+    const cardError = cards.find((ele, index) => {
+      let questionBlank = !ele.question && ele.answer;
+      let answerBlank = ele.question && !ele.answer;
+      if (index < 2 && (!ele.question || !ele.answer)) {
+        return true;
+      }
+      if (ele.id && (!ele.question || !ele.answer)) {
+        return true;
+      }
+      if (index >= 2 && (questionBlank || answerBlank)) {
+        return true;
+      }
+
+      return false;
+    });
+
+    console.log("found", cardError);
+
+    if (!name || !description || cardError) {
+      setError("Required");
+      return;
+    }
+
     if (!set) {
       dispatch(
         createSetThunk(
@@ -58,7 +82,9 @@ export default function SetForm({ set }) {
       );
     } else {
       let editedCards = cards.filter((card) => card.edited);
-      let addedCards = cards.filter((card) => !card.id);
+      let addedCards = cards.filter(
+        (card) => !card.id && card.answer && card.question
+      );
       if (editedCards.length) await dispatch(editCardsThunk(editedCards));
       if (addedCards.length) await dispatch(addCardsThunk(set.id, addedCards));
       if (deletedCards.length) await dispatch(deleteCardsThunk(deletedCards));
@@ -76,27 +102,26 @@ export default function SetForm({ set }) {
 
     navigate("/sets");
   };
-  console.log("cards", cards);
   return (
     <div className="SetForm">
       <div className="SetForm-header">Create New Set</div>
       <div className="SetForm-input-wrapper">
         <input
           type="text"
-          placeholder="Example: 'History Section 10 '"
+          placeholder={error ?? `Example: 'History Section 10 '`}
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="SetForm-inputs"
+          className={`SetForm-inputs ${error}`}
         />
         <div className="SetForm-input-lables">TITLE</div>
       </div>
       <div className="SetForm-input-wrapper">
         <input
           type="text"
-          placeholder="Description"
+          placeholder={error ?? "Description"}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="SetForm-inputs"
+          className={`SetForm-inputs ${error}`}
         />
         <div className="SetForm-input-lables">DESCRIPTION</div>
       </div>
@@ -107,6 +132,7 @@ export default function SetForm({ set }) {
           setCards={setCards}
           card={card}
           setDeletedCards={setDeletedCards}
+          error={error}
         />
       ))}
       <div className="SetForm-addCard" onClick={addCardClicker}>

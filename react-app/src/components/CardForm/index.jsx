@@ -1,7 +1,13 @@
 import { useState } from "react";
 import "./CardForm.css";
 
-export default function CardForm({ card, index, setCards, setDeletedCards }) {
+export default function CardForm({
+  card,
+  index,
+  setCards,
+  setDeletedCards,
+  error,
+}) {
   const [answer, setAnswer] = useState(card.answer);
   const [question, setQuestion] = useState(card.question);
 
@@ -31,13 +37,13 @@ export default function CardForm({ card, index, setCards, setDeletedCards }) {
   const deleteCard = (psudeoId) => {
     setCards((state) => {
       if (state.length > 2) {
+        if (card.id) {
+          setDeletedCards((state) => [...state, card.id]);
+        }
         return state.filter((card) => card.psudeoId !== psudeoId);
       }
       return state;
     });
-    if (card.id) {
-      setDeletedCards((state) => [...state, card.id]);
-    }
   };
 
   return (
@@ -53,20 +59,20 @@ export default function CardForm({ card, index, setCards, setDeletedCards }) {
         <div>
           <input
             type="text"
-            placeholder="Enter Term"
+            placeholder={error ?? "Enter Term"}
             value={question}
             onChange={questionChanger}
-            className="CardForm-inputs"
+            className={`CardForm-inputs ${error}`}
           />
           <div className="CardForm-inputs-labels">TERM</div>
         </div>
         <div>
           <input
             type="text"
-            placeholder="Enter Definition"
+            placeholder={error ?? "Enter Definition"}
             value={answer}
             onChange={answerChanger}
-            className="CardForm-inputs"
+            className={`CardForm-inputs ${error}`}
           />
           <div className="CardForm-inputs-labels">DEFINITION</div>
         </div>

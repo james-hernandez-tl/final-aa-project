@@ -17,10 +17,16 @@ export default function AddSetToFolder({ setId }) {
   return (
     <div className="AddSetToFolder">
       <div className="AddSetToFolder-header">Add to folder</div>
+      <div className="AddSetToFolder-divider"></div>
       {user.Folders.map((folder) => (
         <div
           key={folder.id}
-          className="AddSetToFolder-folder"
+          className={`AddSetToFolder-folder
+            ${
+              folder.Sets.filter((set) => set.id == setId).length
+                ? "AddSetToFolder-folder-red"
+                : "AddSetToFolder-folder-green"
+            }`}
           onClick={() => folderClicker(folder)}
         >
           <div>{folder.name}</div>

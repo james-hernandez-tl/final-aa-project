@@ -1,0 +1,51 @@
+.CreateFolder-header {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.CreateFolder {
+  width: 800px;
+}
+
+.CreateFolder-input-title,
+.CreateFolder-input-description {
+  background-color: rgb(21, 18, 59);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 95%;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.CreateFolder-input-title:focus {
+  outline: none;
+  box-shadow: white 0 1px 0px;
+}
+
+.CreateFolder-input-description:focus {
+  outline: none;
+  box-shadow: blue 0 1px 0px;
+}
+
+.CreateFolder-button-wrapper {
+  padding-top: 10px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: end;
+  border-top: 1px solid gray;
+}
+
+.CreateFolder-button-wrapper > button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: #a1a5b5;
+  color: white;
+  font-size: 15px;
+}
+
+.Required::placeholder {
+  color: red;
+}

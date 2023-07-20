@@ -73,7 +73,7 @@ export default function SetSingleView() {
         <div>({set.NumRatings} reviews)</div>
       </div>
       <div className="SetSingleView-slider" ref={sliderRef}>
-        {set.Cards.slice(0, 3).map((card) => (
+        {set.Cards.map((card) => (
           <div key={card.id} className="SetSingleView-card">
             <div className="SetSingleView-card-header">
               <div className="SetSingleView-card-hint">

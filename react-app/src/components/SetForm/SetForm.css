@@ -59,3 +59,7 @@
   justify-content: end;
   gap: 5px;
 }
+
+.Required::placeholder {
+  color: red;
+}

@@ -11,6 +11,7 @@ import SetFormDecider from "./components/SetFormDecider";
 import YourSets from "./components/YourSets";
 import YourFolders from "./components/YourFolders";
 import FolderSingleView from "./components/FolderSingleView";
+import SignUpPage from "./components/SignUpPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/folders" exact element={<YourFolders />} />
         <Route path="/folders/:folderId" exact element={<FolderSingleView />} />
         <Route path="/groups" element={<div>Groups comming soon</div>} />
+        <Route path="/SignUp" exact element={<SignUpPage />} />
       </Routes>
     </>
   );

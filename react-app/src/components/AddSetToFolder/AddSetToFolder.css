@@ -1,5 +1,31 @@
 .AddSetToFolder-folder {
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  font-size: 18px;
+  padding-bottom: 5px;
+}
+
+.AddSetToFolder-folder:hover {
+  cursor: pointer;
+}
+.AddSetToFolder-folder-red:hover {
+  color: red;
+}
+
+.AddSetToFolder-folder-green:hover {
+  color: green;
+}
+
+.AddSetToFolder-header {
+  font-size: 30px;
+  padding-bottom: 10px;
+  padding-right: 200px;
+}
+
+.AddSetToFolder-divider {
+  background-color: white;
+  height: 2px;
+  width: 100%;
+  margin: 10px 0;
 }

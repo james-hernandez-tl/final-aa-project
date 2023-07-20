@@ -60,3 +60,7 @@
   color: red;
   cursor: pointer;
 }
+
+.Required::placeholder {
+  color: red;
+}

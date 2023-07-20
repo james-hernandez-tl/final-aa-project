@@ -1,0 +1,78 @@
+.LoginPage {
+  background-image: url("https://media.discordapp.net/attachments/934145502252003410/1131398837672607784/1.png?width=1900&height=1068");
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.Login-div {
+  background-color: #586380;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.LoginPage-header {
+  font-size: 35px;
+  padding: 10px 100px;
+  margin-bottom: 10px;
+}
+
+.LoginPage-input-wrapper {
+  border-radius: 15px;
+  padding: 5px 10px;
+  width: 80%;
+  margin: 0 auto 10px;
+  background-color: #a1a5b5;
+  text-align: center;
+}
+
+.LoginPage-inputs {
+  border: none;
+  background-color: #a1a5b5;
+  text-align: center;
+  color: white;
+}
+
+.LoginPage-inputs:focus {
+  outline: none;
+}
+
+.LoginPage-inputs::-webkit-input-placeholder {
+  text-align: center;
+  color: rgb(232, 230, 230);
+}
+
+.LoginPage-button {
+  background-color: #a1a5b5;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  padding: 7px 20px;
+  font-size: 16px;
+  margin: 20px 5px;
+}
+
+.passwordError {
+  border: 1px red solid;
+  color: red;
+}
+
+.passwordError > input {
+  color: red;
+}
+
+.usernameError {
+  border: 1px red solid;
+}
+
+.usernameError > input {
+  color: red;
+}
+
+.Required::placeholder {
+  color: red;
+}

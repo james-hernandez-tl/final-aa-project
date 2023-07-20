@@ -46,7 +46,7 @@ def login():
         login_user(user)
         print("[Logged in]",current_user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': form.errors}, 401
 
 
 @auth_routes.route('/logout')
