@@ -28,7 +28,6 @@ export default function SignUpPage() {
       return null;
     }
     const errors = await dispatch(signUp(username, email, password));
-    console.log(errors);
     if (errors) {
       setUsernameError(errors?.username);
       setPasswordError(errors?.password);

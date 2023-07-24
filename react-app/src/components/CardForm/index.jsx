@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CardForm.css";
 
 export default function CardForm({
@@ -10,6 +10,8 @@ export default function CardForm({
 }) {
   const [answer, setAnswer] = useState(card.answer);
   const [question, setQuestion] = useState(card.question);
+  const [answerTooLong, setAnwerTooLong] = useState(null);
+  const [questionTooLong, setQuestionTooLong] = useState(null);
 
   const cardChanger = (psudeoId, answer, question) => {
     setCards((state) =>
@@ -46,6 +48,14 @@ export default function CardForm({
     });
   };
 
+  useEffect(() => {
+    if (answer.length > 225) setAnwerTooLong(true);
+    else setAnwerTooLong(null);
+
+    if (question.length > 225) setQuestionTooLong(true);
+    else setQuestionTooLong(null);
+  }, [answer, question]);
+
   return (
     <div className="CardForm">
       <div className="CardForm-header">
@@ -64,7 +74,15 @@ export default function CardForm({
             onChange={questionChanger}
             className={`CardForm-inputs ${error}`}
           />
-          <div className="CardForm-inputs-labels">TERM</div>
+          <div
+            className={`CardForm-inputs-labels ${
+              questionTooLong ? "SetForm-length-error" : ""
+            }`}
+          >
+            {questionTooLong
+              ? "Question too long, must be less than 225 characters"
+              : "TERM"}
+          </div>
         </div>
         <div>
           <input
@@ -74,7 +92,15 @@ export default function CardForm({
             onChange={answerChanger}
             className={`CardForm-inputs ${error}`}
           />
-          <div className="CardForm-inputs-labels">DEFINITION</div>
+          <div
+            className={`CardForm-inputs-labels ${
+              answerTooLong ? "SetForm-length-error" : ""
+            }`}
+          >
+            {answerTooLong
+              ? "Answer too long, must be less than 225 character"
+              : "DEFINITION"}
+          </div>
         </div>
       </div>
     </div>

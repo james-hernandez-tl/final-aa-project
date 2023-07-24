@@ -1,6 +1,4 @@
-import { useDispatch } from "react-redux";
 import useSession from "../../hooks/useSession";
-import { authenticate } from "../../store/session";
 import { useEffect } from "react";
 import Scrollable from "../Scrollable";
 import { useNavigate } from "react-router-dom";
@@ -9,12 +7,7 @@ import "./YourSets.css";
 
 export default function YourSets() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const user = useSession();
-
-  useEffect(() => {
-    dispatch(authenticate());
-  }, [dispatch]);
 
   useEffect(() => {
     if (!user) {

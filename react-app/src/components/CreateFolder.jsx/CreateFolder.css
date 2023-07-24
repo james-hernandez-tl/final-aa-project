@@ -49,3 +49,7 @@
 .Required::placeholder {
   color: red;
 }
+
+.CreateFolder-toolong {
+  color: red;
+}

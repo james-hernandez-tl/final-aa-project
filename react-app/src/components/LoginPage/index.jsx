@@ -35,7 +35,6 @@ export default function LoginPage() {
   };
 
   useEffect(() => {
-    console.log("user", user);
     if (user) {
       navigate(state);
     }
@@ -74,8 +73,18 @@ export default function LoginPage() {
             Log In
           </button>
         </div>
-        <div className="LoginPage-signupbtn" onClick={signupClicker}>
-          dont have an account? sign up instead
+        <div className="LoginPage-signupbtn">
+          dont have an account?
+          <div onClick={signupClicker}>sign up instead</div>
+          or try as a
+          <div
+            onClick={async () => {
+              await dispatch(login("Demo", "password"));
+              navigate(state);
+            }}
+          >
+            Demo user!
+          </div>
         </div>
       </div>
     </div>

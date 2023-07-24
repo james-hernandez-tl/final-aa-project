@@ -80,7 +80,12 @@
 
 .LoginPage-signupbtn {
   position: absolute;
-  bottom: -20px;
+  display: flex;
+  bottom: -30px;
   right: 10px;
+}
+
+.LoginPage-signupbtn > div {
   text-decoration: underline;
+  display: flex;
 }

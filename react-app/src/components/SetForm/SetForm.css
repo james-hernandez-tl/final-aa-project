@@ -63,3 +63,7 @@
 .Required::placeholder {
   color: red;
 }
+
+.SetForm-length-error {
+  color: red;
+}

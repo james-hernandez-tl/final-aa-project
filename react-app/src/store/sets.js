@@ -64,7 +64,6 @@ export const createSetThunk = (set, cards) => async (dispatch) => {
 
   if (response.ok) {
     let set = await response.json();
-    console.log("set created", set);
     let updatedSet = await qFetch("/api/cards/", {
       method: "POST",
       body: JSON.stringify({
@@ -74,9 +73,8 @@ export const createSetThunk = (set, cards) => async (dispatch) => {
 
     if (updatedSet.ok) {
       updatedSet = await updatedSet.json();
-      console.log("updatedSet", updatedSet);
-      dispatch(createSetAction(updatedSet));
-      dispatch(
+      await dispatch(createSetAction(updatedSet));
+      await dispatch(
         addUserSet({ ...updatedSet, NumCards: updatedSet.Cards.length })
       );
     }
@@ -102,7 +100,6 @@ export const editSetThunk = (set) => async (dispatch) => {
 
   if (response.ok) {
     let data = await response.json();
-    console.log("edited set", data);
     dispatch(editSetAction(data));
     dispatch(editUserSet({ ...data, NumCards: data.Cards.length }));
   }

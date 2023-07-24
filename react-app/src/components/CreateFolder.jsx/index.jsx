@@ -16,6 +16,8 @@ export default function CreateFolder({ folder }) {
   const [description, setDescription] = useState(
     folder ? folder.description : ""
   );
+  const [nameTooLong, setNameTooLong] = useState(null);
+  const [desTooLong, setDesTooLong] = useState(null);
 
   const { closeModal } = useModal();
 
@@ -24,12 +26,22 @@ export default function CreateFolder({ folder }) {
       setError("Required");
       return;
     }
+
+    if (name.length > 20) {
+      setNameTooLong("Name must be less than 20 characters");
+    }
+
+    if (description.length > 100) {
+      setDesTooLong("Description must be less than 100 character");
+    }
+
+    if (name.length > 20 || description.length > 100) return;
+
     closeModal();
     if (!folder) {
       const newFolder = await dispatch(
         createFolder({ name, description, userId: user.id })
       );
-      console.log("newFolder", newFolder);
       navigate(`/folders/${newFolder.id}`);
     } else {
       dispatch(
@@ -64,18 +76,24 @@ export default function CreateFolder({ folder }) {
         <input
           type="text"
           placeholder={error ?? "Enter a tilte"}
-          value={name}
+          value={nameTooLong ?? name}
           onChange={(e) => setName(e.target.value)}
-          className={`CreateFolder-input-title ${error}`}
+          className={`CreateFolder-input-title ${error} ${
+            nameTooLong ? "CreateFolder-toolong" : ""
+          }`}
+          onClick={() => setNameTooLong(null)}
         />
       </div>
       <div>
         <input
           type="text"
           placeholder={error ?? "Enter a description"}
-          value={description}
+          value={desTooLong ?? description}
           onChange={(e) => setDescription(e.target.value)}
-          className={`CreateFolder-input-description ${error}`}
+          className={`CreateFolder-input-description ${error} ${
+            desTooLong ? "CreateFolder-toolong" : ""
+          }`}
+          onClick={() => setDesTooLong(null)}
         />
       </div>
       <div className="CreateFolder-button-wrapper">

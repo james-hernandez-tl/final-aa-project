@@ -17,6 +17,8 @@ export default function SetForm({ set }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentUser = useSession();
+  const [nameTooLong, setNameTooLong] = useState(null);
+  const [desTooLong, setDesTooLong] = useState(null);
   const [error, setError] = useState(null);
   const [deletedCards, setDeletedCards] = useState([]);
   const [name, setName] = useState(set ? set.name : "");
@@ -41,10 +43,16 @@ export default function SetForm({ set }) {
     addCardClicker();
     return null;
   }
-  console.log("cards", cards);
 
   const createClicker = async (isDraft) => {
-    console.log(deletedCards);
+    if (name.length > 15) {
+      setNameTooLong("Set names must be less than 15 characters");
+    }
+
+    if (description.length > 100) {
+      setDesTooLong("Description must be less than 100 characters");
+    }
+
     const cardError = cards.find((ele, index) => {
       let questionBlank = !ele.question && ele.answer;
       let answerBlank = ele.question && !ele.answer;
@@ -57,14 +65,19 @@ export default function SetForm({ set }) {
       if (index >= 2 && (questionBlank || answerBlank)) {
         return true;
       }
+      if (ele.question.length > 225 || ele.answer.length > 225) {
+        return true;
+      }
 
       return false;
     });
 
-    console.log("found", cardError);
-
     if (!name || !description || cardError) {
       setError("Required");
+      return;
+    }
+
+    if (name.length > 15 || description.length > 100) {
       return;
     }
 
@@ -109,9 +122,12 @@ export default function SetForm({ set }) {
         <input
           type="text"
           placeholder={error ?? `Example: 'History Section 10 '`}
-          value={name}
+          value={nameTooLong ?? name}
           onChange={(e) => setName(e.target.value)}
-          className={`SetForm-inputs ${error}`}
+          className={`SetForm-inputs ${error} ${
+            nameTooLong ? "SetForm-length-error" : ""
+          }`}
+          onClick={() => setNameTooLong(null)}
         />
         <div className="SetForm-input-lables">TITLE</div>
       </div>
@@ -119,9 +135,12 @@ export default function SetForm({ set }) {
         <input
           type="text"
           placeholder={error ?? "Description"}
-          value={description}
+          value={desTooLong ?? description}
           onChange={(e) => setDescription(e.target.value)}
-          className={`SetForm-inputs ${error}`}
+          className={`SetForm-inputs ${error} ${
+            desTooLong ? "SetForm-length-error" : ""
+          }`}
+          onClick={() => setDesTooLong(null)}
         />
         <div className="SetForm-input-lables">DESCRIPTION</div>
       </div>

@@ -42,31 +42,31 @@ export default function Profile({ sessionUser }) {
       </Menu>
 
       <NavLink
-        exact
+        exact={"true"}
         to={"/"}
         className="Navlink-unactive"
-        activeClassName="active"
+        activeclassname="active"
       >
         KnowVerse
       </NavLink>
       <NavLink
         to={"/sets"}
         className="Navlink-unactive"
-        activeClassName="active"
+        activeclassname="active"
       >
         Sets
       </NavLink>
       <NavLink
         to={"/folders"}
         className="Navlink-unactive"
-        activeClassName="active"
+        activeclassname="active"
       >
         Folders
       </NavLink>
       <NavLink
         to={"/groups"}
         className="Navlink-unactive"
-        activeClassName="active"
+        activeclassname="active"
       >
         Groups
       </NavLink>
