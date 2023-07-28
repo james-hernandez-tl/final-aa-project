@@ -36,6 +36,15 @@ check out [KnowVerse](https://knowverse.onrender.com)
 ## Amazon Web Services S3
    * For setting up your AWS refer to this [guide](https://github.com/jdrichardsappacad/aws-s3-pern-demo)
 
+
+## Home Page
+
+https://github.com/ihavenoide/final-aa-project/assets/104161335/68ccc353-a780-4072-a015-e5853ace5c14
+
+
+
+
+
 ## Features
 ### Sets
    * Users can create a set
