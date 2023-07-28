@@ -39,10 +39,15 @@ check out [KnowVerse](https://knowverse.onrender.com)
 
 ## Home Page
 
-https://github.com/ihavenoide/final-aa-project/assets/104161335/68ccc353-a780-4072-a015-e5853ace5c14
+https://github.com/ihavenoide/final-aa-project/assets/104161335/cb8d39cc-5cbc-467d-98b7-be4fa8c6b668
 
+## Sets
 
+https://github.com/ihavenoide/final-aa-project/assets/104161335/e3bdcef6-61c2-49e5-a0a7-cc791b513f99
 
+## Folders
+
+https://github.com/ihavenoide/final-aa-project/assets/104161335/0418f2e7-20ab-4cd3-a888-8f6ade2b9d44
 
 
 ## Features
