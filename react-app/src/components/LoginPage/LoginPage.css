@@ -88,4 +88,5 @@
 .LoginPage-signupbtn > div {
   text-decoration: underline;
   display: flex;
+  cursor: pointer;
 }

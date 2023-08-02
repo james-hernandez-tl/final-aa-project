@@ -46,7 +46,7 @@ export default function FolderSingleView() {
           ? folder.Sets.map((item) => (
               <YourItemLayout isSet={true} item={item} key={item.id} />
             ))
-          : "you dont have any Sets in this folder"}
+          : "You dont have any sets in this folder"}
       </div>
     </div>
   );

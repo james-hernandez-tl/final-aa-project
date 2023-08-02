@@ -8,13 +8,10 @@ card_routes = Blueprint('cards', __name__)
 @card_routes.route("/",methods = ["POST"])
 @login_required
 def createCard():
-    print("[request.json]",request.json)
+
     for card in request.json["cards"]:
-        print("[card]",card)
+
         form = cardForm(question = card["question"],answer = card["answer"], setId = card["setId"])
-        # form["question"] = card["question"]
-        # form["answer"] = card["answer"]
-        # form["setId"] = card["setId"]
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
