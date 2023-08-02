@@ -17,9 +17,9 @@ check out [KnowVerse](https://knowverse.onrender.com)
 1. Clone this repository: https://github.com/ihavenoide/final-aa-project.git
 2. Install denpendencies into the Backed and the Frontend by making a terminal for each one and then run the following:
    * backend (In base of directory):
-       * > Pipenv install
+       * ` Pipenv install `
    * frontend :
-       * > npm install
+       * ` npm install `
 3. Create a .env file using the .envexample provided
 
 4. Set up your database with information from your .env and then run the following to create your database, migrate, and seed (base directory):
