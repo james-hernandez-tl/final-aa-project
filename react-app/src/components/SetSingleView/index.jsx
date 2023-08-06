@@ -9,6 +9,7 @@ import { useRef } from "react";
 import { useMenu } from "../Menu";
 import { Menu, MenuItem } from "../Menu";
 import AddSetToFolder from "../AddSetToFolder";
+import RatingForm from "../RatingForm";
 import { useModal } from "../../context/Modal";
 import "./SetSingleView.css";
 
@@ -65,12 +66,29 @@ export default function SetSingleView() {
   return (
     <div className="SetSingleView">
       <div className="SetSingleView-title">{set.name}</div>
-      <div className="SetSingleView-rating">
+      <div
+        className="SetSingleView-rating"
+        onClick={() => {
+          setModalContent(
+            <RatingForm
+              rating={set.UserRating[0]}
+              setId={set.id}
+              ratingId={set.UserRating[1]}
+            />
+          );
+        }}
+      >
         <div className="SetSingleView-rating-star">
           <i className="fa-regular fa-star"></i>
         </div>
         <div className="SetSingleView-rating-score">{set.Rating}</div>
-        <div>({set.NumRatings} reviews)</div>
+        <div>
+          (
+          {set.NumRatings === 1
+            ? `${set.NumRatings} Review`
+            : `${set.NumRatings} Reviews`}
+          )
+        </div>
       </div>
       <div className="SetSingleView-slider" ref={sliderRef}>
         {set.Cards.map((card) => (
@@ -97,13 +115,13 @@ export default function SetSingleView() {
         ))}
       </div>
       <div className="setSingleView-slider-controls">
-        <div onClick={prevClicker}>
+        <div className="setSingleView-arrow-holders" onClick={prevClicker}>
           <i className="fa-solid fa-arrow-left"></i>
         </div>
         <div className="setSingleView-slider-controls-NumSets">
           {numQuestion}/{set.Cards.length}
         </div>
-        <div onClick={nextClicker}>
+        <div className="setSingleView-arrow-holders1" onClick={nextClicker}>
           <i className="fa-solid fa-arrow-right"></i>
         </div>
       </div>

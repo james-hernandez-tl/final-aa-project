@@ -10,6 +10,7 @@ from .api.auth_routes import auth_routes
 from .api.set_routes import set_routes
 from .api.card_route import card_routes
 from .api.folder_routes import folder_routes
+from .api.rating_routes import rating_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -35,6 +36,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(set_routes, url_prefix="/api/sets")
 app.register_blueprint(card_routes, url_prefix="/api/cards")
 app.register_blueprint(folder_routes, url_prefix="/api/folders")
+app.register_blueprint(rating_routes, url_prefix="/api/ratings")
 db.init_app(app)
 Migrate(app, db)
 

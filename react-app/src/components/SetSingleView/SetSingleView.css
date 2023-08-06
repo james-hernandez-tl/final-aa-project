@@ -4,13 +4,21 @@
 
 .SetSingleView-title {
   font-size: 30px;
-  margin: 20px 0 15px 0;
+  margin: 20px 0 5px 0;
 }
 
 .SetSingleView-rating {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  padding: 20px 1px;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.SetSingleView-rating:hover {
+  background-color: rgba(255, 255, 255, 20%);
+  cursor: pointer;
 }
 
 .SetSingleView-rating-star {
@@ -95,4 +103,36 @@
 
 .fa-lightbulb {
   margin-left: 5px;
+}
+
+.fa-arrow-right {
+  cursor: pointer;
+}
+
+.setSingleView-arrow-holders {
+  border-radius: 50%;
+  border: 1px white solid;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setSingleView-arrow-holders:hover {
+  background-color: rgba(255, 255, 255, 15%);
+  cursor: pointer;
+}
+
+.setSingleView-arrow-holders1 {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-ellipsis {
+  cursor: pointer;
 }

@@ -153,6 +153,30 @@ export const deleteCardsThunk = (cards) => async (dispatch) => {
   }
 };
 
+export const createRating = (rating) => async (dispatch) => {
+  let newRating = await qFetch("/api/ratings/", {
+    method: "POST",
+    body: JSON.stringify(rating),
+  });
+
+  if (newRating.ok) {
+    let data = await newRating.json();
+    dispatch(editSetAction(data));
+  }
+};
+
+export const editRating = (rating) => async (dispatch) => {
+  let newRating = await qFetch("/api/ratings/", {
+    method: "PUT",
+    body: JSON.stringify(rating),
+  });
+
+  if (newRating.ok) {
+    let data = await newRating.json();
+    dispatch(editSetAction(data));
+  }
+};
+
 //reducer
 const initialState = { allSets: null, recommened: null, singleSet: null };
 

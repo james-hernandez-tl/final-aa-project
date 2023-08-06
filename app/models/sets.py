@@ -2,6 +2,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy import UniqueConstraint
 from .set_folder import set_folders
 from functools import reduce
+from flask_login import login_required, current_user
+from .ratings import Rating
 
 class Set(db.Model):
     __tablename__ = "sets"
@@ -30,16 +32,32 @@ class Set(db.Model):
 
     UniqueConstraint("name","userId", name="idx_name_userId")
 
+
+
+
+
     def to_dict(self):
+        def userRating():
+             if not current_user: return [0,False]
+
+             rating = Rating.query.filter( Rating.setId == self.id, Rating.userId == current_user.id).first()
+
+             if not rating: return [0,False]
+
+             return [rating.rating,rating.id]
+
+
+
         return {
             "id":self.id,
             "name":self.name,
             "description":self.description,
             "userId":self.userId,
             "Cards":[card.to_dict() for card in self.setOfCards],
-            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0),
+            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0)/len(self.setRating) if len(self.setRating) > 0 else 1,
             "NumRatings":len(self.setRating),
-            "User":self.user.to_dict()
+            "User":self.user.to_dict(),
+            "UserRating": userRating()
         }
 
 

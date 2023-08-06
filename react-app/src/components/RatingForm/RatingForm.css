@@ -1,0 +1,36 @@
+.RatingForm-title {
+  font-size: 30px;
+  margin: 20px 0;
+  padding-right: 200px;
+}
+
+.RatingForm-divider {
+  width: 100%;
+  height: 2px;
+  background-color: lightgray;
+  margin: 10px 0;
+}
+
+.RatingForm-stars {
+  margin: 2.5px 0;
+}
+
+.RatingForm-stars > i {
+  font-size: 20px;
+  margin: 0 0 30px;
+  padding: 0 5px;
+}
+
+.RatingForm-btn-wrapper > button {
+  padding: 7px 15px;
+  background-color: #414867;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.RatingForm-btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}

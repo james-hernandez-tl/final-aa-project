@@ -27,8 +27,6 @@ def create_a_set():
     form = setForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print("[inside create a set route]")
-
     if form.validate_on_submit():
         data = form.data
 
@@ -42,8 +40,7 @@ def create_a_set():
         db.session.add(newSet)
         db.session.commit()
         return newSet.to_dict(), 200
-    print("[form.errors]",form.errors)
-    return {"errors":form.errors}, 404
+    return {"errors":form.errors}, 401
 
 
 @set_routes.route("/<int:setId>")
@@ -51,7 +48,7 @@ def getOneSet(setId):
     set = Set.query.get(setId)
     if set:
         return set.to_dict(), 200
-    return {"errors":"set does not exist"}, 404
+    return {"errors":"set does not exist"}, 401
 
 
 @set_routes.route("/<int:setId>",methods = ["PUT"])
@@ -78,7 +75,7 @@ def editSet(setId):
         db.session.commit()
         return set.to_dict(), 200
     print("[form errors]",form.errors)
-    return {"errors":form.errors}, 404
+    return {"errors":form.errors}, 401
 
 
 @set_routes.route("/<int:setId>",methods = ["DELETE"])
@@ -86,7 +83,7 @@ def deleteSet(setId):
     set = Set.query.get(setId)
 
     if (not set):
-        return {"errors":"set does not exist"}, 404
+        return {"errors":"set does not exist"}, 401
 
     db.session.delete(set)
     db.session.commit()
