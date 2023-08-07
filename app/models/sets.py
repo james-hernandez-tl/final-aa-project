@@ -38,7 +38,8 @@ class Set(db.Model):
 
     def to_dict(self):
         def userRating():
-             if not current_user: return [0,False]
+
+             if not current_user.is_authenticated: return [0,False]
 
              rating = Rating.query.filter( Rating.setId == self.id, Rating.userId == current_user.id).first()
 
@@ -54,7 +55,7 @@ class Set(db.Model):
             "description":self.description,
             "userId":self.userId,
             "Cards":[card.to_dict() for card in self.setOfCards],
-            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0)/len(self.setRating) if len(self.setRating) > 0 else 1,
+            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0)/(len(self.setRating) if len(self.setRating) > 0 else 1),
             "NumRatings":len(self.setRating),
             "User":self.user.to_dict(),
             "UserRating": userRating()

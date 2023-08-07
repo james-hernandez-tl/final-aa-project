@@ -22,7 +22,7 @@ export default function Home() {
 
   if (!allSets || !recommened) return null;
   allSets = Object.values(allSets);
-  recommened = Object.values(recommened);
+  recommened = Object.values(recommened).sort((a, b) => b.Rating - a.Rating);
   return (
     <div className="Home">
       <div className="Home-achievements">Achievements</div>

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
-import SetForm from "./components/SetForm";
 import SetSingleView from "./components/SetSingleView";
 import SetFormDecider from "./components/SetFormDecider";
 import YourSets from "./components/YourSets";
 import YourFolders from "./components/YourFolders";
 import FolderSingleView from "./components/FolderSingleView";
 import SignUpPage from "./components/SignUpPage";
+import Search from "./components/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +39,7 @@ function App() {
           />
           <Route path="/groups" element={<div>Groups comming soon</div>} />
           <Route path="/SignUp" exact element={<SignUpPage />} />
+          <Route path="/Search" exact element={<Search />} />
         </Routes>
       )}
     </>

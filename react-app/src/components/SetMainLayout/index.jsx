@@ -2,13 +2,20 @@ import "./SetMainLayout.css";
 import Avatar from "../Avatar";
 import { useNavigate } from "react-router-dom";
 
-export default function SetMainLayout({ set, inSearch }) {
+export default function SetMainLayout({ set, inSearch, setPreviewSet }) {
   const navigate = useNavigate();
   const setClicker = () => {
     navigate(`/sets/${set.id}`);
   };
   return (
     <div className="SetMainLayout" onClick={setClicker}>
+      {inSearch && (
+        <div>
+          <button className="SetMainLayout-studiers">
+            10 studiers recently
+          </button>
+        </div>
+      )}
       <div className="SetMainLayout-name">{set.name}</div>
       <div className="SetMainLayout-addons">
         <div>{Object.values(set.Cards).length} cards</div>
@@ -23,8 +30,17 @@ export default function SetMainLayout({ set, inSearch }) {
         </div>
         <div className="SetMainLayout-footer-username">{set.User.username}</div>
         {inSearch && (
-          <div>
-            <button>preview</button>
+          <div className="SetMainLayout-preview-wrapper">
+            <button
+              className="SetMainLayout-preview"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setPreviewSet(set);
+              }}
+            >
+              Preview
+            </button>
           </div>
         )}
       </div>

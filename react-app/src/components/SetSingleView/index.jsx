@@ -121,7 +121,7 @@ export default function SetSingleView() {
         <div className="setSingleView-slider-controls-NumSets">
           {numQuestion}/{set.Cards.length}
         </div>
-        <div className="setSingleView-arrow-holders1" onClick={nextClicker}>
+        <div className="setSingleView-arrow-holders" onClick={nextClicker}>
           <i className="fa-solid fa-arrow-right"></i>
         </div>
       </div>

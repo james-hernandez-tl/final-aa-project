@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, Flask, request
 from flask_login import login_required, current_user
 from app.models import Set,db
 from app.forms import setForm
+from sqlalchemy import or_
 
 
 set_routes = Blueprint('sets', __name__)
@@ -14,11 +15,21 @@ def getAllSets():
         allSets = Set.query.filter(Set.name.like(f"{search}%")).all()
     else:
         allSets = Set.query.all()
+    dictSets = [aset.to_dict() for aset in allSets]
+    userId = current_user.id if current_user.is_authenticated else 0
+    recommend = list(filter(lambda x: x["userId"] != userId ,dictSets))
+    recommend =sorted(recommend, key=lambda x: x['Rating'], reverse=True)[:15]
+    obj = {"allSets":dictSets[:15],"recommended":recommend}
+    return obj , 200
+
+@set_routes.route('/search')
+def getSearchSets():
+    search = request.args.to_dict().get("search")
+
+    allSets = Set.query.filter(or_(Set.name.like(f"{search}%"), Set.description.like(f"{search}%"))).all()
 
     dictSets = [aset.to_dict() for aset in allSets]
-    recommend = sorted(dictSets,key = lambda x: x["Rating"], reverse=True)[:10]
-    obj = {"allSets":dictSets,"recommended":recommend}
-    return obj , 200
+    return {"allSets":dictSets[:10]}, 200
 
 
 @set_routes.route("/",methods=["POST"])
@@ -55,18 +66,18 @@ def getOneSet(setId):
 @login_required
 def editSet(setId):
     set = Set.query.get(setId)
-    print("[inside edit set]")
+
 
     if not set:
         return {"errors":"set does not exist"}
-    print("[passed set exist]")
+
 
     form = setForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         data = form.data
-        print("[form]",form.data["draft"])
+
         set.name=data["name"]
         set.description=data["description"]
         set.draft=data.get("draft",False)
@@ -74,7 +85,7 @@ def editSet(setId):
 
         db.session.commit()
         return set.to_dict(), 200
-    print("[form errors]",form.errors)
+
     return {"errors":form.errors}, 401
 
 

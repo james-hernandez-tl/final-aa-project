@@ -27,7 +27,7 @@ def createCard():
 
             db.session.add(newCard)
         else:
-            print("[card errors]",form.errors)
+
             return {"errors":form.errors,"card":form.data}, 404
     db.session.commit()
     set = Set.query.get(setId)
@@ -37,7 +37,7 @@ def createCard():
 @card_routes.route("/",methods = ["DELETE"])
 @login_required
 def deleteCard():
-    print("[insdie dlete card route]")
+
     for cardId in request.json["cards"]:
         deletedCard = Card.query.get(cardId)
 
