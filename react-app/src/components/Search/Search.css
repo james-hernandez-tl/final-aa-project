@@ -7,6 +7,9 @@
   display: flex;
 }
 
+.Search-sets {
+  width: 372px;
+}
 .Search-results {
   font-size: 25px;
   margin: 20px 0 20px;
@@ -38,6 +41,11 @@
   border-radius: 5px;
   padding: 7px 10px;
   border: white 1px solid;
+}
+
+.SetMainLayout-preview:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 2%);
 }
 
 .SetMainLayout-preview-wrapper {
@@ -111,6 +119,10 @@
   color: white;
 }
 
+.Search-prebiew-body-study > button:hover {
+  cursor: pointer;
+}
+
 .Search-prebiew-body-header {
   display: flex;
   align-items: center;
@@ -120,9 +132,11 @@
 
 .Search-preview-body-answer {
   color: #d9dde8;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 15px;
 }
 
 .Search-preview-body-question {
   margin-bottom: 10px;
+  font-weight: 600;
 }

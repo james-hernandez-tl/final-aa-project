@@ -26,7 +26,7 @@ def getAllSets():
 def getSearchSets():
     search = request.args.to_dict().get("search")
 
-    allSets = Set.query.filter(or_(Set.name.like(f"{search}%"), Set.description.like(f"{search}%"))).all()
+    allSets = Set.query.filter(or_(Set.name.like(f"%{search}%"), Set.description.like(f"{search}%"))).all()
 
     dictSets = [aset.to_dict() for aset in allSets]
     return {"allSets":dictSets[:10]}, 200

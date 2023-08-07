@@ -8,12 +8,20 @@ const ONE_SET = "sets/oneSet";
 const CREATE_SET = "sets/createSet";
 const EDIT_SET = "sets/editSet";
 const DELETE_SET = "sets/deleteSet";
+const SEARCH_SETS = "sets/searchSets";
 
 //ACTION
 
 const allSetsAction = (allSets) => {
   return {
     type: ALL_SETS,
+    payload: allSets,
+  };
+};
+
+const searchSetsAction = (allSets) => {
+  return {
+    type: SEARCH_SETS,
     payload: allSets,
   };
 };
@@ -53,6 +61,15 @@ export const allSetThunk = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(allSetsAction(data));
+  }
+};
+
+export const searchSets = (query) => async (dispatch) => {
+  const response = await qFetch(`/api/sets/search${query}`);
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(searchSetsAction(data));
   }
 };
 
@@ -197,6 +214,11 @@ export default function reducer(state = initialState, action) {
       return {
         allSets: normalizer(action.payload.allSets),
         recommened: normalizer(action.payload.recommended),
+      };
+    case SEARCH_SETS:
+      return {
+        ...state,
+        allSets: normalizer(action.payload.allSets),
       };
     case CREATE_SET:
       return {
