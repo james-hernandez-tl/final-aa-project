@@ -41,7 +41,8 @@
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
-  background-color: #a1a5b5;
+  /* background-color: #a1a5b5; */
+  background-color: #414867;
   color: white;
   font-size: 15px;
 }

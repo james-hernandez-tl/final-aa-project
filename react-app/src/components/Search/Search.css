@@ -41,6 +41,7 @@
   border-radius: 5px;
   padding: 7px 10px;
   border: white 1px solid;
+  position: relative;
 }
 
 .SetMainLayout-preview:hover {
@@ -82,7 +83,9 @@
 
 .Search-sets-title {
   font-size: 25px;
-  margin: 10px 0;
+  margin: 10px 0 30px;
+  min-width: 372px;
+  position: relative;
 }
 
 .Search-prebiew-body {

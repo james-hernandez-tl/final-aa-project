@@ -1,5 +1,7 @@
 .Home {
   padding: 20px 40px;
+  max-width: 1409px;
+  margin: auto;
 }
 
 .Home-achievements {

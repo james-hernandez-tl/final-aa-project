@@ -38,7 +38,12 @@ function App() {
             exact
             element={<FolderSingleView />}
           />
-          <Route path="/groups" element={<div>Groups comming soon</div>} />
+          <Route
+            path="/groups"
+            element={
+              <div style={{ minHeight: "100vh" }}>Groups comming soon</div>
+            }
+          />
           <Route path="/SignUp" exact element={<SignUpPage />} />
           <Route path="/Search" exact element={<Search />} />
         </Routes>

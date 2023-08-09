@@ -1,6 +1,8 @@
 .SetForm {
   padding: 10px 200px;
   width: 1009px;
+  min-height: 100vh;
+  margin: auto;
 }
 
 .SetForm-header {
@@ -42,7 +44,8 @@
 
 .SetForm-CreateCard,
 .SetForm-EditCard {
-  background-color: #a1a5b5;
+  /* background-color: #a1a5b5; */
+  background-color: #414867;
   color: white;
   font-size: 18px;
   padding: 10px 15px;

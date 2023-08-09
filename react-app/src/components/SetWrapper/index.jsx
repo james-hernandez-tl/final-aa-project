@@ -18,7 +18,7 @@ export default function SetWrapper({ allSets, color = "#586380" }) {
       containerRef.current.clientWidth;
 
     if (remainder < 1) {
-      console.log("idk");
+      console.log("maybe swap to search page but with all sets?");
     }
   };
 
@@ -28,7 +28,6 @@ export default function SetWrapper({ allSets, color = "#586380" }) {
       left: -scrollDistance,
       behavior: "smooth",
     });
-    console.log(containerRef.current);
   };
   return (
     <div className="SetWrapper" style={{ background: color }}>

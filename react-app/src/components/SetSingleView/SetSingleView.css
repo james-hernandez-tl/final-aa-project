@@ -1,5 +1,7 @@
 .SetSingleView {
   padding: 10px 200px;
+  max-width: 1409px;
+  margin: auto;
 }
 
 .SetSingleView-title {

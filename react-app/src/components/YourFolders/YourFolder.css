@@ -1,5 +1,6 @@
 .YourFolders {
   padding: 10px 150px;
+  min-height: 100vh;
 }
 
 .YourFolders-header {

@@ -22,7 +22,9 @@ export default function Home() {
 
   if (!allSets || !recommened) return null;
   allSets = Object.values(allSets);
-  recommened = Object.values(recommened).sort((a, b) => b.Rating - a.Rating);
+  recommened = Object.values(recommened).sort(
+    (a, b) => b.Rating * b.NumRatings - a.Rating * a.NumRatings
+  );
   return (
     <div className="Home">
       <div className="Home-achievements">Achievements</div>
@@ -38,7 +40,7 @@ export default function Home() {
           </div>
         )}
       </div>
-      <SetWrapper allSets={allSets} />
+      <SetWrapper allSets={allSets} color="#25284A" />
       <div className="Home-achievements">Recommended</div>
       <SetWrapper allSets={recommened} color="#25284A" />
     </div>
