@@ -10,7 +10,7 @@ def seed_users():
         username='james', email='james@aa.io', password='password', image="https://i.imgur.com/Ni48C6r.jpeg")
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
-    user3 =User(username='Demo', email='demo@aa.io', password='password'),
+    user3 =User(username='Demo2', email='demo2@aa.io', password='password'),
     user4 =User(username='JohnDoe', email='john.doe@example.com', password='securepassword'),
     user5 =User(username='JaneSmith', email='jane.smith@example.com', password='strongpassword'),
     user6 = User(username='MikeJohnson', email='mike.johnson@example.com', password='mysecretpass'),
