@@ -12,6 +12,7 @@ import YourFolders from "./components/YourFolders";
 import FolderSingleView from "./components/FolderSingleView";
 import SignUpPage from "./components/SignUpPage";
 import Search from "./components/Search";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/Search" exact element={<Search />} />
         </Routes>
       )}
+      {isLoaded && <Footer />}
     </>
   );
 }

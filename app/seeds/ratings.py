@@ -1,13 +1,31 @@
 from app.models import db, Rating, environment, SCHEMA
 from sqlalchemy.sql import text
+from random import random
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_ratings():
-    rating1 = Rating(
-        userId=1, setId=1, rating=5)
+    def generate_ratings():
+        ratings = []
 
-    db.session.add(rating1)
+        userId = 1
+        setId = 1
+
+        for _ in range(650):  # 13 users * 50 sets = 650 ratings
+            rating = random.randint(1, 5)
+            ratings.append(Rating(userId=userId, setId=setId, rating=rating))
+
+            userId += 1
+            if userId > 13:
+               userId = 1
+               setId += 1
+
+        return ratings
+
+# Generating the ratings
+    ratings = generate_ratings()
+
+    [db.session.add(arating) for arating in ratings]
     db.session.commit()
 
 

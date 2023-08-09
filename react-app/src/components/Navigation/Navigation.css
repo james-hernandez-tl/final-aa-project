@@ -5,10 +5,6 @@
 .hidden {
   display: none;
 }
-.search {
-  color: white;
-  padding: 5px 10px;
-}
 
 a {
   color: white;
@@ -50,15 +46,41 @@ a {
   display: flex;
   align-items: center;
   background-color: #586380;
-  border-radius: 5px;
+  border-radius: 2rem;
+  width: 35px;
+  padding: 0px;
+  overflow-x: hidden;
+  transition: width 1500ms;
+}
+
+.Nav-search:hover {
+  width: 250px;
+  border-radius: 20px;
+}
+
+.search {
+  color: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  margin: none;
 }
 
 .Nav-search > input {
   height: 15px;
-  width: 200px;
+  width: 0;
+  display: block;
   background-color: #586380;
   color: white;
   border: none;
+  /* transition: width 300ms; */
+}
+
+.Nav-search:hover > input {
+  display: block;
+  width: 200px;
+  margin-left: 5px;
 }
 
 .Nav-search > input:focus {

@@ -9,7 +9,7 @@ export default function NavSearch({ placeholder, cb, setUserSearch }) {
         placeholder={placeholder}
         onChange={(e) => setUserSearch(e.target.value)}
         onKeyPress={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && cb) {
             cb();
           }
         }}

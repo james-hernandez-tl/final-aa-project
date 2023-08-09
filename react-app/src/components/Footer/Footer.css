@@ -1,0 +1,9 @@
+.Footer {
+  padding: 30px 30px 30px;
+  border-top: 1px white solid;
+  margin-top: 50px;
+}
+
+.Footer-icon-wrapper > a {
+  margin-right: 5px;
+}
