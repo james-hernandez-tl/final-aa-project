@@ -38,7 +38,7 @@ def seed_sets():
    sets.append(Set(name='Birds of Prey', description='Learn about powerful raptors and their hunting techniques.', userId=12))
    sets.append(Set(name='Songbirds', description='Explore melodious songbirds and their beautiful vocalizations.', userId=13))
    sets.append(Set(name='Waterfowl', description='Discover ducks, geese, and swans that inhabit wetlands.', userId=1))
-   sets.append(Set(name='Tropical Birds', description='Dive into the vibrant world of exotic birds from tropical regions.', userId=2, default = True))
+   sets.append(Set(name='Tropical Birds', description='Dive into the vibrant world of exotic birds from tropical regions.', userId=2, draft = True))
    sets.append(Set(name='Flightless Birds', description='Study birds that have adapted to a flightless lifestyle.', userId=3))
    sets.append(Set(name='Migratory Birds', description='Learn about birds that undertake incredible seasonal migrations.', userId=4))
    sets.append(Set(name='Bird Anatomy', description='Explore the various parts of a bird and their functions.', userId=5))
