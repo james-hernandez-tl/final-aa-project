@@ -15,7 +15,7 @@ def seed_users():
     user5 =User(username='JaneSmith', email='jane.smith@example.com', password='strongpassword'),
     user6 = User(username='MikeJohnson', email='mike.johnson@example.com', password='mysecretpass'),
     user7 = User(username='EmilyBrown', email='emily.brown@example.com', password='safepassword123'),
-    user8 = User(uusersername='RobertWilliams', email='robert.williams@example.com', password='mycoolpassword'),
+    user8 = User(username='RobertWilliams', email='robert.williams@example.com', password='mycoolpassword'),
     user9 = User(username='SarahLee', email='sarah.lee@example.com', password='pass1234'),
     user10 = User(username='ChrisTaylor', email='chris.taylor@example.com', password='mysecurepass'),
     user11 = User(username='JenniferDavis', email='jennifer.davis@example.com', password='myp@ssword'),
