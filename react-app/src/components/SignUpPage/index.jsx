@@ -116,10 +116,15 @@ export default function SignUpPage() {
         <div className={`SignUpPage-input-wrapper ${confirmPasswordError}`}>
           <input
             type="text"
-            value={confirmPassword}
+            value={
+              confirmPasswordError ? "doesn't match password" : confirmPassword
+            }
             onChange={(e) => {
               setConfirmPassword(e.target.value);
-              setConfirmPasswordError(null);
+              if (confirmPasswordError) setConfirmPasswordError(null);
+            }}
+            onClick={() => {
+              if (confirmPasswordError) setConfirmPasswordError(null);
             }}
             className={`SignUpPage-inputs ${required}`}
             placeholder={required ?? "confirm password"}
