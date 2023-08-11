@@ -12,7 +12,7 @@ class Set(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(100),nullable=False)
     draft = db.Column(db.Boolean, default = False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
@@ -55,7 +55,7 @@ class Set(db.Model):
             "description":self.description,
             "userId":self.userId,
             "Cards":[card.to_dict() for card in self.setOfCards],
-            "Rating":reduce(lambda a,b:a + b.rating, self.setRating, 0)/(len(self.setRating) if len(self.setRating) > 0 else 1),
+            "Rating":"{:.1f}".format(reduce(lambda a,b:a + b.rating, self.setRating, 0)/(len(self.setRating) if len(self.setRating) > 0 else 1)),
             "NumRatings":len(self.setRating),
             "User":self.user.to_dict(),
             "UserRating": userRating()

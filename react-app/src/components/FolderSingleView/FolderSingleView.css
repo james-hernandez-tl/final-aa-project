@@ -1,5 +1,6 @@
 .FolderSingleView {
   padding: 10px 60px;
+  min-height: 100vh;
 }
 
 .FolderSingleView-header {

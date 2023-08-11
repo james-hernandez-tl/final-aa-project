@@ -104,8 +104,8 @@ export const deleteSetThunk = (setId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    dispatch(deleteSetAction(setId));
-    dispatch(removeUserSet(setId));
+    await dispatch(deleteSetAction(setId));
+    await dispatch(removeUserSet(Number(setId)));
   }
 };
 

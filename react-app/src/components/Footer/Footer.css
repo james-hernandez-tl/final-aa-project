@@ -1,9 +1,10 @@
 .Footer {
   padding: 30px 30px 30px;
-  border-top: 1px white solid;
-  margin-top: 50px;
+  border-top: 1px #25284a solid;
+  margin-top: 100px;
 }
 
 .Footer-icon-wrapper > a {
   margin-right: 5px;
+  font-size: 20px;
 }

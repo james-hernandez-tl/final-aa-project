@@ -59,16 +59,18 @@ export default function Search() {
             </div>
             <div>
               {previewSet &&
-                Object.values(previewSet.Cards).map((card) => (
-                  <div key={card.id}>
-                    <div className="Search-preview-body-question">
-                      {card.question}
+                Object.values(previewSet.Cards)
+                  .slice(0, 7)
+                  .map((card) => (
+                    <div key={card.id}>
+                      <div className="Search-preview-body-question">
+                        {card.question}
+                      </div>
+                      <div className="Search-preview-body-answer">
+                        {card.answer}
+                      </div>
                     </div>
-                    <div className="Search-preview-body-answer">
-                      {card.answer}
-                    </div>
-                  </div>
-                ))}
+                  ))}
             </div>
           </div>
         </div>

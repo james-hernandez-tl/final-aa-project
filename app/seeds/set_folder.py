@@ -4,11 +4,11 @@ from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_set_folder():
-    folder = Folder.query.filter(Folder.name == "Folder1").filter(Folder.userId == 2).first()
-    set1 = Set.query.filter(Set.name == "firstSet").filter(Set.userId == 2).first()
-    set2 = Set.query.filter(Set.name == "secondSet").filter(Set.userId == 2).first()
-    set3 = Set.query.filter(Set.name == "thirdSet").filter(Set.userId == 2).first()
-    set4 = Set.query.filter(Set.name == "fourthSet").filter(Set.userId == 2).first()
+    folder = Folder.query.filter(Folder.name == "Folder1").first()
+    set1 = Set.query.filter(Set.name == "Algebraic Equations").first()
+    set2 = Set.query.filter(Set.name == "Geometry Fundamentals").first()
+    set3 = Set.query.filter(Set.name == "Migratory Birds").first()
+    set4 = Set.query.filter(Set.name == "Backend Development").first()
 
     allSets = [set1,set2,set3,set4]
     [folder.foldersOfSets.append(aset) for aset in allSets]
