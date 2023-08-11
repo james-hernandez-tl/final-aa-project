@@ -778,7 +778,7 @@ def seed_cards():
     'A primary key uniquely identifies records in a table, while foreign keys establish relationships between tables.',
     'The SELECT statement retrieves data from a database table based on specified criteria.',
     'SQL joins combine data from multiple tables based on related columns, enabling the retrieval of combined information.',
-    'INNER JOIN returns matching rows from both tables, LEFT JOIN returns all rows from the left table and matching rows from the right table, and RIGHT JOIN returns all rows from the right table and matching rows from the left table.',
+    'INNER JOIN returns matching rows from both tables, LEFT JOIN returns all rows from the left table and matching rows from the right table,RIGHT JOIN returns all rows from the right table and matching rows from the left table',
     'Data can be inserted into a database using INSERT, updated using UPDATE, and deleted using DELETE statements.'
 ]
 
@@ -1019,7 +1019,7 @@ def seed_cards():
 
     answers = [
     'Waterfowl are birds that inhabit wetlands and bodies of water, including ducks, geese, and swans. They have waterproof feathers and specialized bills.',
-    'Ducks, geese, and swans are all waterfowl, but they differ in size, shape, plumage, and behavior. Ducks are typically smaller and have broad bills, while geese are larger with long necks, and swans are graceful with long necks and elegant posture.',
+    'Ducks, geese, & swans are all waterfowl, but they differ in size, shape, plumage, and behavior. Ducks are typically smaller and have broad bills, while geese are larger with long necks, and swans are graceful with long necks.',
     'Webbed feet provide waterfowl with efficient propulsion in water, enabling them to swim and dive.',
     'Diving ducks have adaptations like dense bones, air sacs, and specialized feathers that allow them to dive for food underwater.',
     'Waterfowl engage in migratory behavior, often traveling long distances between breeding and wintering grounds.',
@@ -1080,7 +1080,7 @@ def seed_cards():
 ]
 
     answers = [
-    'Flightless birds are species that have lost the ability to fly due to evolutionary adaptations and changes in their habitat. The loss of flight often resulted from the absence of predators or the availability of abundant food on the ground.',
+    'Flightless birds are species that have lost the ability to fly due to evolutionary adaptations and changes in their habitat. The loss of flight often resulted from the absence of predators.',
     'The ostrich is the largest flightless bird and has long legs, a long neck, and two-toed feet. It is a fast runner and uses its wings for balance.',
     'The kiwi is adapted for a nocturnal lifestyle with a keen sense of smell and long, slender bill for probing in the ground for insects and worms.',
     'The cassowary is a large, colorful flightless bird that plays a role in seed dispersal in rainforests. It has powerful legs and a casque on its head.',
@@ -1111,7 +1111,7 @@ def seed_cards():
 ]
 
     answers = [
-    'Migratory birds are species that travel long distances between their breeding and wintering grounds in search of suitable habitats and food sources. They migrate to take advantage of seasonal resources and avoid harsh conditions.',
+    'igratory birds are species that travel long distances between their breeding and wintering grounds in search of suitable habitats and food sources. They migrate to take advantage of seasonal resources & avoid harsh condition',
     'The Arctic Tern migrates between the Arctic and Antarctic regions, covering a distance of up to 44,000 miles (70,900 kilometers) in a year.',
     'Birds use a variety of cues, including celestial landmarks, Earth\'s magnetic field, and visual landmarks, to navigate during migration. Sun compass orientation and star navigation are common strategies.',
     'Stopover sites are crucial resting points where migratory birds refuel and rest during their journeys. These sites provide necessary resources for energy replenishment.',
