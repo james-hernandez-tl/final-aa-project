@@ -1,12 +1,16 @@
 """empty message
 
 Revision ID: fa21f4c63e79
-Revises: 
+Revises:
 Create Date: 2023-08-11 10:23:30.806649
 
 """
 from alembic import op
 import sqlalchemy as sa
+
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
@@ -28,6 +32,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('folders',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=20), nullable=False),
@@ -36,6 +42,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE folders SET SCHEMA {SCHEMA};")
     op.create_table('sets',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
@@ -45,6 +53,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE sets SET SCHEMA {SCHEMA};")
     op.create_table('cards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('question', sa.String(length=225), nullable=False),
@@ -53,6 +63,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['setId'], ['sets.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE cards SET SCHEMA {SCHEMA};")
     op.create_table('ratings',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -62,6 +74,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE ratings SET SCHEMA {SCHEMA};")
     op.create_table('set_folders',
     sa.Column('setId', sa.Integer(), nullable=False),
     sa.Column('folderId', sa.Integer(), nullable=False),
@@ -69,6 +83,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['setId'], ['sets.id'], ),
     sa.PrimaryKeyConstraint('setId', 'folderId')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE set_folders SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
