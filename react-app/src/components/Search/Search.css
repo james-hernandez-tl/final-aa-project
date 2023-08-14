@@ -95,8 +95,15 @@
   position: sticky;
   top: 20px;
   height: 88vh;
-  bottom: 20px;
   padding: 25px;
+}
+
+.Search-sets-title-wrapper {
+  display: flex;
+}
+
+.search-preview-title {
+  margin-left: 20px;
 }
 
 .Search-preview {

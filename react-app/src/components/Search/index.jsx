@@ -34,9 +34,15 @@ export default function Search() {
   return (
     <div className="Search">
       <div className="Search-results">Results for "{search}"</div>
+      <div className="Search-sets-title-wrapper">
+        <div className="Search-sets-title">Search Sets</div>
+        <div className="Search-sets-title search-preview-title">
+          Set preview
+        </div>
+      </div>
       <div className="Search-main-wrapper">
         <div className="Search-sets">
-          <div className="Search-sets-title">Search Sets</div>
+          {/* <div className="Search-sets-title">Search Sets</div> */}
           {allSets.map((set) => (
             <SetMainLayout
               key={set.id}
@@ -47,7 +53,7 @@ export default function Search() {
           ))}
         </div>
         <div className="Search-preview">
-          <div className="Search-sets-title">Set preview</div>
+          {/* <div className="Search-sets-title">Set preview</div> */}
           <div className="Search-prebiew-body">
             <div className="Search-prebiew-body-header">
               <div className="Search-prebiew-body-title">

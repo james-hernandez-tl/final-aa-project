@@ -47,9 +47,13 @@ export default function LoginPage() {
         <div className={`LoginPage-input-wrapper ${usernameError}`}>
           <input
             type="text"
-            value={username}
+            value={usernameError ? "Username doesn't exist" : username}
             onChange={(e) => {
               setUsername(e.target.value);
+              setUsernameError(null);
+            }}
+            onClick={() => {
+              setPasswordError(null);
               setUsernameError(null);
             }}
             className={`LoginPage-inputs ${required}`}
@@ -59,11 +63,12 @@ export default function LoginPage() {
         <div className={`LoginPage-input-wrapper ${passwordError}`}>
           <input
             type="text"
-            value={password}
+            value={passwordError ? "wrong password" : password}
             onChange={(e) => {
               setPassword(e.target.value);
               setPasswordError(null);
             }}
+            onClick={() => setPasswordError(null)}
             className={`LoginPage-inputs ${required}`}
             placeholder={required ?? "password"}
           />
