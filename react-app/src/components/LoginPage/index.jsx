@@ -47,7 +47,7 @@ export default function LoginPage() {
         <div className={`LoginPage-input-wrapper ${usernameError}`}>
           <input
             type="text"
-            value={usernameError ? "Username doesn't exist" : username}
+            value={usernameError ? "User doesn't exist" : username}
             onChange={(e) => {
               setUsername(e.target.value);
               setUsernameError(null);
@@ -79,16 +79,17 @@ export default function LoginPage() {
           </button>
         </div>
         <div className="LoginPage-signupbtn">
-          dont have an account?
-          <div onClick={signupClicker}>sign up instead</div>
-          or try as a
+          <div onClick={signupClicker}>
+            {" "}
+            dont have an account? sign up instead
+          </div>
           <div
             onClick={async () => {
               await dispatch(login("Demo", "password"));
               navigate(state);
             }}
           >
-            Demo user!
+            or try as a Demo user!
           </div>
         </div>
       </div>
