@@ -13,8 +13,8 @@
   font-size: 25px;
 }
 
-@media (min-height: 1500px) {
+@media (min-height: 1100px) {
   .YourFolders {
-    min-height: 1000px;
+    min-height: 800px;
   }
 }

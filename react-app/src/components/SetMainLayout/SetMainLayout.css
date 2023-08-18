@@ -7,6 +7,32 @@
   flex: 0 0 16%;
 }
 
+.Home .SetMainLayout .avatar {
+  margin: 0;
+}
+
+.Home .SetMainLayout {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  /* justify-content: flex-end; */
+}
+
+.Home .SetMainLayout-footer {
+  margin-top: 0;
+  justify-self: end;
+  margin: 0 !important;
+}
+
+.Home .SetMainLayout-addons {
+  margin-bottom: 30px;
+}
+
+/* .Home .SetMainLayout-footer-pfp {
+  display: flex;
+  align-items: flex-end;
+} */
+
 .SetMainLayout-name {
   display: flex;
   font-size: 20px;
@@ -17,6 +43,7 @@
   justify-content: space-between;
   font-size: 15px;
   margin-top: 5px;
+  width: 100%;
 }
 
 .SetMainLayout-footer {

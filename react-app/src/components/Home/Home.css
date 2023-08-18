@@ -2,7 +2,7 @@
   padding: 20px 40px;
   max-width: 1409px;
   margin: auto;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .Home-achievements {
@@ -24,9 +24,43 @@
   cursor: pointer;
 }
 
-@media (min-height: 1500px) {
+@media (min-width: 2000px) and (min-height: 1400px) {
   .Home {
-    /* max-height: 1700px; */
-    min-height: 500px;
+    max-width: none;
+    width: 1800px;
+    /* height: 900px; */
+  }
+
+  .Home .SetMainLayout {
+    height: 170px;
+  }
+
+  .Home .SetMainLayout-name {
+    font-size: 25px;
+  }
+
+  .Home .SetMainLayout-addons {
+    font-size: 20px;
+  }
+
+  .Home .SetMainLayout-footer-username {
+    font-size: 20px;
+  }
+
+  .Home .Achievements {
+    font-size: 25px;
+  }
+
+  .Home .Home-achievements {
+    font-size: 30px;
+  }
+
+  .Home .SetMainLayout .avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .Home .home-studySet-createNewSet {
+    font-size: 20px;
   }
 }
