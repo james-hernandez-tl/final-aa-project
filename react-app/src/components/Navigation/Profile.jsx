@@ -63,13 +63,13 @@ export default function Profile({ sessionUser }) {
       >
         Folders
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to={"/groups"}
         className="Navlink-unactive"
         activeclassname="active"
       >
         Groups
-      </NavLink>
+      </NavLink> */}
     </>
   );
 }

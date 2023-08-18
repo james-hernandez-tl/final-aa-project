@@ -138,3 +138,9 @@
 .fa-ellipsis {
   cursor: pointer;
 }
+
+@media (min-height: 1500px) {
+  .SetSingleView {
+    min-height: 1000px;
+  }
+}

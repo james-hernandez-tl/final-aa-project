@@ -2,6 +2,7 @@
   padding: 20px 40px;
   max-width: 1409px;
   margin: auto;
+  min-height: 100vh;
 }
 
 .Home-achievements {
@@ -21,4 +22,11 @@
 
 .home-studySet-createNewSet:hover {
   cursor: pointer;
+}
+
+@media (min-height: 1500px) {
+  .Home {
+    /* max-height: 1700px; */
+    min-height: 500px;
+  }
 }

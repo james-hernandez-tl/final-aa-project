@@ -77,20 +77,29 @@ export default function LoginPage() {
           <button className="LoginPage-button" onClick={LogInClicker}>
             Log In
           </button>
+          <button
+            className="LoginPage-DemoUser LoginPage-button"
+            onClick={async () => {
+              await dispatch(login("Demo", "password"));
+              navigate(state);
+            }}
+          >
+            Demo User
+          </button>
         </div>
         <div className="LoginPage-signupbtn">
           <div onClick={signupClicker}>
             {" "}
             dont have an account? sign up instead
           </div>
-          <div
+          {/* <div
             onClick={async () => {
               await dispatch(login("Demo", "password"));
               navigate(state);
             }}
           >
             or try as a Demo user!
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

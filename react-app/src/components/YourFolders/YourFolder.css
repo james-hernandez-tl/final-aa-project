@@ -12,3 +12,9 @@
 .YourFolders-header-title {
   font-size: 25px;
 }
+
+@media (min-height: 1500px) {
+  .YourFolders {
+    min-height: 1000px;
+  }
+}

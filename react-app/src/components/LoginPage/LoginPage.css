@@ -55,6 +55,8 @@
   padding: 7px 20px;
   font-size: 16px;
   margin: 20px 5px;
+  width: 40%;
+  cursor: pointer;
 }
 
 .passwordError {
@@ -80,7 +82,7 @@
 
 .LoginPage-signupbtn {
   position: absolute;
-  bottom: -35px;
+  bottom: -20px;
   /* margin-top: 5px; */
   right: 10px;
 }

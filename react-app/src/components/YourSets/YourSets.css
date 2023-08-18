@@ -12,3 +12,9 @@
 .YourSets-header-title {
   font-size: 25px;
 }
+
+@media (min-height: 1500px) {
+  .YourSets {
+    min-height: 1000px;
+  }
+}
