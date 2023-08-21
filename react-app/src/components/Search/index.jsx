@@ -43,10 +43,9 @@ export default function Search() {
   if (!allSets) {
     return loadingScreen;
   }
+  allSets = Object.values(allSets);
 
   if (isSearching) return loadingScreen;
-
-  allSets = Object.values(allSets);
 
   return (
     <div className="Search">
