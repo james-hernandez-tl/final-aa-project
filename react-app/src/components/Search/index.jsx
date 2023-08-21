@@ -7,6 +7,7 @@ import { searchSets } from "../../store/sets";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useIsSearching } from "../../context/Search";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function Search() {
   const [previewSet, setPreviewSet] = useState(null);
   let allSets = useAllSets();
   const search = searchParams.get("search");
+  const { isSearching, setIsSearching } = useIsSearching();
 
   const setClicker = () => {
     if (previewSet) navigate(`/sets/${previewSet.id}`);
@@ -25,16 +27,24 @@ export default function Search() {
   }, [allSets]);
 
   useEffect(() => {
-    dispatch(searchSets(`?search=${search}`));
+    async function stuff() {
+      await dispatch(searchSets(`?search=${search}`));
+      setIsSearching(false);
+    }
+    stuff();
   }, [searchParams]);
 
+  const loadingScreen = (
+    <div className="Home-loadingScreen">
+      <ClipLoader color="white" size={100} />
+    </div>
+  );
+
   if (!allSets) {
-    return (
-      <div className="Home-loadingScreen">
-        <ClipLoader color="white" size={100} />
-      </div>
-    );
+    return loadingScreen;
   }
+
+  if (isSearching) return loadingScreen;
 
   allSets = Object.values(allSets);
 
