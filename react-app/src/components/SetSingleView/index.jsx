@@ -11,6 +11,7 @@ import { Menu, MenuItem } from "../Menu";
 import AddSetToFolder from "../AddSetToFolder";
 import RatingForm from "../RatingForm";
 import { useModal } from "../../context/Modal";
+import OptionsForSet from "../OptionsForSet";
 import "./SetSingleView.css";
 
 export default function SetSingleView() {
@@ -90,6 +91,7 @@ export default function SetSingleView() {
           )
         </div>
       </div>
+      {/* <OptionsForSet setId={setId} /> */}
       <div className="SetSingleView-slider" ref={sliderRef}>
         {set.Cards.map((card) => (
           <div key={card.id} className="SetSingleView-card">

@@ -8,8 +8,10 @@ import Achievements from "../Achievements";
 import useSession from "../../hooks/useSession";
 import useRecommened from "../../hooks/useRecommened";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Home() {
+  useAllSets();
   const dispatch = useDispatch();
   let allSets = useAllSets();
   let recommened = useRecommened();
@@ -20,11 +22,20 @@ export default function Home() {
     dispatch(allSetThunk());
   }, [dispatch]);
 
-  if (!allSets || !recommened) return null;
+  const loadingScreen = (
+    <div className="Home-loadingScreen">
+      <ClipLoader color="white" size={100} />
+    </div>
+  );
+
+  if (!allSets || !recommened) return loadingScreen;
+
   allSets = Object.values(allSets);
   recommened = Object.values(recommened).sort(
     (a, b) => b.Rating * b.NumRatings - a.Rating * a.NumRatings
   );
+
+  if (!allSets.length) return loadingScreen;
   return (
     <div className="Home">
       <div className="Home-achievements">Achievements</div>

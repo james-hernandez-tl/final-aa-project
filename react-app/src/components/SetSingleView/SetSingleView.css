@@ -5,8 +5,9 @@
 }
 
 .SetSingleView-title {
-  font-size: 30px;
+  font-size: 32px;
   margin: 20px 0 5px 0;
+  font-weight: 900;
 }
 
 .SetSingleView-rating {
@@ -25,10 +26,12 @@
 
 .SetSingleView-rating-star {
   margin-right: 2px;
+  font-weight: 600;
 }
 
 .SetSingleView-rating-score {
   margin-right: 5px;
+  font-weight: 600;
 }
 
 .SetSingleView-card {

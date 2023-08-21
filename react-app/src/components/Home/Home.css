@@ -63,4 +63,18 @@
   .Home .home-studySet-createNewSet {
     font-size: 20px;
   }
+
+  .Home-loadingScreen {
+    max-width: none;
+    width: 1800px;
+    height: 800px;
+  }
+}
+
+.Home-loadingScreen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

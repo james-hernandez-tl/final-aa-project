@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { searchSets } from "../../store/sets";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Search() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Search() {
   const search = searchParams.get("search");
 
   const setClicker = () => {
-    navigate(`/sets/${previewSet.id}`);
+    if (previewSet) navigate(`/sets/${previewSet.id}`);
   };
 
   useEffect(() => {
@@ -27,13 +28,23 @@ export default function Search() {
     dispatch(searchSets(`?search=${search}`));
   }, [searchParams]);
 
-  if (!allSets) return null;
+  if (!allSets) {
+    return (
+      <div className="Home-loadingScreen">
+        <ClipLoader color="white" size={100} />
+      </div>
+    );
+  }
 
   allSets = Object.values(allSets);
 
   return (
     <div className="Search">
-      <div className="Search-results">Results for "{search}"</div>
+      <div className="Search-results">
+        {allSets.length
+          ? `Results for "${search}"`
+          : `No results for "${search}"`}{" "}
+      </div>
       <div className="Search-sets-title-wrapper">
         <div className="Search-sets-title">Search Sets</div>
         <div className="Search-sets-title search-preview-title">

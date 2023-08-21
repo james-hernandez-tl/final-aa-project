@@ -1,0 +1,22 @@
+.OptionsForSet {
+  margin-bottom: 30px;
+}
+
+.OptionsForSet-option {
+  display: flex;
+  background-color: #25284a;
+  width: 20%;
+  border-radius: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.OptionsForSet-option-icon {
+  padding: 15px;
+  font-size: 20px;
+  /* color: #7748c4f2; */
+}
+
+.OptionsForSet-option-text {
+  font-weight: 600;
+}
