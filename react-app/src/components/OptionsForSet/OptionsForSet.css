@@ -9,6 +9,16 @@
   border-radius: 10px;
   align-items: center;
   cursor: pointer;
+  position: relative;
+}
+
+.OptionsForSet-option-hover {
+  height: 5px;
+  background-color: lightblue;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  border-radius: 0 0 10px 10px;
 }
 
 .OptionsForSet-option-icon {
