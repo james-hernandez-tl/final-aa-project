@@ -91,7 +91,7 @@ export default function SetSingleView() {
           )
         </div>
       </div>
-      {/* <OptionsForSet setId={setId} /> */}
+      <OptionsForSet setId={setId} />
       <div className="SetSingleView-slider" ref={sliderRef}>
         {set.Cards.map((card) => (
           <div key={card.id} className="SetSingleView-card">
