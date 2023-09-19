@@ -1,0 +1,181 @@
+.AiChat {
+  padding: 10px 200px;
+  max-width: 1409px;
+  margin: auto;
+  height: calc(100vh - 80px);
+  max-height: 100vh;
+  /* overflow: auto; */
+  position: relative;
+}
+
+.AiChat-textBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border: 2px #586380 solid;
+  border-radius: 10px;
+  width: calc(100% - 20px);
+  /* position: absolute; */
+  bottom: 120px;
+}
+
+div[contenteditable] {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.AiChat-input {
+  background-color: transparent;
+  border: none;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  margin-right: 30px;
+  height: 100%;
+  line-height: 1.5;
+  letter-spacing: normal;
+  font-size: 1rem;
+  min-height: 30px;
+  max-height: 12.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.AiChat-input:focus {
+  outline: none;
+}
+
+.AiChat-textBar-nav {
+  width: 80px;
+}
+
+.AiChat-allMessages {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+  height: 100%;
+  max-height: 80vh;
+  /* height: calc(100vh - 180px); */
+  /* overflow-y: auto;
+  overflow-x: auto; */
+  overflow: auto;
+
+  /* border: red 2px solid; */
+}
+
+.first-chat-message {
+  margin-top: 80vh;
+}
+
+.AiChat-allMessages::-webkit-scrollbar {
+  display: none;
+}
+
+.AiChat-allMessages-message {
+  display: flex;
+  margin-bottom: 7px;
+  padding-right: 250px;
+  align-items: flex-end;
+  height: auto;
+  max-width: 70%;
+}
+
+.AiChat-allMessages-message-icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.AiChat-allMessages-message-text {
+  padding: 15px 30px 15px 15px;
+  background-color: #2e3856;
+  border-radius: 1rem;
+  width: fit-content;
+  max-width: 60%;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.AiChat-allMessages-message-know {
+  width: 65%;
+  padding-right: 40px;
+  overflow-wrap: break-word;
+}
+
+.AiChat-allMessages-Usermessage {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+  padding-right: 0;
+}
+
+.AiChat-allMessages-Usermessage .AiChat-allMessages-message-text {
+  background-color: #4255ff;
+}
+
+.AiChat-allMessages-endMessage .AiChat-allMessages-message-text {
+  border-bottom-left-radius: 0;
+}
+
+.AiChat-allMessages-endMessage.AiChat-allMessages-Usermessage
+  .AiChat-allMessages-message-text {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 1rem;
+}
+
+.AiChat-allMessages-optionsBar {
+  display: flex;
+  gap: 10px;
+}
+
+.AiChat-allMessages-option {
+  display: flex;
+  border-radius: 10px;
+  border: 1px rgb(255, 255, 255) solid;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 25px;
+}
+
+.AiChat-allMessages-option:hover {
+  background-color: rgba(255, 255, 255, 15%);
+}
+
+.AiChat-allMessages-option-icon {
+  padding: 15px;
+  font-size: 20px;
+  /* color: #7748c4f2; */
+}
+
+.AiChat-allMessages-option-text {
+  font-weight: 600;
+}
+
+.AiChat-allMessages-message-loadingBubble {
+  display: flex;
+  padding: 15px 10px;
+  background: #2e3856;
+  width: fit-content;
+  border-radius: 1rem;
+}
+
+.AiChat-allMessages-message.AiChat-allMessages-loadingBubble-wrapper {
+  align-items: center;
+}
+
+.AiChat-input:empty:before {
+  content: attr(data-placeholder);
+  color: #717788;
+}
+
+.AiChat-textBar.AiChat-textBar-disabled {
+  background-color: #282e3e;
+}
+
+#Footer.block-footer {
+  display: none;
+}

@@ -13,6 +13,7 @@ import FolderSingleView from "./components/FolderSingleView";
 import SignUpPage from "./components/SignUpPage";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
+import AiChat from "./components/AiChat";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
           />
           <Route path="/SignUp" exact element={<SignUpPage />} />
           <Route path="/Search" exact element={<Search />} />
+          <Route path="/chat/:setId" exact element={<AiChat />} />
         </Routes>
       )}
       {isLoaded && <Footer />}
