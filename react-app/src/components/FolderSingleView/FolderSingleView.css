@@ -1,15 +1,187 @@
 .FolderSingleView {
-  padding: 10px 60px;
+  padding: 10px 150px;
   min-height: 100vh;
+  margin-top: 10px;
 }
 
 .FolderSingleView-header {
   display: flex;
   margin-bottom: 10px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .FolderSingleView-header-title {
-  font-size: 25px;
-  font-weight: 600;
+  font-size: 30px;
+}
+
+.FolderSingleView-header-title-icon {
+  margin-right: 10px;
+}
+
+.fa-circle-folder-singleView,
+.fa-ellipsis-folder-singleView {
+  border-radius: 50%;
+  border: #ffffff 2px solid;
+  padding: 8px;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.fa-circle-folder-singleView:hover,
+.fa-ellipsis-folder-singleView:hover {
+  background-color: rgba(255, 255, 255, 15%);
+  cursor: pointer;
+}
+
+.FolderSingleView-option-wrapper {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.No-Folders {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.No-Folders-title {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.No-Folders-btn {
+  padding: 10px 15px;
+  margin-top: 15px;
+  background-color: #7dd;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.No-Folders-btn:hover {
+  cursor: pointer;
+}
+
+.AddSet-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.AddSet-Header-title {
+  margin: 0;
+  font-size: 30px;
+}
+
+.AddSet-Header-exit {
+  padding: 11px;
+  border-radius: 50%;
+  background: #1a1d28;
+}
+
+.AddSet-Header-exit:hover {
+  cursor: pointer;
+}
+
+.AddSet-createSet-wrapper {
+  padding: 20px 200px;
+  max-width: 200px;
+  background-color: #1a1d28;
+}
+
+.AddSet-createSet-wrapper:hover {
+  cursor: pointer;
+}
+
+.AddSet-createSet-wrapper:hover .AddSet-createSet-bar {
+  background-color: #ffcd1f;
+}
+
+.AddSet-createSet {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.fa-plus-AddSet {
+  font-size: 10px;
+}
+
+.AddSet-createSet-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #7dd;
+  margin-top: 5px;
+}
+
+.AddSet-dropdown-wrapper {
+  background-color: #1a1d28;
+  width: fit-content;
+  padding-right: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.AddSet-dropdown {
+  background-color: #1a1d28;
+  padding: 10px 20px;
+  color: #7dd;
+  border: none;
+}
+
+.AddSet-dropdown:hover {
+  cursor: pointer;
+}
+
+.AddSet-dropdown-wrapper:hover {
+  cursor: pointer;
+}
+
+.AddSet-dropdown-wrapper:hover .AddSet-dropdown {
+  color: #ffcd1f;
+}
+
+.AddSet-dropdown:focus {
+  outline: none;
+}
+
+.AddSet-set {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1d28;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+.AddSet-set-plus-wrapper {
+  padding: 7px 12px;
+  border-radius: 0.25rem;
+  border: 1px #2e3856 solid;
+}
+
+.AddSet-set-plus-wrapper.AddSet-set-plus-wrapper-inFolder {
+  background-color: #ffcd1f;
+}
+
+.AddSet-set-plus-wrapper:hover {
+  cursor: pointer;
+}
+
+.AddSet-set-plus-wrapper:hover .fa-plus-AddSet-set {
+  color: #ffcd1f;
+}
+
+.fa-plus-AddSet-set {
+  color: #7dd;
+}
+
+.fa-minus-AddSet-set {
+  color: #1a1d28;
 }

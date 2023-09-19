@@ -57,7 +57,11 @@ export default function YourFolders() {
         />
       </div>
       {user.Folders.length ? (
-        <Scrollable arr={filterFolders(user.Folders)} isSet={false} />
+        <Scrollable
+          arr={filterFolders(user.Folders)}
+          isSet={false}
+          searchTerm={searchFolders}
+        />
       ) : (
         <div> You currently have no folders </div>
       )}

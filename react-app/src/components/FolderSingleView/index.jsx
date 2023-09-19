@@ -8,6 +8,9 @@ import CreateFolder from "../CreateFolder.jsx";
 import { useModal } from "../../context/Modal";
 import { deleteFolder } from "../../store/folder";
 import "./FolderSingleView.css";
+import { Menu, MenuItem, useMenu } from "../Menu";
+import NoFolders from "./NoFolders";
+import AddSet from "./AddSet";
 
 export default function FolderSingleView() {
   let folder = useSelector((state) => state.folders.singleFolder);
@@ -15,6 +18,7 @@ export default function FolderSingleView() {
   const navigate = useNavigate();
   const { setModalContent } = useModal();
   const { folderId } = useParams();
+  const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
 
   useEffect(() => {
     dispatch(getFolder(folderId));
@@ -24,29 +28,55 @@ export default function FolderSingleView() {
   return (
     <div className="FolderSingleView">
       <div className="FolderSingleView-header">
-        <div className="FolderSingleView-header-title">{folder.name}</div>
-        <div
-          onClick={() => {
-            setModalContent(<CreateFolder folder={folder} />);
-          }}
-        >
-          Edit
-        </div>
-        <div
-          onClick={() => {
-            dispatch(deleteFolder(folder.id));
-            navigate("/folders");
-          }}
-        >
-          delete
+        <h2 className="FolderSingleView-header-title">
+          <span className="FolderSingleView-header-title-icon">
+            <i className="fa-regular fa-folder"></i>
+          </span>
+          {folder.name}
+        </h2>
+        <div className="FolderSingleView-option-wrapper">
+          <div
+            onClick={() => {
+              setModalContent(<AddSet />);
+            }}
+          >
+            <i className="fa-solid fa-plus fa-circle-folder-singleView"></i>
+          </div>
+          <div className="FolderSingleView-createFolder-wrapper">
+            <i
+              ref={btnRef}
+              onClick={toggleMenu}
+              className="fa-solid fa-ellipsis fa-ellipsis-folder-singleView"
+            ></i>
+            <Menu menuRef={menuRef} isOpen={show} top right>
+              <MenuItem
+                text="edit"
+                onClick={() => {
+                  hideMenu();
+                  setModalContent(<CreateFolder folder={folder} />);
+                }}
+                icon={<i className="fa-solid fa-pen"></i>}
+              />
+              <MenuItem
+                text="delete"
+                onClick={() => {
+                  dispatch(deleteFolder(folder.id));
+                  navigate("/folders");
+                }}
+                icon={<i className="fa-solid fa-trash"></i>}
+              />
+            </Menu>
+          </div>
         </div>
       </div>
       <div>
-        {folder.Sets.length
-          ? folder.Sets.map((item) => (
-              <YourItemLayout isSet={true} item={item} key={item.id} />
-            ))
-          : "You dont have any sets in this folder"}
+        {folder.Sets.length ? (
+          folder.Sets.map((item) => (
+            <YourItemLayout isSet={true} item={item} key={item.id} />
+          ))
+        ) : (
+          <NoFolders />
+        )}
       </div>
     </div>
   );

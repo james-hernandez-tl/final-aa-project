@@ -50,7 +50,11 @@ export default function YourSets() {
         />
       </div>
       {user.Sets.length ? (
-        <Scrollable arr={filterSets(user.Sets)} isSet={true} />
+        <Scrollable
+          arr={filterSets(user.Sets)}
+          isSet={true}
+          searchTerm={searchSets}
+        />
       ) : (
         <div> You currently have no sets </div>
       )}
