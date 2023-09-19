@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import sets from "./sets";
 import folders from "./folder";
+import aiChat from "./aiChat";
 
 const rootReducer = combineReducers({
   session,
   sets,
   folders,
+  aiChat,
 });
 
 let enhancer;
