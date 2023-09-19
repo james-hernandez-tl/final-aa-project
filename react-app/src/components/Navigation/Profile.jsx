@@ -1,53 +1,26 @@
-import { NavLink, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import "./Navigation.css";
-import Avatar from "../Avatar";
-import { useMenu } from "../Menu";
-import { Menu, MenuItem } from "../Menu";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../store/session";
+import "./Navigation.css";
 export default function Profile({ sessionUser }) {
-  const navigation = useNavigate();
-  const dispatch = useDispatch();
-  const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
+  let navigate = useNavigate();
   return (
     <>
-      <Avatar
-        src={sessionUser?.image}
-        size={"35px"}
-        btnRef={btnRef}
-        onClick={toggleMenu}
-      />
-      <Menu menuRef={menuRef} isOpen={show}>
-        {!sessionUser && (
-          <MenuItem
-            text="LogIn"
-            onClick={() => {
-              navigation("/logIn", { state: window.location.pathname });
-              hideMenu();
-            }}
-            icon={<i className="fa-solid fa-power-off"></i>}
-          />
-        )}
-        {sessionUser && (
-          <MenuItem
-            text="Logout"
-            onClick={() => {
-              dispatch(logout());
-              navigation("/");
-            }}
-            icon={<i className="fa-solid fa-power-off"></i>}
-          />
-        )}
-      </Menu>
-
+      <h2
+        className="Navigation-logo"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        KnowVerse
+      </h2>
       <NavLink
         exact={"true"}
         to={"/"}
         className="Navlink-unactive"
         activeclassname="active"
       >
-        KnowVerse
+        Home
+        <div className="Navlink-active-bar"></div>
       </NavLink>
       <NavLink
         to={"/sets"}
@@ -55,6 +28,7 @@ export default function Profile({ sessionUser }) {
         activeclassname="active"
       >
         Sets
+        <div className="Navlink-active-bar"></div>
       </NavLink>
       <NavLink
         to={"/folders"}
@@ -62,6 +36,7 @@ export default function Profile({ sessionUser }) {
         activeclassname="active"
       >
         Folders
+        <div className="Navlink-active-bar"></div>
       </NavLink>
       {/* <NavLink
         to={"/groups"}

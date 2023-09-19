@@ -15,6 +15,8 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [userSearch, setUserSearch] = useState("");
   const navigate = useNavigate();
+  const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
+  const dispatch = useDispatch();
   return (
     <div className="Nav">
       <div className="Nav-links">
@@ -28,6 +30,34 @@ function Navigation({ isLoaded }) {
           setUserSearch={setUserSearch}
         />
         <PlusIcon />
+        <Avatar
+          src={sessionUser?.image}
+          size={"35px"}
+          btnRef={btnRef}
+          onClick={toggleMenu}
+        />
+        <Menu menuRef={menuRef} isOpen={show}>
+          {!sessionUser && (
+            <MenuItem
+              text="LogIn"
+              onClick={() => {
+                navigate("/logIn", { state: window.location.pathname });
+                hideMenu();
+              }}
+              icon={<i className="fa-solid fa-power-off"></i>}
+            />
+          )}
+          {sessionUser && (
+            <MenuItem
+              text="Logout"
+              onClick={() => {
+                dispatch(logout());
+                navigate("/");
+              }}
+              icon={<i className="fa-solid fa-power-off"></i>}
+            />
+          )}
+        </Menu>
       </div>
     </div>
   );

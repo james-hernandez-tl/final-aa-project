@@ -12,7 +12,7 @@ a {
 
 .nav-plus {
   color: #586380;
-  margin: 5px 10px;
+  /* margin: 5px 10px; */
   font-size: 35px;
   background-color: white;
   border-radius: 50%;
@@ -22,8 +22,15 @@ a {
 .Nav {
   display: flex;
   justify-content: space-between;
-  border-bottom: darkgray solid 2px;
+  border-bottom: #25284a solid 2px;
   position: relative;
+}
+
+.Navigation-logo {
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0;
+  cursor: pointer;
 }
 
 .Nav-links {
@@ -35,11 +42,13 @@ a {
   padding: 10px;
   font-size: 18px;
   text-decoration: none;
+  position: relative;
 }
 
 .Nav-search-wrapper {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .Nav-search {
@@ -95,6 +104,11 @@ a {
   border: none;
 }
 
-.active {
-  text-decoration: underline;
+.active .Navlink-active-bar {
+  width: calc(100% - 20px);
+  height: 3px;
+  background-color: #a8b1ff;
+  position: absolute;
+  bottom: 0;
+  border-radius: 1rem 1rem 0 0;
 }

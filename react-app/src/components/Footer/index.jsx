@@ -2,7 +2,7 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <div className="Footer">
+    <div id="Footer" className="Footer">
       <div className="Footer-title">Get to know about me!</div>
       <div className="Footer-icon-wrapper">
         <a target="_blank" href="https://github.com/ihavenoide">
