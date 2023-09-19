@@ -12,6 +12,7 @@ import AddSetToFolder from "../AddSetToFolder";
 import RatingForm from "../RatingForm";
 import { useModal } from "../../context/Modal";
 import OptionsForSet from "../OptionsForSet";
+import ClipLoader from "react-spinners/ClipLoader";
 import "./SetSingleView.css";
 
 export default function SetSingleView() {
@@ -62,7 +63,12 @@ export default function SetSingleView() {
     }, 300);
   };
 
-  if (!set) return <div>There is no set with this id</div>;
+  if (!set || set.id != setId)
+    return (
+      <div className="Home-loadingScreen">
+        <ClipLoader color="white" size={100} />
+      </div>
+    );
 
   return (
     <div className="SetSingleView">
