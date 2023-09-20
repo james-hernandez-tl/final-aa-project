@@ -42,6 +42,7 @@ export default function YourFolders() {
           !a.name.toLowerCase().includes(searchFolders.toLowerCase())
         )
           return 1;
+        else return 1;
       });
   };
 

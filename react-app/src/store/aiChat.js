@@ -3,7 +3,6 @@ import { qFetch } from "./utils";
 //TYPES
 
 const QUIZME = "aiChat/quizMe";
-const CHAT = "aiChat/chat";
 
 //ACTIONS
 
@@ -23,7 +22,7 @@ export const quizMe = (setId) => async (dispatch) => {
 
   if (response.ok) {
     let data = await response.json();
-    console.log(data);
+
     dispatch(setMessages(data));
   }
 };
@@ -35,7 +34,7 @@ export const teachMe = (setId) => async (dispatch) => {
 
   if (response.ok) {
     let data = await response.json();
-    console.log(data);
+
     dispatch(setMessages(data));
   }
 };
@@ -48,7 +47,7 @@ export const chat = (messages) => async (dispatch) => {
 
   if (response.ok) {
     let data = await response.json();
-    console.log(data);
+
     dispatch(setMessages(data));
   }
 };

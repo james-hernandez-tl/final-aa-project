@@ -6,7 +6,6 @@ import { editUserFolder } from "./session";
 
 const SET_FOLDER = "folders/getFolder";
 const DELETE_FOLDER = "folders/deleteFolder";
-const CREATE_FOLDER = "folders/createFolder";
 
 //actions
 

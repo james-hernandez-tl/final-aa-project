@@ -23,7 +23,7 @@ export default function SetFormDecider() {
     if (!user) {
       navigate("/logIn", { state: window.location.pathname });
     }
-  }, []);
+  }, [dispatch, user, navigate]);
 
   if (!user) return null;
 

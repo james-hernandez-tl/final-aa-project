@@ -1,5 +1,4 @@
 import SetMainLayout from "../SetMainLayout";
-import { useState } from "react";
 import { useRef } from "react";
 import "./SetWrapper.css";
 
@@ -12,14 +11,6 @@ export default function SetWrapper({ allSets, color = "#586380" }) {
       left: scrollDistance,
       behavior: "smooth",
     });
-    const remainder =
-      containerRef.current.scrollWidth -
-      containerRef.current.scrollLeft -
-      containerRef.current.clientWidth;
-
-    if (remainder < 1) {
-      console.log("maybe swap to search page but with all sets?");
-    }
   };
 
   const handlePreviousClick = () => {

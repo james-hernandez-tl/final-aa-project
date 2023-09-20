@@ -35,6 +35,7 @@ export default function YourSets() {
           !a.name.toLowerCase().includes(searchSets.toLowerCase())
         )
           return 1;
+        else return 1;
       });
   };
 

@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import "./Navigation.css";
 import { useMenu } from "../Menu";
 import { Menu, MenuItem } from "../Menu";

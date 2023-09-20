@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useDebugValue } from "react";
+import { useState, useEffect, useRef } from "react";
 import { quizMe, chat, setMessages, teachMe } from "../../store/aiChat";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -19,17 +19,19 @@ export default function AiChat() {
   const chatRef = useRef(null);
   const chatBoxRef = useRef(null);
 
-  console.log(messageCount);
-
   useEffect(() => {
     const inv = setInterval(() => {
       setMessageCount(0);
     }, 60000);
+
+    return () => {
+      clearInterval(inv);
+    };
   }, []);
 
   useEffect(() => {
     let footer = document.getElementById("Footer");
-    console.log(footer);
+
     footer.classList.add("block-footer");
     return () => {
       footer.classList.remove("block-footer");

@@ -11,7 +11,7 @@ export default function AddSetToFolder({ setId }) {
   const dispatch = useDispatch();
   const user = useSession();
   const folderClicker = (folder) => {
-    if (folder.Sets.filter((set) => set.id == setId).length) {
+    if (folder.Sets.filter((set) => set.id === setId).length) {
       dispatch(removeSetFromFolder(folder.id, setId));
     } else {
       dispatch(addSetToFolder(folder.id, setId));
