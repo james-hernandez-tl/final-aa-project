@@ -10,11 +10,11 @@
   cursor: pointer;
 }
 .AddSetToFolder-folder-red:hover {
-  color: red;
+  color: #ffcd1f;
 }
 
 .AddSetToFolder-folder-green:hover {
-  color: green;
+  color: #7dd;
 }
 
 .AddSetToFolder-header {
