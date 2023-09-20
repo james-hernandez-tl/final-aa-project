@@ -112,3 +112,7 @@ a {
   bottom: 0;
   border-radius: 1rem 1rem 0 0;
 }
+
+.Nav-search-wrapper .avatar {
+  margin-left: 0;
+}
