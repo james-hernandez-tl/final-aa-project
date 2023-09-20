@@ -18,6 +18,7 @@ import "./SetSingleView.css";
 export default function SetSingleView() {
   const { setModalContent } = useModal();
   const [showQuestion, setShowQuestion] = useState(true);
+  const [sliding, setSliding] = useState(false);
   const [numQuestion, setNumQuestion] = useState(1);
   const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
   const sliderRef = useRef(null);
@@ -42,25 +43,37 @@ export default function SetSingleView() {
   };
 
   const nextClicker = () => {
-    const scrollDistance = sliderRef.current.offsetWidth;
-    sliderRef.current.scrollBy({
-      left: scrollDistance,
-    });
-    if (numQuestion < set.Cards.length) setNumQuestion((state) => state + 1);
-    setTimeout(() => {
-      setShowQuestion(true);
-    }, 300);
+    if (!sliding) {
+      setSliding(true);
+      const scrollDistance = sliderRef.current.offsetWidth;
+      sliderRef.current.scrollBy({
+        left: scrollDistance,
+      });
+      if (numQuestion < set.Cards.length) setNumQuestion((state) => state + 1);
+      setTimeout(() => {
+        setShowQuestion(true);
+      }, 300);
+      setTimeout(() => {
+        setSliding(false);
+      }, 700);
+    }
   };
 
   const prevClicker = () => {
-    const scrollDistance = sliderRef.current.offsetWidth;
-    sliderRef.current.scrollBy({
-      left: -scrollDistance,
-    });
-    if (numQuestion > 1) setNumQuestion((state) => state - 1);
-    setTimeout(() => {
-      setShowQuestion(true);
-    }, 300);
+    if (!sliding) {
+      setSliding(true);
+      const scrollDistance = sliderRef.current.offsetWidth;
+      sliderRef.current.scrollBy({
+        left: -scrollDistance,
+      });
+      if (numQuestion > 1) setNumQuestion((state) => state - 1);
+      setTimeout(() => {
+        setShowQuestion(true);
+      }, 300);
+      setTimeout(() => {
+        setSliding(false);
+      }, 700);
+    }
   };
 
   if (!set || set.id != setId)
@@ -134,12 +147,12 @@ export default function SetSingleView() {
         </div>
       </div>
       <div className="SetSingleView-footer">
-        <div className="SetSingleView-card-dropdown">
-          <i
-            ref={btnRef}
-            onClick={toggleMenu}
-            className="fa-solid fa-ellipsis"
-          ></i>
+        <div
+          className="SetSingleView-card-dropdown"
+          ref={btnRef}
+          onClick={toggleMenu}
+        >
+          <i className="fa-solid fa-ellipsis"></i>
         </div>
         <Menu
           menuRef={menuRef}
