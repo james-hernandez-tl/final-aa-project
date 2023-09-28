@@ -155,3 +155,37 @@
     min-height: 800px;
   }
 }
+
+.move-left {
+  animation-duration: 0.5s;
+  animation-name: slideLeft;
+}
+
+@keyframes slideLeft {
+  from {
+    margin-left: -150px;
+    margin-right: 150px;
+  }
+
+  to {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.move-right {
+  animation-duration: 0.5s;
+  animation-name: slideRight;
+}
+
+@keyframes slideRight {
+  from {
+    margin-left: 150px;
+    margin-right: -150px;
+  }
+
+  to {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

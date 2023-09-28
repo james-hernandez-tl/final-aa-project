@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useSession from "../../hooks/useSession";
 import { deleteSetThunk } from "../../store/sets";
-import { useRef } from "react";
 import { useMenu } from "../Menu";
 import { Menu, MenuItem } from "../Menu";
 import AddSetToFolder from "../AddSetToFolder";
@@ -13,18 +12,18 @@ import RatingForm from "../RatingForm";
 import { useModal } from "../../context/Modal";
 import OptionsForSet from "../OptionsForSet";
 import ClipLoader from "react-spinners/ClipLoader";
+import MainCardView from "./MainCardView";
 import "./SetSingleView.css";
 
 export default function SetSingleView() {
   const { setModalContent } = useModal();
-  const [showQuestion, setShowQuestion] = useState(true);
-  const [sliding, setSliding] = useState(false);
-  const [numQuestion, setNumQuestion] = useState(1);
   const { btnRef, hideMenu, toggleMenu, show, menuRef } = useMenu();
-  const sliderRef = useRef(null);
   const navigate = useNavigate();
   const { setId } = useParams();
   const dispatch = useDispatch();
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [containerClassName, setContainerClassName] = useState("");
 
   const set = useSelector((state) => state.sets.singleSet);
   const user = useSession();
@@ -43,37 +42,19 @@ export default function SetSingleView() {
   };
 
   const nextClicker = () => {
-    if (!sliding) {
-      setSliding(true);
-      const scrollDistance = sliderRef.current.offsetWidth;
-      sliderRef.current.scrollBy({
-        left: scrollDistance,
-      });
-      if (numQuestion < set.Cards.length) setNumQuestion((state) => state + 1);
-      setTimeout(() => {
-        setShowQuestion(true);
-      }, 300);
-      setTimeout(() => {
-        setSliding(false);
-      }, 700);
-    }
+    setIndex((index) => (index < set.Cards.length - 1 ? index + 1 : index));
+    setContainerClassName("move-right");
+    setTimeout(() => {
+      setContainerClassName("");
+    }, 500);
   };
 
   const prevClicker = () => {
-    if (!sliding) {
-      setSliding(true);
-      const scrollDistance = sliderRef.current.offsetWidth;
-      sliderRef.current.scrollBy({
-        left: -scrollDistance,
-      });
-      if (numQuestion > 1) setNumQuestion((state) => state - 1);
-      setTimeout(() => {
-        setShowQuestion(true);
-      }, 300);
-      setTimeout(() => {
-        setSliding(false);
-      }, 700);
-    }
+    setIndex((index) => (index > 0 ? index - 1 : index));
+    setContainerClassName("move-left");
+    setTimeout(() => {
+      setContainerClassName("");
+    }, 500);
   };
 
   if (!set || set.id != setId)
@@ -111,36 +92,20 @@ export default function SetSingleView() {
         </div>
       </div>
       <OptionsForSet setId={setId} />
-      <div className="SetSingleView-slider" ref={sliderRef}>
-        {set.Cards.map((card) => (
-          <div key={card.id} className="SetSingleView-card">
-            <div className="SetSingleView-card-header">
-              <div className="SetSingleView-card-hint">
-                {showQuestion ? (
-                  <div>
-                    {" "}
-                    Get a hint <i className="fa-regular fa-lightbulb"></i>{" "}
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div>
-            <div
-              className="SetSingleView-card-content"
-              onClick={() => setShowQuestion((state) => !state)}
-            >
-              {showQuestion ? card.question : card.answer}
-            </div>
-          </div>
-        ))}
-      </div>
+      <MainCardView
+        cards={set.Cards}
+        isFlipped={isFlipped}
+        setIsFlipped={setIsFlipped}
+        index={index}
+        setIndex={setIndex}
+        containerClassName={containerClassName}
+      />
       <div className="setSingleView-slider-controls">
         <div className="setSingleView-arrow-holders" onClick={prevClicker}>
           <i className="fa-solid fa-arrow-left"></i>
         </div>
         <div className="setSingleView-slider-controls-NumSets">
-          {numQuestion}/{set.Cards.length}
+          {index + 1}/{set.Cards.length}
         </div>
         <div className="setSingleView-arrow-holders" onClick={nextClicker}>
           <i className="fa-solid fa-arrow-right"></i>
