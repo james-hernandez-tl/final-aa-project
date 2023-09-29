@@ -46,7 +46,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80%;
+  height: 100%;
   font-size: 20px;
   padding: 0 40px;
 }
@@ -56,6 +56,9 @@
   justify-content: space-between;
   margin-left: 20px;
   padding: 30px 10px;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .SetSingleView-slider {
@@ -188,4 +191,15 @@
     margin-left: 0px;
     margin-right: 0px;
   }
+}
+
+.text-to-speech {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 18px;
+}
+
+.text-to-speech:hover {
+  cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import ReactCardFlip from "react-card-flip";
+import { useSpeechSynthesis } from "react-speech-kit";
 import "./SetSingleView.css";
 
 export default function MainCardView({
@@ -9,6 +10,8 @@ export default function MainCardView({
   containerClassName,
 }) {
   const card = cards[index];
+  const { speak, voices, cancel } = useSpeechSynthesis();
+  console.log(voices);
 
   return (
     <ReactCardFlip
@@ -25,10 +28,34 @@ export default function MainCardView({
             </div>
           </div>
         </div>
+        <div
+          className="text-to-speech"
+          onClick={(e) => {
+            cancel();
+            e.stopPropagation();
+            speak({
+              text: card.question,
+              voice: voices[51],
+            });
+          }}
+        >
+          <i className="fa-solid fa-volume-high"></i>
+        </div>
         <div className="SetSingleView-card-content">{card.question}</div>
       </div>
       <div className="SetSingleView-card" onClick={() => setIsFlipped(false)}>
-        <div className="SetSingleView-card-header"></div>
+        <div
+          className="text-to-speech"
+          onClick={(e) => {
+            e.stopPropagation();
+            speak({
+              text: card.answer,
+              voice: voices[51],
+            });
+          }}
+        >
+          <i className="fa-solid fa-volume-high"></i>
+        </div>
         <div className="SetSingleView-card-content">{card.answer}</div>
       </div>
     </ReactCardFlip>
