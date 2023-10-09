@@ -24,6 +24,7 @@ export default function SetSingleView() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [index, setIndex] = useState(0);
   const [containerClassName, setContainerClassName] = useState("");
+  const [showHint, setShowHint] = useState(false);
 
   const set = useSelector((state) => state.sets.singleSet);
   const user = useSession();
@@ -43,6 +44,7 @@ export default function SetSingleView() {
 
   const nextClicker = () => {
     setIndex((index) => (index < set.Cards.length - 1 ? index + 1 : index));
+    setShowHint(false);
     setContainerClassName("move-right");
     setTimeout(() => {
       setContainerClassName("");
@@ -51,6 +53,7 @@ export default function SetSingleView() {
 
   const prevClicker = () => {
     setIndex((index) => (index > 0 ? index - 1 : index));
+    setShowHint(false);
     setContainerClassName("move-left");
     setTimeout(() => {
       setContainerClassName("");
@@ -99,6 +102,8 @@ export default function SetSingleView() {
         index={index}
         setIndex={setIndex}
         containerClassName={containerClassName}
+        showHint={showHint}
+        setShowHint={setShowHint}
       />
       <div className="setSingleView-slider-controls">
         <div className="setSingleView-arrow-holders" onClick={prevClicker}>

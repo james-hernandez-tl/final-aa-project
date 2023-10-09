@@ -115,6 +115,22 @@
 .SetSingleView-card-hint {
   position: absolute;
   top: 15px;
+  padding: 5px 10px;
+}
+
+.SetSingleView-card-hint:hover {
+  cursor: pointer;
+}
+
+.SetSingleView-card-hint:hover .fa-lightbulb {
+  color: yellow;
+}
+
+.SetSingleView-card-hint.SetSingleView-card-header-hint {
+  background-color: #20232c;
+  padding: 5px 10px;
+  min-width: 100px;
+  border-radius: 1rem;
 }
 
 .fa-lightbulb {
