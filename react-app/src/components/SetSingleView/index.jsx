@@ -45,6 +45,7 @@ export default function SetSingleView() {
   const nextClicker = () => {
     setIndex((index) => (index < set.Cards.length - 1 ? index + 1 : index));
     setShowHint(false);
+    setIsFlipped(false);
     setContainerClassName("move-right");
     setTimeout(() => {
       setContainerClassName("");
@@ -54,6 +55,7 @@ export default function SetSingleView() {
   const prevClicker = () => {
     setIndex((index) => (index > 0 ? index - 1 : index));
     setShowHint(false);
+    setIsFlipped(false);
     setContainerClassName("move-left");
     setTimeout(() => {
       setContainerClassName("");
