@@ -14,20 +14,27 @@ import SignUpPage from "./components/SignUpPage";
 import Search from "./components/Search";
 import Footer from "./components/Footer";
 import AiChat from "./components/AiChat";
+import Landing from "./components/Landing";
+import useSession from "./hooks/useSession";
 
 function App() {
   const dispatch = useDispatch();
+  const user = useSession();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {user && <Navigation isLoaded={isLoaded} />}
 
       {isLoaded && (
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          {user ? (
+            <Route path="/" exact element={<Home />} />
+          ) : (
+            <Route path="/" exact element={<Landing />} />
+          )}
           <Route path="/logIn" element={<LoginPage />} />
           <Route path="/sets/new" exact element={<SetFormDecider />} />
           <Route path="/sets/:setId/edit" exact element={<SetFormDecider />} />
@@ -44,7 +51,7 @@ function App() {
           <Route path="/chat/:setId" exact element={<AiChat />} />
         </Routes>
       )}
-      {isLoaded && <Footer />}
+      {isLoaded && user && <Footer />}
     </>
   );
 }
