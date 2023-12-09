@@ -86,15 +86,18 @@
   color: rgb(70, 70, 70);
 }
 
-.formError {
+#light .formError,
+#dark .formError {
   border: 1px red solid;
 }
 
-.formError > input {
+#light .formError > input,
+#dark .formError > input {
   color: red;
 }
 
-.Required::placeholder {
+#light .Required::placeholder,
+#dark .Required::placeholder {
   color: red;
 }
 

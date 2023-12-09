@@ -95,24 +95,29 @@
   color: rgb(70, 70, 70);
 }
 
-.passwordError {
+#light .passwordError,
+#dark .passwordError {
   border: 1px red solid;
   color: red;
 }
 
-.passwordError > input {
+#light .passwordError > input,
+#dark .passwordError > input {
   color: red;
 }
 
-.usernameError {
+#light .usernameError,
+#dark .usernameError {
   border: 1px red solid;
 }
 
-.usernameError > input {
+#light .usernameError > input,
+#dark .usernameError > input {
   color: red;
 }
 
-.Required::placeholder {
+#light .Required::placeholder,
+#dark .Required::placeholder {
   color: red;
 }
 
