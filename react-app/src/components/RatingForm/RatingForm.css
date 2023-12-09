@@ -23,7 +23,9 @@
 
 .RatingForm-btn-wrapper > button {
   padding: 7px 15px;
-  background-color: #414867;
+  /* background-color: #414867; */
+  /* background-color: rgba(82, 113, 255, 10%); */
+  background-color: #a0b1ff;
   color: white;
   border-radius: 5px;
   border: none;

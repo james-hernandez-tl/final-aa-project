@@ -1,17 +1,45 @@
 .YourItemLayout {
-  background-color: #586380;
   border-radius: 30px;
   padding: 10px 20px;
   margin-bottom: 10px;
 }
 
-.YourItemLayout:hover {
+#dark .YourItemLayout {
+  background-color: #586380;
+  color: #ffffff;
+}
+
+#light .YourItemLayout {
+  background-color: #ffffff;
+  color: rgb(70, 70, 70);
+}
+
+.YourItemLayout-terms {
+  padding: 5px 5px;
+  border-radius: 0.5rem;
+  width: fit-content;
+}
+
+#dark .YourItemLayout-terms {
+  background-color: rgba(255, 255, 255, 20%);
+}
+
+#light .YourItemLayout-terms {
+  background-color: rgba(82, 113, 255, 10%);
+}
+
+#dark .YourItemLayout:hover {
   /* border-bottom: 3px solid darkgray; */
   box-shadow: #a1a5b5 0px 3px 2px;
+}
+
+#light .YourItemLayout:hover {
+  /* border-bottom: 3px solid darkgray; */
+  box-shadow: #a0b1ff 0px 3px 2px;
 }
 
 .YourItemLayout-name {
   margin-bottom: 15px;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 500;
 }

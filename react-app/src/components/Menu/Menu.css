@@ -1,10 +1,20 @@
 .menu {
   border-radius: 20px;
-  border: lightgray solid 1px;
   position: absolute;
   z-index: 1;
   padding: 10px;
+}
+
+#dark .menu {
   background-color: #0a092d;
+  border: lightgray solid 1px;
+}
+
+#light .menu {
+  background-color: #ffffff;
+  border: 1px solid black;
+  /* border: 1px solid #5271ff; */
+  color: rgb(70, 70, 70);
 }
 
 .menu-item {
@@ -13,4 +23,7 @@
   padding: 5px 30px 5px 0;
   gap: 5px;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

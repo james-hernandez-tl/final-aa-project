@@ -11,7 +11,7 @@ import AddSetToFolder from "../AddSetToFolder";
 import RatingForm from "../RatingForm";
 import { useModal } from "../../context/Modal";
 import OptionsForSet from "../OptionsForSet";
-import ClipLoader from "react-spinners/ClipLoader";
+import LoadingScreen from "../LoadingScreen";
 import MainCardView from "./MainCardView";
 import "./SetSingleView.css";
 
@@ -62,12 +62,7 @@ export default function SetSingleView() {
     }, 500);
   };
 
-  if (!set || set.id != setId)
-    return (
-      <div className="Home-loadingScreen">
-        <ClipLoader color="white" size={100} />
-      </div>
-    );
+  if (!set || set.id != setId) return <LoadingScreen />;
 
   return (
     <div className="SetSingleView">

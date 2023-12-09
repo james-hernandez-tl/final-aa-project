@@ -66,7 +66,7 @@ export default function RatingForm({ rating, setId, ratingId }) {
         <i
           id={i}
           className="fa-solid fa-star"
-          style={{ color: "#ffde0a" }}
+          style={{ color: "#A0B1FF" }}
           key={i}
           onMouseEnter={mouseOverStar}
           onMouseLeave={mouseLeftStar}

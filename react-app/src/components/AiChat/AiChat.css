@@ -8,6 +8,16 @@
   position: relative;
 }
 
+#dark .AiChat {
+  background-color: #0a092d;
+  color: #ffffff;
+}
+
+#light .AiChat {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
+}
+
 .AiChat-textBar {
   display: flex;
   justify-content: space-between;
@@ -91,14 +101,20 @@ div[contenteditable] {
 
 .AiChat-allMessages-message-text {
   padding: 15px 30px 15px 15px;
-  background-color: #2e3856;
   border-radius: 1rem;
   width: fit-content;
   max-width: 60%;
   font-size: 1.1rem;
-  font-weight: 900;
   text-align: left;
   line-height: 1.4;
+}
+
+#dark .AiChat-allMessages-message-text {
+  background-color: #2e3856;
+}
+
+#light .AiChat-allMessages-message-text {
+  background-color: #ffffff;
 }
 
 .AiChat-allMessages-message-know {
@@ -135,10 +151,18 @@ div[contenteditable] {
 .AiChat-allMessages-option {
   display: flex;
   border-radius: 10px;
-  border: 1px rgb(255, 255, 255) solid;
   align-items: center;
   cursor: pointer;
   padding-right: 25px;
+}
+
+#dark .AiChat-allMessages-option {
+  border: 1px rgb(255, 255, 255) solid;
+}
+
+#light .AiChat-allMessages-option {
+  background-color: #ffffff;
+  border: 1px black solid;
 }
 
 .AiChat-allMessages-option:hover {
@@ -158,9 +182,17 @@ div[contenteditable] {
 .AiChat-allMessages-message-loadingBubble {
   display: flex;
   padding: 15px 10px;
-  background: #2e3856;
   width: fit-content;
   border-radius: 1rem;
+}
+
+#dark .AiChat-allMessages-message-loadingBubble {
+  background: #2e3856;
+}
+
+#light .AiChat-allMessages-message-loadingBubble {
+  background-color: #ffffff;
+  color: rgb(70, 70, 70);
 }
 
 .AiChat-allMessages-message.AiChat-allMessages-loadingBubble-wrapper {
@@ -172,8 +204,12 @@ div[contenteditable] {
   color: #717788;
 }
 
-.AiChat-textBar.AiChat-textBar-disabled {
+#dark .AiChat-textBar.AiChat-textBar-disabled {
   background-color: #282e3e;
+}
+
+#light .AiChat-textBar.AiChat-textBar-disabled {
+  background-color: rgba(232, 232, 232, 0.9);
 }
 
 #Footer.block-footer {

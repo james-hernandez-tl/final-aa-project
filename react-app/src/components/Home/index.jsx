@@ -8,7 +8,7 @@ import Achievements from "../Achievements";
 import useSession from "../../hooks/useSession";
 import useRecommened from "../../hooks/useRecommened";
 import { useNavigate } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
+import LoadingScreen from "../LoadingScreen";
 
 export default function Home() {
   useAllSets();
@@ -22,20 +22,14 @@ export default function Home() {
     dispatch(allSetThunk());
   }, [dispatch]);
 
-  const loadingScreen = (
-    <div className="Home-loadingScreen">
-      <ClipLoader color="white" size={100} />
-    </div>
-  );
-
-  if (!allSets || !recommened) return loadingScreen;
+  if (!allSets || !recommened) return <LoadingScreen />;
 
   allSets = Object.values(allSets);
   recommened = Object.values(recommened).sort(
     (a, b) => b.Rating * b.NumRatings - a.Rating * a.NumRatings
   );
 
-  if (!allSets.length) return loadingScreen;
+  if (!allSets.length) return <LoadingScreen />;
   return (
     <div className="Home">
       <div className="Home-achievements">Achievements</div>
@@ -51,9 +45,9 @@ export default function Home() {
           </div>
         )}
       </div>
-      <SetWrapper allSets={allSets} color="#25284A" />
+      <SetWrapper allSets={allSets} color="#ffffff" />
       <div className="Home-achievements">Recommended</div>
-      <SetWrapper allSets={recommened} color="#25284A" />
+      <SetWrapper allSets={recommened} color="#ffffff" />
     </div>
   );
 }

@@ -4,12 +4,19 @@
 
 .OptionsForSet-option {
   display: flex;
-  background-color: #25284a;
   width: 20%;
   border-radius: 10px;
   align-items: center;
   cursor: pointer;
   position: relative;
+}
+
+#dark .OptionsForSet-option {
+  background-color: #25284a;
+}
+
+#light .OptionsForSet-option {
+  background-color: #ffffff;
 }
 
 .OptionsForSet-option-hover {

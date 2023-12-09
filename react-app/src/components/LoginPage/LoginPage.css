@@ -1,11 +1,11 @@
-.LoginPage {
+/* .LoginPage {
   background-image: url("https://media.discordapp.net/attachments/934145502252003410/1131398837672607784/1.png?width=1900&height=1068");
   width: 100vw;
   height: 100vh;
   position: relative;
-}
+} */
 
-.Login-div {
+/* .Login-div {
   background-color: #586380;
   position: absolute;
   top: 30%;
@@ -13,7 +13,7 @@
   transform: translate(-50%, -50%);
   border-radius: 20px;
   text-align: center;
-}
+} */
 
 .LoginPage-header {
   font-size: 35px;
@@ -26,16 +26,30 @@
   padding: 8px 10px;
   width: 80%;
   margin: 0 auto 10px;
-  background-color: #a1a5b5;
   text-align: center;
+}
+
+#dark .LoginPage-input-wrapper {
+  background-color: #a1a5b5;
+}
+
+#light .LoginPage-input-wrapper {
+  background-color: #a0b1ff;
 }
 
 .LoginPage-inputs {
   border: none;
-  background-color: #a1a5b5;
   text-align: center;
   color: white;
   font-size: 16px;
+}
+
+#dark .LoginPage-inputs {
+  background-color: #a1a5b5;
+}
+
+#light .LoginPage-inputs {
+  background-color: #a0b1ff;
 }
 
 .LoginPage-inputs:focus {
@@ -47,16 +61,32 @@
   color: rgb(232, 230, 230);
 }
 
+.LoginPage-btn-wrapper {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 20px;
+  width: 85%;
+  justify-content: space-between;
+}
+
 .LoginPage-button {
-  background-color: #a1a5b5;
   border-radius: 20px;
   border: none;
-  color: white;
   padding: 7px 20px;
   font-size: 16px;
-  margin: 20px 5px;
-  width: 40%;
+  width: 49%;
   cursor: pointer;
+}
+
+#dark .LoginPage-button {
+  background-color: #a1a5b5;
+  color: #ffffff;
+}
+
+#light .LoginPage-button {
+  background-color: #a0b1ff;
+  color: white;
 }
 
 .passwordError {
@@ -92,4 +122,12 @@
   display: flex;
   cursor: pointer;
   justify-content: flex-end;
+}
+
+#dark .LoginPage-signupbtn > div {
+  color: #ffffff;
+}
+
+#light .LoginPage-signupbtn > div {
+  color: #5271ff;
 }

@@ -10,8 +10,10 @@ import Profile from "./Profile";
 import PlusIcon from "./PlusIcon";
 import NavSearch from "./NavSearch";
 import { useState } from "react";
+import { useTheme } from "../../context/ColorProvider";
 
 function Navigation({ isLoaded }) {
+  const { theme, setTheme, toggleTheme } = useTheme();
   const sessionUser = useSelector((state) => state.session.user);
   const [userSearch, setUserSearch] = useState("");
   const navigate = useNavigate();
@@ -30,34 +32,48 @@ function Navigation({ isLoaded }) {
           setUserSearch={setUserSearch}
         />
         <PlusIcon />
-        <Avatar
-          src={sessionUser?.image}
-          size={"35px"}
-          btnRef={btnRef}
-          onClick={toggleMenu}
-        />
-        <Menu menuRef={menuRef} isOpen={show}>
-          {!sessionUser && (
+        <div className="Nav-avatar-wrapper">
+          <Avatar
+            src={sessionUser?.image}
+            size={"35px"}
+            btnRef={btnRef}
+            onClick={toggleMenu}
+            inNav={true}
+          />
+          <Menu menuRef={menuRef} isOpen={show} right>
+            {!sessionUser && (
+              <MenuItem
+                text="LogIn"
+                onClick={() => {
+                  navigate("/logIn", { state: window.location.pathname });
+                  hideMenu();
+                }}
+                icon={<i className="fa-solid fa-power-off"></i>}
+              />
+            )}
+            {sessionUser && (
+              <MenuItem
+                text="Logout"
+                onClick={() => {
+                  dispatch(logout());
+                  navigate("/");
+                }}
+                icon={<i className="fa-solid fa-power-off"></i>}
+              />
+            )}
             <MenuItem
-              text="LogIn"
-              onClick={() => {
-                navigate("/logIn", { state: window.location.pathname });
-                hideMenu();
-              }}
-              icon={<i className="fa-solid fa-power-off"></i>}
+              text={theme === "light" ? "Dark mode" : "Light mode"}
+              onClick={toggleTheme}
+              icon={
+                theme === "light" ? (
+                  <i class="fa-solid fa-moon"></i>
+                ) : (
+                  <i className="fa-regular fa-sun"></i>
+                )
+              }
             />
-          )}
-          {sessionUser && (
-            <MenuItem
-              text="Logout"
-              onClick={() => {
-                dispatch(logout());
-                navigate("/");
-              }}
-              icon={<i className="fa-solid fa-power-off"></i>}
-            />
-          )}
-        </Menu>
+          </Menu>
+        </div>
       </div>
     </div>
   );

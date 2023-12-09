@@ -1,17 +1,42 @@
 .CardForm {
   border-radius: 25px;
-  background-color: #25284a;
   margin: 10px auto;
 }
 
-.CardForm-inputs {
+#dark .CardForm {
   background-color: #25284a;
+}
+
+#light .CardForm {
+  background-color: #ffffff;
+  color: rgb(70, 70, 70);
+}
+
+.CardForm-inputs {
   border: none;
-  color: white;
-  border-bottom: 4px #747c92 solid;
   width: 90%;
   margin-bottom: 7px;
   padding-bottom: 3px;
+}
+
+#dark .CardForm-inputs {
+  background-color: #25284a;
+  border-bottom: 4px #747c92 solid;
+  color: white;
+}
+
+#light .CardForm-inputs {
+  background-color: #ffffff;
+  border-bottom: 4px #5271ff solid;
+  color: black;
+}
+
+#dark .CardForm-inputs::placeholder {
+  color: rgba(255, 255, 255, 50%);
+}
+
+#light .CardForm-inputs::placeholder {
+  color: rgb(70, 70, 70);
 }
 
 .CardForm-inputs:focus {
@@ -30,8 +55,16 @@
 .CardForm-divider {
   height: 3px;
   width: 100%;
-  background-color: #0a092d;
   margin: 4px 0 10px 0;
+}
+
+#light .CardForm-divider {
+  /* background-color: #5271ff; */
+  background-color: rgba(232, 232, 232, 0.5);
+}
+
+#dark .CardForm-divider {
+  background-color: #0a092d;
 }
 
 .CardForm-Input-wrappers {
@@ -48,15 +81,26 @@
 
 .CardForm-inputs-labels {
   font-size: 13px;
+}
+
+#dark .CardForm-inputs-labels {
   color: #747c92;
 }
 
-.fa-trash-can {
-  color: white;
-  background-color: #25284a;
+#light .CardForm-inputs-labels {
+  color: #747c92;
 }
 
-.fa-trash-can:hover {
+#dark .fa-trash-can {
+  color: white;
+}
+
+#light .fa-trash-can {
+  color: rgb(70, 70, 70);
+}
+
+#dark .fa-trash-can:hover,
+#light .fa-trash-can:hover {
   color: red;
   cursor: pointer;
 }

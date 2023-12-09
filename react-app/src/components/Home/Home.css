@@ -1,13 +1,32 @@
 .Home {
-  padding: 20px 40px;
+  padding: 20px 40px 100px;
   max-width: 1409px;
   margin: auto;
   /* min-height: 100vh; */
 }
 
+#light .Home {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
+}
+
+#dark .Home {
+  background-color: #0a092d;
+  color: #ffffff;
+}
+
 .Home-achievements {
   font-size: 25px;
   margin: 15px 0;
+  font-weight: 600;
+}
+
+#dark .Home-achievements {
+  color: #ffffff;
+}
+
+#light .Home-achievements {
+  color: rgb(70, 70, 70);
 }
 
 .home-studySet-wrapper {
@@ -18,6 +37,14 @@
 
 .home-studySet-createNewSet {
   margin: 15px 0;
+}
+
+#dark .home-studySet-createNewSet {
+  color: #ffffff;
+}
+
+#light .home-studySet-createNewSet {
+  color: #5271ff;
 }
 
 .home-studySet-createNewSet:hover {

@@ -2,9 +2,12 @@ import { useState } from "react";
 import { signUp } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useModal } from "../../context/Modal";
+import LoginPage from "../LoginPage";
 import "./SignUpPage.css";
 
 export default function SignUpPage() {
+  const { closeModal, setModalContent } = useModal();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -33,7 +36,10 @@ export default function SignUpPage() {
       setPasswordError(errors?.password);
       setEmailError(errors?.email);
     }
-    if (!errors) navigate(state);
+    if (!errors) {
+      closeModal();
+      navigate(state);
+    }
   };
 
   const usernameClicker = () => {
@@ -55,13 +61,15 @@ export default function SignUpPage() {
   };
 
   const loginClicker = () => {
-    navigate("/login", { state: state });
+    // navigate("/login", { state: state });
+    closeModal();
+    setModalContent(<LoginPage />);
   };
 
   return (
     <div className="SignUpPage">
       <div className="SignUp-div">
-        <div className="SignUpPage-header">Sign Up Page</div>
+        <div className="SignUpPage-header">Sign Up</div>
         <div
           className={`SignUpPage-input-wrapper ${
             usernameError ? "formError" : ""
@@ -130,7 +138,7 @@ export default function SignUpPage() {
             placeholder={required ?? "confirm password"}
           />
         </div>
-        <div>
+        <div className="SignUpPage-button-wrapper">
           <button className="SignUpPage-button" onClick={SignUpClicker}>
             sign up
           </button>

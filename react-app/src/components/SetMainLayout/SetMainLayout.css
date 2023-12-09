@@ -1,10 +1,16 @@
 .SetMainLayout {
   padding: 10px 15px;
-  /* background-color: #a1a5b5; */
-  background-color: #414867;
   border-radius: 25px;
   margin: 5px 14px 5px 0px;
   flex: 0 0 16%;
+}
+
+#dark .SetMainLayout {
+  background-color: #414867;
+}
+
+#light .SetMainLayout {
+  background-color: #ffffff;
 }
 
 .Home .SetMainLayout .avatar {
@@ -22,6 +28,19 @@
   margin-top: 0;
   justify-self: end;
   margin: 0 !important;
+}
+
+.SetMainLayout-addons-numCards {
+  padding: 5px 5px;
+  border-radius: 0.5rem;
+}
+
+#dark .SetMainLayout-addons-numCards {
+  background-color: rgba(255, 255, 255, 20%);
+}
+
+#light .SetMainLayout-addons-numCards {
+  background-color: rgba(82, 113, 255, 10%);
 }
 
 .Home .SetMainLayout-addons {
@@ -68,6 +87,14 @@
   cursor: pointer;
 }
 
-/* .SetMainLayout-footer-pfp {
-  position: relative;
-} */
+.SetMainLayout-footer-pfp {
+  margin-bottom: 5px;
+}
+
+#dark .SetMainLayout-star-wrapper > i {
+  color: #ffffff;
+}
+
+#light .SetMainLayout-star-wrapper > i {
+  color: #ffd700;
+}

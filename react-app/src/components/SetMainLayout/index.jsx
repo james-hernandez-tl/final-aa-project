@@ -18,8 +18,12 @@ export default function SetMainLayout({ set, inSearch, setPreviewSet }) {
       )}
       <div className="SetMainLayout-name">{set.name}</div>
       <div className="SetMainLayout-addons">
-        <div>{Object.values(set.Cards).length} cards</div>
         <div>
+          <span className="SetMainLayout-addons-numCards">
+            {Object.values(set.Cards).length} cards
+          </span>
+        </div>
+        <div className="SetMainLayout-star-wrapper">
           <i className="fa-regular fa-star"></i>
           {`${set.Rating} (${set.NumRatings})`}
         </div>

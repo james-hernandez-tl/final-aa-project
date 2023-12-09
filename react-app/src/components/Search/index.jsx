@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { searchSets } from "../../store/sets";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
+import LoadingScreen from "../LoadingScreen";
 import { useIsSearching } from "../../context/Search";
 
 export default function Search() {
@@ -34,69 +34,65 @@ export default function Search() {
     stuff();
   }, [searchParams]);
 
-  const loadingScreen = (
-    <div className="Home-loadingScreen">
-      <ClipLoader color="white" size={100} />
-    </div>
-  );
-
   if (!allSets) {
-    return loadingScreen;
+    return <LoadingScreen />;
   }
   allSets = Object.values(allSets);
 
-  if (isSearching) return loadingScreen;
+  if (isSearching) return <LoadingScreen />;
 
   return (
-    <div className="Search">
-      <div className="Search-results">
-        {allSets.length
-          ? `Results for "${search}"`
-          : `No results for "${search}"`}{" "}
-      </div>
-      <div className="Search-sets-title-wrapper">
-        <div className="Search-sets-title">Search Sets</div>
-        <div className="Search-sets-title search-preview-title">
-          Set preview
+    <div className="Search-wrapper">
+      <div className="Search">
+        <div className="Search-results">
+          {allSets.length
+            ? `Results for "${search}"`
+            : `No results for "${search}"`}{" "}
         </div>
-      </div>
-      <div className="Search-main-wrapper">
-        <div className="Search-sets">
-          {/* <div className="Search-sets-title">Search Sets</div> */}
-          {allSets.map((set) => (
-            <SetMainLayout
-              key={set.id}
-              set={set}
-              inSearch
-              setPreviewSet={setPreviewSet}
-            />
-          ))}
+        <div className="Search-sets-title-wrapper">
+          <div className="Search-sets-title">Search Sets</div>
+          <div className="Search-sets-title search-preview-title">
+            Set preview
+          </div>
         </div>
-        <div className="Search-preview">
-          {/* <div className="Search-sets-title">Set preview</div> */}
-          <div className="Search-prebiew-body">
-            <div className="Search-prebiew-body-header">
-              <div className="Search-prebiew-body-title">
-                {previewSet?.name}
+        <div className="Search-main-wrapper">
+          <div className="Search-sets">
+            {/* <div className="Search-sets-title">Search Sets</div> */}
+            {allSets.map((set) => (
+              <SetMainLayout
+                key={set.id}
+                set={set}
+                inSearch
+                setPreviewSet={setPreviewSet}
+              />
+            ))}
+          </div>
+          <div className="Search-preview">
+            {/* <div className="Search-sets-title">Set preview</div> */}
+            <div className="Search-prebiew-body">
+              <div className="Search-prebiew-body-header">
+                <div className="Search-prebiew-body-title">
+                  {previewSet?.name}
+                </div>
+                <div className="Search-prebiew-body-study">
+                  <button onClick={setClicker}>Study</button>
+                </div>
               </div>
-              <div className="Search-prebiew-body-study">
-                <button onClick={setClicker}>Study</button>
+              <div>
+                {previewSet &&
+                  Object.values(previewSet.Cards)
+                    .slice(0, 7)
+                    .map((card) => (
+                      <div key={card.id}>
+                        <div className="Search-preview-body-question">
+                          {card.question}
+                        </div>
+                        <div className="Search-preview-body-answer">
+                          {card.answer}
+                        </div>
+                      </div>
+                    ))}
               </div>
-            </div>
-            <div>
-              {previewSet &&
-                Object.values(previewSet.Cards)
-                  .slice(0, 7)
-                  .map((card) => (
-                    <div key={card.id}>
-                      <div className="Search-preview-body-question">
-                        {card.question}
-                      </div>
-                      <div className="Search-preview-body-answer">
-                        {card.answer}
-                      </div>
-                    </div>
-                  ))}
             </div>
           </div>
         </div>

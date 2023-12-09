@@ -1,10 +1,17 @@
 .Achievements {
   height: 100px;
-  background-color: #25284a;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   border-radius: 15px;
   font-size: 20px;
+}
+
+#dark .Achievements {
+  background-color: #25284a;
+}
+
+#light .Achievements {
+  background-color: #ffffff;
 }

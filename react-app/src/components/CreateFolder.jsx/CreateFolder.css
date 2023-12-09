@@ -9,14 +9,28 @@
 
 .CreateFolder-input-title,
 .CreateFolder-input-description {
-  background-color: rgb(21, 18, 59);
-  color: white;
   border: none;
   padding: 10px;
   border-radius: 10px;
   width: 95%;
   font-size: 17px;
   margin-bottom: 10px;
+  color: white;
+}
+
+#dark .CreateFolder-input-title,
+#dark .CreateFolder-input-description {
+  background-color: rgb(21, 18, 59);
+}
+
+#light .CreateFolder-input-title,
+#light .CreateFolder-input-description {
+  background-color: #a0b1ff;
+}
+
+#light .CreateFolder-input-title::placeholder,
+#light .CreateFolder-input-description::placeholder {
+  color: rgba(255, 255, 255, 80%);
 }
 
 .CreateFolder-input-title:focus {
@@ -41,10 +55,17 @@
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
-  /* background-color: #a1a5b5; */
-  background-color: #414867;
   color: white;
   font-size: 15px;
+  cursor: pointer;
+}
+
+#dark .CreateFolder-button-wrapper > button {
+  background-color: #414867;
+}
+
+#light .CreateFolder-button-wrapper > button {
+  background-color: #a0b1ff;
 }
 
 .Required::placeholder {

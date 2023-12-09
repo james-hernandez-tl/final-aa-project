@@ -1,11 +1,11 @@
-.SignUpPage {
+/* .SignUpPage {
   background-image: url("https://media.discordapp.net/attachments/934145502252003410/1131398837672607784/1.png?width=1900&height=1068");
   width: 100vw;
   height: 100vh;
   position: relative;
-}
+} */
 
-.SignUp-div {
+/* .SignUp-div {
   background-color: #586380;
   position: absolute;
   top: 30%;
@@ -13,7 +13,7 @@
   transform: translate(-50%, -50%);
   border-radius: 20px;
   text-align: center;
-}
+} */
 
 .SignUpPage-header {
   font-size: 35px;
@@ -26,13 +26,21 @@
   padding: 8px 10px;
   width: 80%;
   margin: 0 auto 10px;
-  background-color: #a1a5b5;
   text-align: center;
+}
+
+#dark .SignUpPage-input-wrapper,
+#dark .SignUpPage-inputs {
+  background-color: #a1a5b5;
+}
+
+#light .SignUpPage-input-wrapper,
+#light .SignUpPage-inputs {
+  background-color: #a0b1ff;
 }
 
 .SignUpPage-inputs {
   border: none;
-  background-color: #a1a5b5;
   text-align: center;
   color: white;
   font-size: 16px;
@@ -48,14 +56,28 @@
   color: rgb(232, 230, 230);
 }
 
+.SignUpPage-button-wrapper {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: center;
+}
+
 .SignUpPage-button {
-  background-color: #a1a5b5;
   border-radius: 20px;
   border: none;
-  color: white;
   padding: 7px 20px;
   font-size: 16px;
   margin: 20px 5px;
+  cursor: pointer;
+  color: white;
+}
+
+#dark .SignUpPage-button {
+  background-color: #a1a5b5;
+}
+#light .SignUpPage-button {
+  background-color: #a0b1ff;
 }
 
 .formError {
@@ -75,4 +97,13 @@
   bottom: -20px;
   right: 10px;
   cursor: pointer;
+  color: #5271ff;
+}
+
+#dark .SignUpPage-login-btn {
+  color: #ffffff;
+}
+
+#light .SignUpPage-login-btn {
+  color: #5271ff;
 }
