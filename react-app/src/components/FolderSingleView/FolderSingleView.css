@@ -114,7 +114,7 @@
 }
 
 #light .AddSet-Header-exit {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .AddSet-Header-exit:hover {
@@ -131,7 +131,7 @@
 }
 
 #light .AddSet-createSet-wrapper {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .AddSet-createSet-wrapper:hover {
@@ -172,7 +172,7 @@
 }
 
 #light .AddSet-dropdown-wrapper {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .AddSet-dropdown {
@@ -186,8 +186,8 @@
 }
 
 #light .AddSet-dropdown {
-  background-color: #a0b1ff;
-  color: #ffffff;
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .AddSet-dropdown:hover {
@@ -220,7 +220,7 @@
 }
 
 #light .AddSet-set {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .AddSet-set-plus-wrapper {
@@ -229,7 +229,11 @@
   border: 1px #2e3856 solid;
 }
 
-.AddSet-set-plus-wrapper.AddSet-set-plus-wrapper-inFolder {
+#dark .AddSet-set-plus-wrapper.AddSet-set-plus-wrapper-inFolder {
+  background-color: #ffcd1f;
+}
+
+#light .AddSet-set-plus-wrapper.AddSet-set-plus-wrapper-inFolder {
   background-color: #ffcd1f;
 }
 
@@ -237,11 +241,19 @@
   cursor: pointer;
 }
 
-.AddSet-set-plus-wrapper:hover .fa-plus-AddSet-set {
+#dark .AddSet-set-plus-wrapper:hover .fa-plus-AddSet-set {
   color: #ffcd1f;
 }
 
-.fa-plus-AddSet-set {
+#light .AddSet-set-plus-wrapper:hover .fa-plus-AddSet-set {
+  color: #ffcd1f;
+}
+
+#dark .fa-plus-AddSet-set {
+  color: #7dd;
+}
+
+#light .fa-plus-AddSet-set {
   color: #7dd;
 }
 

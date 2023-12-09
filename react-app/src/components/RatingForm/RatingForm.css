@@ -16,6 +16,10 @@
 }
 
 .RatingForm-stars > i {
+  color: #ffd700;
+}
+
+.RatingForm-stars > i {
   font-size: 20px;
   margin: 0 0 30px;
   padding: 0 5px;
@@ -23,13 +27,19 @@
 
 .RatingForm-btn-wrapper > button {
   padding: 7px 15px;
-  /* background-color: #414867; */
   /* background-color: rgba(82, 113, 255, 10%); */
-  background-color: #a0b1ff;
   color: white;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+#dark .RatingForm-btn-wrapper > button {
+  background-color: #414867;
+}
+
+#light .RatingForm-btn-wrapper > button {
+  background-color: #a0b1ff;
 }
 
 .RatingForm-btn-wrapper {
