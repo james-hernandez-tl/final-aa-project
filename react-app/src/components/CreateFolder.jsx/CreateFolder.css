@@ -25,12 +25,13 @@
 
 #light .CreateFolder-input-title,
 #light .CreateFolder-input-description {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 #light .CreateFolder-input-title::placeholder,
 #light .CreateFolder-input-description::placeholder {
-  color: rgba(255, 255, 255, 80%);
+  color: rgba(70, 70, 70, 70%);
 }
 
 .CreateFolder-input-title:focus {
@@ -65,7 +66,8 @@
 }
 
 #light .CreateFolder-button-wrapper > button {
-  background-color: #a0b1ff;
+  background-color: rgba(82, 113, 255, 10%);
+  color: rgb(70, 70, 70);
 }
 
 .Required::placeholder {

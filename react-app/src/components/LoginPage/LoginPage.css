@@ -34,7 +34,7 @@
 }
 
 #light .LoginPage-input-wrapper {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .LoginPage-inputs {
@@ -49,16 +49,22 @@
 }
 
 #light .LoginPage-inputs {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .LoginPage-inputs:focus {
   outline: none;
 }
 
-.LoginPage-inputs::-webkit-input-placeholder {
+#dark .LoginPage-inputs::-webkit-input-placeholder {
   text-align: center;
   color: rgb(232, 230, 230);
+}
+
+#light .LoginPage-inputs::-webkit-input-placeholder {
+  text-align: center;
+  color: rgba(70, 70, 70, 70%);
 }
 
 .LoginPage-btn-wrapper {
@@ -85,28 +91,33 @@
 }
 
 #light .LoginPage-button {
-  background-color: #a0b1ff;
-  color: white;
+  background-color: rgba(82, 113, 255, 10%);
+  color: rgb(70, 70, 70);
 }
 
-.passwordError {
+#light .passwordError,
+#dark .passwordError {
   border: 1px red solid;
   color: red;
 }
 
-.passwordError > input {
+#light .passwordError > input,
+#dark .passwordError > input {
   color: red;
 }
 
-.usernameError {
+#light .usernameError,
+#dark .usernameError {
   border: 1px red solid;
 }
 
-.usernameError > input {
+#light .usernameError > input,
+#dark .usernameError > input {
   color: red;
 }
 
-.Required::placeholder {
+#light .Required::placeholder,
+#dark .Required::placeholder {
   color: red;
 }
 
@@ -129,5 +140,5 @@
 }
 
 #light .LoginPage-signupbtn > div {
-  color: #5271ff;
+  color: black;
 }

@@ -21,7 +21,7 @@
 }
 
 #light #modal-background {
-  background-color: rgba(70, 69, 69, 0.1);
+  background-color: rgba(70, 69, 69, 0.4);
 }
 
 #modal-content {
@@ -36,5 +36,6 @@
 }
 
 #light #modal-content {
-  background-color: #5271ff;
+  background-color: #ffffff;
+  color: rgb(70, 70, 70);
 }

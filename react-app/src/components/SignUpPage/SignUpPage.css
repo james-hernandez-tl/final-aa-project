@@ -36,7 +36,7 @@
 
 #light .SignUpPage-input-wrapper,
 #light .SignUpPage-inputs {
-  background-color: #a0b1ff;
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .SignUpPage-inputs {
@@ -51,9 +51,14 @@
   outline: none;
 }
 
-.SignUpPage-inputs::-webkit-input-placeholder {
+#dark .SignUpPage-inputs::-webkit-input-placeholder {
   text-align: center;
   color: rgb(232, 230, 230);
+}
+
+#light .SignUpPage-inputs::-webkit-input-placeholder {
+  text-align: center;
+  color: rgba(70, 70, 70, 70%);
 }
 
 .SignUpPage-button-wrapper {
@@ -77,18 +82,22 @@
   background-color: #a1a5b5;
 }
 #light .SignUpPage-button {
-  background-color: #a0b1ff;
+  background-color: rgba(82, 113, 255, 10%);
+  color: rgb(70, 70, 70);
 }
 
-.formError {
+#light .formError,
+#dark .formError {
   border: 1px red solid;
 }
 
-.formError > input {
+#light .formError > input,
+#dark .formError > input {
   color: red;
 }
 
-.Required::placeholder {
+#light .Required::placeholder,
+#dark .Required::placeholder {
   color: red;
 }
 
@@ -97,7 +106,6 @@
   bottom: -20px;
   right: 10px;
   cursor: pointer;
-  color: #5271ff;
 }
 
 #dark .SignUpPage-login-btn {
@@ -105,5 +113,5 @@
 }
 
 #light .SignUpPage-login-btn {
-  color: #5271ff;
+  color: black;
 }
