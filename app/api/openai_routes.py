@@ -2,11 +2,12 @@ from flask import Blueprint, Flask, request
 from flask_login import login_required, current_user
 from app.models import Card,db,Set
 import os
-import openai
+from openai import OpenAI
 import re
 
 openai_routes = Blueprint("openai", __name__)
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+client = OpenAI()
+# openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @openai_routes.route("/quiz/<int:setId>",methods = ["POST"])
 def createChat(setId):
@@ -28,7 +29,7 @@ def createChat(setId):
 
     # print("[prompt]",prompt)
 
-    res = openai.ChatCompletion.create(
+    res = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages = [{"role": "system", "content": prompt},{"role":"user","content":"quiz me"}],
         temperature=0.3
@@ -61,7 +62,7 @@ def teachChat(setId):
 
     # print("[prompt]",prompt)
 
-    res = openai.ChatCompletion.create(
+    res = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages = [{"role": "system", "content": prompt},{"role":"user","content":"Teach me"}],
         temperature=0.3
@@ -82,7 +83,7 @@ def messageChat():
 
     pastMessages = request.json["pastMessages"]
 
-    res = openai.ChatCompletion.create(
+    res = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages = pastMessages,
         temperature=0.1
