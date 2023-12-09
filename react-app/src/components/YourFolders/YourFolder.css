@@ -1,13 +1,28 @@
 .YourFolders {
-  padding: 10px 150px;
+  padding: 20px 150px;
   min-height: 100vh;
-  margin-top: 10px;
+}
+
+#dark .YourFolders {
+  background-color: #0a092d;
+}
+
+#light .YourFolders {
+  background-color: rgba(232, 232, 232, 0.5);
 }
 
 .YourFolders-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+}
+
+#dark .YourFolders-header {
+  color: #ffffff;
+}
+
+#light .YourFolders-header {
+  color: rgb(70, 70, 70);
 }
 
 .YourFolders-header-title {

@@ -15,7 +15,9 @@ export default function YourItemLayout({ item, isSet }) {
     <div className="YourItemLayout" onClick={itemClicker}>
       <div className="YourItemLayout-name">{item.name}</div>
       <div>
-        <div>{isSet ? item.NumCards + " terms" : item.NumSets + " sets"}</div>
+        <div className="YourItemLayout-terms">
+          {isSet ? item.NumCards + " terms" : item.NumSets + " sets"}
+        </div>
         <div></div>
       </div>
     </div>

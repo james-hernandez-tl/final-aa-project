@@ -1,7 +1,17 @@
 .FolderSingleView {
-  padding: 10px 150px;
+  padding: 20px 150px;
   min-height: 100vh;
-  margin-top: 10px;
+  /* background-color: black; */
+}
+
+#dark .FolderSingleView {
+  background-color: #0a092d;
+  color: #ffffff;
+}
+
+#light .FolderSingleView {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .FolderSingleView-header {
@@ -22,10 +32,23 @@
 .fa-circle-folder-singleView,
 .fa-ellipsis-folder-singleView {
   border-radius: 50%;
-  border: #ffffff 2px solid;
-  padding: 8px;
-  color: #ffffff;
+  border: rgb(70, 70, 70) 2px solid;
+  width: 35px;
+  height: 35px;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dark .fa-circle-folder-singleView,
+#dark .fa-ellipsis-folder-singleView {
+  border: #ffffff 2px solid;
+}
+
+#light .fa-circle-folder-singleView,
+#light .fa-ellipsis-folder-singleView {
+  border: rgb(70, 70, 70) 2px solid;
 }
 
 .fa-circle-folder-singleView:hover,
@@ -78,9 +101,20 @@
 }
 
 .AddSet-Header-exit {
-  padding: 11px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dark .AddSet-Header-exit {
   background: #1a1d28;
+}
+
+#light .AddSet-Header-exit {
+  background-color: #a0b1ff;
 }
 
 .AddSet-Header-exit:hover {
@@ -90,7 +124,14 @@
 .AddSet-createSet-wrapper {
   padding: 20px 200px;
   max-width: 200px;
+}
+
+#dark .AddSet-createSet-wrapper {
   background-color: #1a1d28;
+}
+
+#light .AddSet-createSet-wrapper {
+  background-color: #a0b1ff;
 }
 
 .AddSet-createSet-wrapper:hover {
@@ -120,18 +161,33 @@
 }
 
 .AddSet-dropdown-wrapper {
-  background-color: #1a1d28;
   width: fit-content;
   padding-right: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.AddSet-dropdown {
+#dark .AddSet-dropdown-wrapper {
   background-color: #1a1d28;
+}
+
+#light .AddSet-dropdown-wrapper {
+  background-color: #a0b1ff;
+}
+
+.AddSet-dropdown {
   padding: 10px 20px;
-  color: #7dd;
   border: none;
+}
+
+#dark .AddSet-dropdown {
+  background-color: #1a1d28;
+  color: #7dd;
+}
+
+#light .AddSet-dropdown {
+  background-color: #a0b1ff;
+  color: #ffffff;
 }
 
 .AddSet-dropdown:hover {
@@ -154,10 +210,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1a1d28;
   padding: 10px 15px;
   margin-bottom: 10px;
   height: 50px;
+}
+
+#dark .AddSet-set {
+  background-color: #1a1d28;
+}
+
+#light .AddSet-set {
+  background-color: #a0b1ff;
 }
 
 .AddSet-set-plus-wrapper {

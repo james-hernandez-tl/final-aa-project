@@ -3,6 +3,16 @@
   width: 1009px;
   min-height: 100vh;
   margin: auto;
+  /* background-color: black; */
+}
+
+#dark .SetForm {
+  background-color: #0a092d;
+}
+
+#light .SetForm {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .SetForm-header {
@@ -10,13 +20,32 @@
   margin-bottom: 15px;
 }
 
+#dark .SetForm-header {
+  color: #ffffff;
+}
+
+#light .SetForm-header {
+  color: #5271ff;
+}
+
 .SetForm-inputs {
-  background-color: #0a092d;
+  /* background-color: #0a092d; */
   border: none;
-  color: white;
-  border-bottom: 4px #747c92 solid;
+  /* border-bottom: 4px #747c92 solid; */
   width: 50%;
   margin-bottom: 7px;
+}
+
+#dark .SetForm-inputs {
+  background-color: #0a092d;
+  border-bottom: 4px solid #747c92;
+  color: white;
+}
+
+#light .SetForm-inputs {
+  background-color: rgba(232, 232, 232, 0.5);
+  border-bottom: 4px #5271ff solid;
+  color: black;
 }
 
 .SetForm-inputs:focus {
@@ -42,15 +71,32 @@
   cursor: pointer;
 }
 
+#dark .SetForm-addCard {
+  color: #ffffff;
+}
+
+#light .SetForm-addCard {
+  color: #5271ff;
+}
+
 .SetForm-CreateCard,
 .SetForm-EditCard {
-  /* background-color: #a1a5b5; */
-  background-color: #414867;
   color: white;
   font-size: 18px;
   padding: 10px 15px;
   border-radius: 20px;
   border: none;
+}
+
+#dark .SetForm-CreateCard,
+#dark .SetForm-EditCard {
+  /* background-color: #a1a5b5; */
+  background-color: #414867;
+}
+
+#light .SetForm-CreateCard,
+#light .SetForm-EditCard {
+  background-color: #5271ff;
 }
 
 .SetForm-CreateCard:hover,

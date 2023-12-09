@@ -21,7 +21,7 @@ export default function SetWrapper({ allSets, color = "#586380" }) {
     });
   };
   return (
-    <div className="SetWrapper" style={{ background: color }}>
+    <div className="SetWrapper">
       <div className="slider-controls-prev">
         <i className="fa-solid fa-arrow-left" onClick={handlePreviousClick}></i>
       </div>

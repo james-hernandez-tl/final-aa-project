@@ -1,13 +1,30 @@
 .YourSets {
-  padding: 10px 150px;
+  padding: 20px 150px;
   min-height: 100vh;
-  margin-top: 10px;
+}
+
+#dark .YourSets {
+  background-color: #0a092d;
+  color: #ffffff;
+}
+
+#light .YourSets {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .YourSets-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+}
+
+#dark .YourSets-header {
+  color: #ffffff;
+}
+
+#light .YourSets-header {
+  color: rgb(70, 70, 70);
 }
 
 .YourSets-header-title {

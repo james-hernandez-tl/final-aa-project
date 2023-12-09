@@ -12,7 +12,7 @@ export default function PlusIcon() {
   return (
     <>
       <i
-        className="fa-solid fa-circle-plus nav-plus"
+        className="fa-solid fa-plus nav-plus"
         ref={btnRef}
         onClick={toggleMenu}
       ></i>

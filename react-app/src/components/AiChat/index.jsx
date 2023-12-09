@@ -6,9 +6,11 @@ import { useSelector } from "react-redux";
 import useSession from "../../hooks/useSession";
 import Avatar from "../Avatar";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useTheme } from "../../context/ColorProvider";
 import "./AiChat.css";
 
 export default function AiChat() {
+  const { theme } = useTheme();
   const [userResponse, setUserResponse] = useState("");
   const dispatch = useDispatch();
   const { setId } = useParams();
@@ -204,7 +206,7 @@ export default function AiChat() {
               <Avatar
                 size="35px"
                 src={
-                  "https://cdn.discordapp.com/attachments/934145502252003410/1142924273611194428/Screen_Shot_2023-08-20_at_3.27.51_PM.png"
+                  "https://cdn.discordapp.com/attachments/934145502252003410/1153869569631473684/Screen_Shot_2023-09-19_at_9.45.26_PM.png"
                 }
               />
             </div>
@@ -215,7 +217,7 @@ export default function AiChat() {
                 size={6}
                 aria-label="Loading Spinner"
                 data-testid="loader"
-                color={"#ffffff"}
+                color={theme === "light" ? "rgb(70, 70, 70)" : "#ffffff"}
               />
             </div>
           </div>

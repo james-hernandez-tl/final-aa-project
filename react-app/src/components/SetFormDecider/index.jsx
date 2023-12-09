@@ -21,7 +21,7 @@ export default function SetFormDecider() {
 
   useEffect(() => {
     if (!user) {
-      navigate("/logIn", { state: window.location.pathname });
+      navigate("/", { state: window.location.pathname });
     }
   }, [dispatch, user, navigate]);
 

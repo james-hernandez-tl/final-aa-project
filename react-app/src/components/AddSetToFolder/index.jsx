@@ -22,7 +22,7 @@ export default function AddSetToFolder({ setId }) {
 
   useEffect(() => {
     if (!user) {
-      navigate("/logIn", { state: window.location.pathname });
+      navigate("/", { state: window.location.pathname });
     }
   }, []);
 

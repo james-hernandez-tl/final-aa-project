@@ -10,7 +10,7 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 @openai_routes.route("/quiz/<int:setId>",methods = ["POST"])
 def createChat(setId):
-    print("[openai.api_key]",openai.api_key)
+    # print("[openai.api_key]",openai.api_key)
 
     set = Set.query.get(setId)
 
@@ -26,7 +26,7 @@ def createChat(setId):
 
     prompt = f"You are an assistant for a user studying cards, based on the following cards I would like you to ask the user a question, and once they return a response see if its correct. If the answer isn't correct you should give them the answer. But either way give them another question that starts with Here's another question. {cardsString(allCards)}"
 
-    print("[prompt]",prompt)
+    # print("[prompt]",prompt)
 
     res = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -34,7 +34,7 @@ def createChat(setId):
         temperature=0.3
     )
 
-    print("[chats-gpt response]",res)
+    # print("[chats-gpt response]",res)
 
     chatGPT_reply = res["choices"][0]["message"]["content"]
 
@@ -59,7 +59,7 @@ def teachChat(setId):
 
     prompt = f"You are an assistant for a user studying cards. You should teach them the ideas in the cards. For each card give them background knowledge you think would be helpful and then ask them a question to confirm their understanding of the card. If they are correct, move on to another card. If they are incorrect elaborate on your previous explanation and then repeat the question.Here are the cards you need to teach them, {cardsString(allCards)} "
 
-    print("[prompt]",prompt)
+    # print("[prompt]",prompt)
 
     res = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -67,7 +67,7 @@ def teachChat(setId):
         temperature=0.3
     )
 
-    print("[chats-gpt response]",res)
+    # print("[chats-gpt response]",res)
 
     chatGPT_reply = res["choices"][0]["message"]["content"]
 

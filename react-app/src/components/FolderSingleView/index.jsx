@@ -11,7 +11,7 @@ import "./FolderSingleView.css";
 import { Menu, MenuItem, useMenu } from "../Menu";
 import NoFolders from "./NoFolders";
 import AddSet from "./AddSet";
-import ClipLoader from "react-spinners/ClipLoader";
+import LoadingScreen from "../LoadingScreen/index.jsx";
 
 export default function FolderSingleView() {
   let folder = useSelector((state) => state.folders.singleFolder);
@@ -25,12 +25,7 @@ export default function FolderSingleView() {
     dispatch(getFolder(folderId));
   }, [dispatch, folderId]);
 
-  if (!folder || folder.id != folderId)
-    return (
-      <div className="Home-loadingScreen">
-        <ClipLoader color="white" size={100} />
-      </div>
-    );
+  if (!folder || folder.id != folderId) return <LoadingScreen />;
   return (
     <div className="FolderSingleView">
       <div className="FolderSingleView-header">

@@ -1,13 +1,23 @@
 .SetSingleView {
-  padding: 10px 200px;
+  padding: 10px 200px 100px;
   max-width: 1409px;
   margin: auto;
+}
+
+#dark .SetSingleView {
+  background-color: #0a092d;
+  color: #ffffff;
+}
+
+#light .SetSingleView {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .SetSingleView-title {
   font-size: 32px;
   margin: 20px 0 5px 0;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .SetSingleView-rating {
@@ -17,11 +27,15 @@
   padding: 20px 1px;
   border-radius: 10px;
   width: fit-content;
+  cursor: pointer;
 }
 
-.SetSingleView-rating:hover {
+#dark .SetSingleView-rating:hover {
   background-color: rgba(255, 255, 255, 20%);
-  cursor: pointer;
+}
+
+#light .SetSingleView-rating:hover {
+  background-color: rgba(255, 255, 255, 50%);
 }
 
 .SetSingleView-rating-star {
@@ -36,10 +50,17 @@
 
 .SetSingleView-card {
   flex: 0 0 100%;
-  background-color: #25284a;
   height: 400px;
   border-radius: 25px;
   position: relative;
+}
+
+#dark .SetSingleView-card {
+  background-color: #25284a;
+}
+
+#light .SetSingleView-card {
+  background-color: #ffffff;
 }
 
 .SetSingleView-card-content {
@@ -81,13 +102,27 @@
   font-size: 20px;
   margin-right: 10px;
   padding: 7px;
-  border: #ffffff solid 1px;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
-.SetSingleView-card-dropdown:hover {
-  background-color: rgba(255, 255, 255, 12%);
-  cursor: pointer;
+#dark .SetSingleView-card-dropdown {
+  color: #ffffff;
+  border: #ffffff solid 1px;
+}
+
+#light .SetSingleView-card-dropdown {
+  border: rgb(70, 70, 70) solid 1px;
+  color: rgb(70, 70, 70);
+}
+
+#dark .SetSingleView-card-dropdown:hover {
+  background-color: rgba(255, 255, 255, 20%);
+}
+
+#light .SetSingleView-card-dropdown:hover {
+  /* background-color: rgba(82, 113, 255, 10%); */
+  background-color: rgba(255, 255, 255, 50%);
 }
 
 .SetSingleView-footer {
@@ -103,7 +138,14 @@
   gap: 20px;
   font-size: 20px;
   padding: 20px 0;
-  border-bottom: lightgray solid 2px;
+}
+
+#dark .setSingleView-slider-controls {
+  border-bottom: #ffffff solid 2px;
+}
+
+#light .setSingleView-slider-controls {
+  border-bottom: rgb(70, 70, 70) solid 2px;
 }
 
 .setSingleView-slider-controls-NumSets {
@@ -122,12 +164,17 @@
   cursor: pointer;
 }
 
-.SetSingleView-card-hint:hover .fa-lightbulb {
+#dark .SetSingleView-card-hint:hover .fa-lightbulb {
   color: yellow;
+}
+
+#light .SetSingleView-card-hint:hover .fa-lightbulb {
+  color: #ffd700;
 }
 
 .SetSingleView-card-hint.SetSingleView-card-header-hint {
   background-color: #20232c;
+  /* background-color: #5271ff; */
   padding: 5px 10px;
   min-width: 100px;
   border-radius: 1rem;
@@ -143,17 +190,28 @@
 
 .setSingleView-arrow-holders {
   border-radius: 50%;
-  border: 1px white solid;
   height: 45px;
   width: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.setSingleView-arrow-holders:hover {
-  background-color: rgba(255, 255, 255, 15%);
-  cursor: pointer;
+#dark .setSingleView-arrow-holders {
+  border: 1px #ffffff solid;
+}
+
+#light .setSingleView-arrow-holders {
+  border: 1px rgb(70, 70, 70) solid;
+}
+
+#dark .setSingleView-arrow-holders:hover {
+  background-color: rgba(255, 255, 255, 20%);
+}
+
+#light .setSingleView-arrow-holders:hover {
+  background-color: rgba(255, 255, 255, 50%);
 }
 
 .setSingleView-arrow-holders1 {

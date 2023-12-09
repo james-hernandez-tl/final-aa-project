@@ -3,10 +3,13 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import useSession from "../../hooks/useSession";
+import { useModal } from "../../context/Modal";
+import SignUpPage from "../SignUpPage";
 import "./LoginPage.css";
 
 export default function LoginPage() {
   const user = useSession();
+  const { closeModal, setModalContent } = useModal();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(null);
@@ -27,11 +30,16 @@ export default function LoginPage() {
     if (errors?.username) {
       setUsernameError("usernameError");
     }
-    if (!errors) navigate(state);
+    if (!errors) {
+      navigate(state);
+      closeModal();
+    }
   };
 
   const signupClicker = () => {
-    navigate("/signup", { state: state });
+    // navigate("/signup", { state: state });
+    closeModal();
+    setModalContent(<SignUpPage />);
   };
 
   useEffect(() => {
@@ -43,7 +51,7 @@ export default function LoginPage() {
   return (
     <div className="LoginPage">
       <div className="Login-div">
-        <div className="LoginPage-header">Log In Page</div>
+        <div className="LoginPage-header">Sign In</div>
         <div className={`LoginPage-input-wrapper ${usernameError}`}>
           <input
             type="text"
@@ -73,7 +81,7 @@ export default function LoginPage() {
             placeholder={required ?? "password"}
           />
         </div>
-        <div>
+        <div className="LoginPage-btn-wrapper">
           <button className="LoginPage-button" onClick={LogInClicker}>
             Log In
           </button>
@@ -82,6 +90,7 @@ export default function LoginPage() {
             onClick={async () => {
               await dispatch(login("Demo", "password"));
               navigate(state);
+              closeModal();
             }}
           >
             Demo User

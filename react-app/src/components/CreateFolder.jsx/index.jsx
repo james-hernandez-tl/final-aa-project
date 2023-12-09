@@ -58,7 +58,7 @@ export default function CreateFolder({ folder }) {
 
   useEffect(() => {
     if (!user) {
-      navigate("/logIn", { state: window.location.pathname });
+      navigate("/", { state: window.location.pathname });
     }
   }, []);
 

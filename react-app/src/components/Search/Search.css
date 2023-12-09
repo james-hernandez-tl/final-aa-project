@@ -1,7 +1,22 @@
 .Search {
   width: 1000px;
-  margin: auto;
-  /* padding-bottom: 300px; */
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.Search-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#dark .Search-wrapper {
+  background-color: #0a092d;
+  color: #ffffff;
+}
+
+#light .Search-wrapper {
+  background-color: rgba(232, 232, 232, 0.5);
+  color: rgb(70, 70, 70);
 }
 
 .Search-main-wrapper {
@@ -13,17 +28,17 @@
 }
 .Search-results {
   font-size: 25px;
-  margin: 20px 0 20px;
+  padding: 20px 0 20px;
 }
 
 .Search-main-wrapper .SetMainLayout {
   width: 328px;
-  background-color: #2e3856;
   border-radius: 15px;
   margin-bottom: 10px;
 }
 
-.Search-main-wrapper .SetMainLayout:hover {
+#dark .Search-main-wrapper .SetMainLayout {
+  background-color: #2e3856;
 }
 
 .Search-main-wrapper .SetMainLayout-name {
@@ -33,21 +48,36 @@
   margin-top: 10px;
   justify-content: left;
   gap: 10px;
+}
+
+#dark .Search-main-wrapper .SetMainLayout-addons {
   color: #d9dde8;
 }
 
 .SetMainLayout-preview {
-  color: white;
-  background-color: #0a092d;
   border-radius: 5px;
   padding: 7px 10px;
-  border: white 1px solid;
   position: relative;
 }
 
-.SetMainLayout-preview:hover {
+#dark .SetMainLayout-preview {
+  color: white;
+  background-color: #0a092d;
+  border: white 1px solid;
+}
+
+#light .SetMainLayout-preview {
+  background-color: white;
+}
+
+#dark .SetMainLayout-preview:hover {
   cursor: pointer;
   background-color: rgba(255, 255, 255, 2%);
+}
+
+#light .SetMainLayout-preview:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .SetMainLayout-preview-wrapper {
@@ -99,6 +129,16 @@
   padding: 25px;
 }
 
+#dark .Search-prebiew-body {
+  background-color: #2e3856;
+  color: #ffffff;
+}
+
+#light .Search-prebiew-body {
+  background-color: #ffffff;
+  color: rgb(70, 70, 70);
+}
+
 .Search-sets-title-wrapper {
   display: flex;
 }
@@ -142,9 +182,16 @@
 }
 
 .Search-preview-body-answer {
-  color: #d9dde8;
   margin-bottom: 25px;
   font-size: 15px;
+}
+
+#dark .Search-preview-body-answer {
+  color: #d9dde8;
+}
+
+#light .Search-preview-body-answer {
+  color: #aeb1b8;
 }
 
 .Search-preview-body-question {

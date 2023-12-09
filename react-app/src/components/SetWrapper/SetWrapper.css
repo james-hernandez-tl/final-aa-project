@@ -20,6 +20,7 @@
 .slider-controls-next {
   height: 100%;
   margin: auto 0px;
+  margin-left: 15px;
   font-size: 20px;
   cursor: pointer;
 }
@@ -27,6 +28,18 @@
 .slider-controls-prev {
   height: 100%;
   margin: auto 0px;
+  margin-right: 15px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.slider-controls-next,
+.slider-controls-prev {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
