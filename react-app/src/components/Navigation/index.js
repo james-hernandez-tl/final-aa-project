@@ -45,7 +45,7 @@ function Navigation({ isLoaded }) {
               <MenuItem
                 text="LogIn"
                 onClick={() => {
-                  navigate("/logIn", { state: window.location.pathname });
+                  navigate("/", { state: window.location.pathname });
                   hideMenu();
                 }}
                 icon={<i className="fa-solid fa-power-off"></i>}

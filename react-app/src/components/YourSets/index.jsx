@@ -12,7 +12,7 @@ export default function YourSets() {
 
   useEffect(() => {
     if (!user) {
-      navigate("/logIn", { state: window.location.pathname });
+      navigate("/", { state: window.location.pathname });
     }
   }, [navigate, user]);
 
