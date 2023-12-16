@@ -34,9 +34,13 @@
   background-color: #a1a5b5;
 }
 
-#light .SignUpPage-input-wrapper,
-#light .SignUpPage-inputs {
+#light .SignUpPage-input-wrapper {
   background-color: rgba(232, 232, 232, 0.5);
+}
+
+#light .SignUpPage-inputs {
+  background-color: transparent;
+  color: rgb(70, 70, 70);
 }
 
 .SignUpPage-inputs {
@@ -58,7 +62,7 @@
 
 #light .SignUpPage-inputs::-webkit-input-placeholder {
   text-align: center;
-  color: rgba(70, 70, 70, 70%);
+  color: rgba(70, 70, 70, 60%);
 }
 
 .SignUpPage-button-wrapper {

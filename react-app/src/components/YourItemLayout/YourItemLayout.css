@@ -14,6 +14,10 @@
   color: rgb(70, 70, 70);
 }
 
+.YourFolders .YourItemLayout {
+  border-radius: 0%;
+}
+
 .YourItemLayout-terms {
   padding: 5px 5px;
   border-radius: 0.5rem;

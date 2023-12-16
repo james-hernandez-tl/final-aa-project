@@ -3,6 +3,10 @@
   min-height: 100vh;
 }
 
+#light .YourFolders {
+  color: rgb(70, 70, 70);
+}
+
 #dark .YourFolders {
   background-color: #0a092d;
 }

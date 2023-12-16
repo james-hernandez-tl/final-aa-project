@@ -49,7 +49,8 @@
 }
 
 #light .LoginPage-inputs {
-  background-color: rgba(232, 232, 232, 0.5);
+  /* background-color: rgba(232, 232, 232, 0.5); */
+  background-color: transparent;
   color: rgb(70, 70, 70);
 }
 
@@ -64,7 +65,7 @@
 
 #light .LoginPage-inputs::-webkit-input-placeholder {
   text-align: center;
-  color: rgba(70, 70, 70, 70%);
+  color: rgba(70, 70, 70, 60%);
 }
 
 .LoginPage-btn-wrapper {
