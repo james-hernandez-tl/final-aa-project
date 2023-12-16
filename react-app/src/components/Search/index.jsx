@@ -67,20 +67,19 @@ export default function Search() {
               />
             ))}
           </div>
-          <div className="Search-preview">
-            {/* <div className="Search-sets-title">Set preview</div> */}
-            <div className="Search-prebiew-body">
-              <div className="Search-prebiew-body-header">
-                <div className="Search-prebiew-body-title">
-                  {previewSet?.name}
+          {previewSet && (
+            <div className="Search-preview">
+              <div className="Search-prebiew-body">
+                <div className="Search-prebiew-body-header">
+                  <div className="Search-prebiew-body-title">
+                    {previewSet?.name}
+                  </div>
+                  <div className="Search-prebiew-body-study">
+                    <button onClick={setClicker}>Study</button>
+                  </div>
                 </div>
-                <div className="Search-prebiew-body-study">
-                  <button onClick={setClicker}>Study</button>
-                </div>
-              </div>
-              <div>
-                {previewSet &&
-                  Object.values(previewSet.Cards)
+                <div>
+                  {Object.values(previewSet.Cards)
                     .slice(0, 7)
                     .map((card) => (
                       <div key={card.id}>
@@ -92,9 +91,10 @@ export default function Search() {
                         </div>
                       </div>
                     ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

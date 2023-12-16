@@ -39,6 +39,10 @@
   margin: 15px 0;
 }
 
+.home-studySet-createNewSet:hover {
+  text-decoration: underline;
+}
+
 #dark .home-studySet-createNewSet {
   color: #ffffff;
 }
